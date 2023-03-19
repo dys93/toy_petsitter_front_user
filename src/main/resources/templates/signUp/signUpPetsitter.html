@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <meta name="naver-site-verification" content="9d4ada4a32e188c9c5e42e8a751c4f497033d0c7"/>
+  <link rel="shortcut icon" href="/static/images/favicon.ico"/>
+  <link rel="stylesheet" type="text/css" href="/static/js/slick.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/static/js/slick.min.js"/>
+  <link rel="stylesheet" type="text/css" href="/static/js/slick-theme.min.css"/>
+  <script type="text/javascript" src="/static/js/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="/static/js/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="/static/js/polyfill.min.js"></script>
+  <script type="text/javascript" src="/static/js/kakao.js"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8f23556bd57117a96842def422603994"></script>
+  <script type="text/javascript" src="/static/js/ua-parser.min.js"></script>
+  <script type="text/javascript" src="/static/js/react.production.min.js"></script>
+  <script type="text/javascript" src="/static/js/react-copy-to-clipboard.js"></script>
+  <script>
+    (function() {
+              var w = window;
+              if (w.ChannelIO) {
+                return (window.console.error || window.console.log || function() {}
+                )('ChannelIO script included twice.');
+              }
+              var d = window.document;
+              var ch = function() {
+                ch.c(arguments);
+              };
+              ch.q = [];
+              ch.c = function(args) {
+                ch.q.push(args);
+              }
+              ;
+              w.ChannelIO = ch;
+              function l() {
+                if (w.ChannelIOInitialized) {
+                  return;
+                }
+                w.ChannelIOInitialized = true;
+                var s = document.createElement('script');
+                s.type = 'text/javascript';
+                s.async = true;
+                s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+                s.charset = 'UTF-8';
+                var x = document.getElementsByTagName('script')[0];
+                x.parentNode.insertBefore(s, x);
+              }
+              if (document.readyState === 'complete') {
+                l();
+              } else if (window.attachEvent) {
+                window.attachEvent('onload', l);
+              } else {
+                window.addEventListener('DOMContentLoaded', l, false);
+                window.addEventListener('load', l, false);
+              }
+            }
+    )();
+    ChannelIO('boot', {
+      "pluginKey": "28718193-bc8b-4f0a-bcee-32aff281d5f2",
+      "customLauncherSelector": "#channel-io-button, .custom-channel-io-button",
+      "hideDefaultLauncher": true
+    });
+  </script>
+  <script>
+    (function(w, d, s, l, i) {
+              w[l] = w[l] || [];
+              w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+              });
+              var f = d.getElementsByTagName(s)[0]
+                      , j = d.createElement(s)
+                      , dl = l != 'dataLayer' ? '&l=' + l : '';
+              j.async = true;
+              j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+              f.parentNode.insertBefore(j, f);
+            }
+    )(window, document, 'script', 'dataLayer', 'GTM-PDQCPDS');
+  </script>
+  <script>
+    (function() {
+              if (typeof NodeList.prototype.forEach === "function")
+                return false;
+              NodeList.prototype.forEach = Array.prototype.forEach;
+            }
+    )();
+  </script>
+  <script>
+
+    var parser = new UAParser();
+    var browser = parser.getResult().browser;
+    if (browser.name === 'IE' && parseInt(browser.version) < 11) {
+      if (window.location.pathname !== '/notsupported') {
+        window.location.href = '/notsupported';
+      }
+    } else {
+      if (window.location.pathname === '/notsupported') {
+        window.location.href = '/';
+      }
+    }
+  </script>
+  <meta charSet="utf-8"/>
+  <title class="jsx-1326206922">펫시터 교육과 지원을 통해 전문가로 성장하세요 | 펫플래닛</title>
+  <meta name="description" content="펫플래닛 반려동물 전문가에게 펫시터 교육을 받고 펫시터 알바에서 펫케어 전문가로 성장하세요." class="jsx-1326206922"/>
+  <meta name="keywords" content="펫시터알바,펫시터자격증,펫시터교육,펫시터자격,펫시터월급" class="jsx-1326206922"/>
+  <link rel="canonical" href="https://petplanet.co/apply" class="jsx-1326206922"/>
+  <meta property="og:type" content="website" class="jsx-1326206922"/>
+  <meta property="og:title" content="펫시터 교육과 지원을 통해 전문가로 성장하세요 | 펫플래닛" class="jsx-1326206922"/>
+  <meta property="og:description" content="펫플래닛 반려동물 전문가에게 펫시터 교육을 받고 펫시터 알바에서 펫케어 전문가로 성장하세요." class="jsx-1326206922"/>
+  <meta property="og:image" content="/static/images/common/og_home.png" class="jsx-1326206922"/>
+  <meta property="og:url" content="https://petplanet.co/apply" class="jsx-1326206922"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" class="jsx-1326206922"/>
+  <meta name="next-head-count" content="11"/>
+  <link rel="preload" href="/_next/static/r96-BCZo64C9PGBuAtZ98/pages/applyform.js" as="script"/>
+  <link rel="preload" href="/_next/static/r96-BCZo64C9PGBuAtZ98/pages/_app.js" as="script"/>
+  <link rel="preload" href="/_next/static/runtime/webpack-4b444dab214c6491079c.js" as="script"/>
+  <link rel="preload" href="/_next/static/chunks/commons.58cd47c941173809d3d8.js" as="script"/>
+  <link rel="preload" href="/_next/static/chunks/styles.d2c14889900d80d21002.js" as="script"/>
+  <link rel="preload" href="/_next/static/runtime/main-0ee1c1962f44d8fad7d7.js" as="script"/>
+  <link rel="stylesheet" href="/_next/static/css/styles.f53a334d.chunk.css"/>
+  <link rel="stylesheet" href="/_next/static/css/static/r96-BCZo64C9PGBuAtZ98/pages/_app.js.548dbefb.chunk.css"/>
+  <style id="__jsx-1584129707">
+    div.jsx-1584129707 {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      border: 1px solid #E0E0E0;
+      position: static;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-align-items: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      border-radius: 5px;
+      -webkit-box-flex: 1;
+      -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+      flex-grow: 1;
+      -webkit-flex-basis: 0;
+      -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+      height: 58px;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .jsx-1584129707,p.jsx-1584129707 {
+      position: absolute;
+      font-size: 17px;
+      color: #333333;
+      line-height: 58px;
+      font-weight: normal;
+    }
+  </style>
+  <style id="__jsx-1326206922">
+    @media (min-width: 961px) {
+      input.jsx-1326206922 {
+        width:100%;
+        height: 58px;
+        border: 1px solid #E0E0E0;
+        border-radius: 5px;
+        padding: 5px;
+        font-size: 15px;
+        color: #333333;
+      }
+
+      input.jsx-1326206922::-webkit-input-placeholder {
+        color: #A0A0A0;
+        font-size: 15px;
+      }
+
+      input.jsx-1326206922::-moz-placeholder {
+        color: #A0A0A0;
+        font-size: 15px;
+      }
+
+      input.jsx-1326206922:-ms-input-placeholder {
+        color: #A0A0A0;
+        font-size: 15px;
+      }
+
+      input.jsx-1326206922::placeholder {
+        color: #A0A0A0;
+        font-size: 15px;
+      }
+
+      textarea.jsx-1326206922 {
+        width: 100%;
+        height: 173px;
+        min-height: 173px;
+        border: 1px solid #E0E0E0;
+        border-radius: 5px;
+        padding: 20px 18px;
+        color: #333333;
+        font-size: 15px;
+        font-weight: 400;
+      }
+
+      textarea.jsx-1326206922::-webkit-input-placeholder {
+        color: #A0A0A0;
+        font-size: 15px;
+      }
+
+      textarea.jsx-1326206922::-moz-placeholder {
+        color: #A0A0A0;
+        font-size: 15px;
+      }
+
+      textarea.jsx-1326206922:-ms-input-placeholder {
+        color: #A0A0A0;
+        font-size: 15px;
+      }
+
+      textarea.jsx-1326206922::placeholder {
+        color: #A0A0A0;
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 960px) {
+      input.jsx-1326206922 {
+        width:100%;
+        height: 56px;
+        border: 1px solid #E0E0E0;
+        border-radius: 5px;
+        padding: 5px;
+        font-size: 14px;
+        color: #333333;
+      }
+
+      input.jsx-1326206922::-webkit-input-placeholder {
+        color: #A0A0A0;
+        font-size: 14px;
+      }
+
+      input.jsx-1326206922::-moz-placeholder {
+        color: #A0A0A0;
+        font-size: 14px;
+      }
+
+      input.jsx-1326206922:-ms-input-placeholder {
+        color: #A0A0A0;
+        font-size: 14px;
+      }
+
+      input.jsx-1326206922::placeholder {
+        color: #A0A0A0;
+        font-size: 14px;
+      }
+
+      textarea.jsx-1326206922 {
+        width: 100%;
+        height: 130px;
+        min-height: 130px;
+        border: 1px solid #E0E0E0;
+        border-radius: 5px;
+        padding: 18px;
+        color: #333333;
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      textarea.jsx-1326206922::-webkit-input-placeholder {
+        color: #A0A0A0;
+        font-size: 14px;
+      }
+
+      textarea.jsx-1326206922::-moz-placeholder {
+        color: #A0A0A0;
+        font-size: 14px;
+      }
+
+      textarea.jsx-1326206922:-ms-input-placeholder {
+        color: #A0A0A0;
+        font-size: 14px;
+      }
+
+      textarea.jsx-1326206922::placeholder {
+        color: #A0A0A0;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PDQCPDS" height="0" width="0" style="display:none;visibility:hidden;"></iframe>
+</noscript>
+<div id="__next">
+  <div>
+    <div>
+      <div class="wrapper">
+        <header id="hd">
+        </header>
+        <div class="jsx-1326206922 hidden-s">
+          <section style="width:100%;background-color:white" class="jsx-1326206922">
+            <div style="width:1000px;margin:0px auto;padding-top:158px">
+              <img src="/static/assets/images/logo01.png" alt="" height="26">
+              <h2 style="font-size:50px;font-weight:600;color:#555555">지원서 작성하기</h2>
+            </div>
+          </section>
+          <section style="margin-top:102px;background-color:#FAFAFB" class="jsx-1326206922">
+            <div style="width:1000px;margin:0px auto;padding-top:95px" class="jsx-1326206922">
+              <p style="font-size:27px;font-weight:600;color:#555555" class="jsx-1326206922">1. 기본 정보</p>
+              <div style="background-color:white;border:1px solid #EBEBEB;border-radius:12px;padding:75px 80px 80px 80px;margin-top:46px" class="jsx-1326206922">
+                <article style="display:flex;align-items:center" class="jsx-1326206922">
+                  <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0;margin-right:24px" class="jsx-1326206922">
+                    <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❶ 이름</p>
+                    <div style="margin-top:0px" class="jsx-1326206922">
+                      <input type="text" name="username" placeholder="실명 입력" value="" class="jsx-1326206922"/>
+                    </div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0" class="jsx-1326206922"></div>
+                </article>
+                <article style="display:flex;align-items:center;margin-top:55px" class="jsx-1326206922">
+                  <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0" class="jsx-1326206922">
+                    <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❸ 연락처</p>
+                    <div style="margin-top:0px;font-size:15px;color:#999999" class="jsx-1326206922">
+                      <p class="jsx-1326206922">입력한 휴대폰 번호로 합격 여부를 알려드립니다.</p>
+                    </div>
+                    <div style="margin-top:0px" class="jsx-1326206922">
+                      <input name="phone" maxLength="11" value="" placeholder="예) 01012345678" pattern="\d*" style="width:45%;height:58px;border:1px solid #EBEBEB;border-radius:5px;padding:5px" class="jsx-1326206922"/>
+                    </div>
+                  </div>
+                </article>
+                <article style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0;margin-top:55px" class="jsx-1326206922">
+                  <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❹ 거주지 주소</p>
+                  <p style="margin-top:0px;font-size:13px;color:#999999">시/군/구까지 입력해주세요</p>
+                  <div style="margin-top:0px" class="jsx-1326206922">
+                    <input type="text" name="address" value="" placeholder="예) 서울시 강남구 논현동" style="width:100%;height:58px;border:1px solid #EBEBEB;border-radius:5px;padding:5px" class="jsx-1326206922"/>
+                  </div>
+                </article>
+                <article style="display:flex;align-items:center;margin-top:55px" class="jsx-1326206922">
+                  <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0;margin-right:24px" class="jsx-1326206922">
+                    <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❷ 이메일</p>
+                    <div style="margin-top:0px;font-size:15px;color:#999999" class="jsx-1326206922">
+                      <p class="jsx-1326206922">로그인 시 아이디로 사용</p>
+                    </div>
+                    <div style="margin-top:0px" class="jsx-1326206922">
+                      <input name="id" maxLength="11" value="" placeholder="예) abc@naver.com" style="width:100%;height:58px;border:1px solid #EBEBEB;border-radius:5px;padding:5px" class="jsx-1326206922"/>
+                    </div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0" class="jsx-1326206922">
+                    <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❸ 패스워드</p>
+                    <div style="margin-top:0px;font-size:15px;color:#999999" class="jsx-1326206922">
+                      <p class="jsx-1326206922">로그인 시 패스워드로 사용</p>
+                    </div>
+                    <div style="margin-top:0px" class="jsx-1326206922">
+                      <input name="password" maxLength="11" value="" placeholder="예) abc12@!" style="width:100%;height:58px;border:1px solid #EBEBEB;border-radius:5px;padding:5px" class="jsx-1326206922"/>
+                    </div>
+                  </div>
+                </article>
+                <article style="display:flex;align-items:center;margin-top:55px" class="jsx-1326206922">
+                  <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0;margin-right:24px" class="jsx-1326206922">
+                    <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❷ 은행</p>
+                    <div style="margin-top:0px;font-size:15px;color:#999999" class="jsx-1326206922">
+                      <p class="jsx-1326206922">계좌이체 시 사용</p>
+                    </div>
+                    <div style="margin-top:0px" class="jsx-1326206922">
+                      <input name="bank" maxLength="11" value="" placeholder="예) 국민은행" style="width:100%;height:58px;border:1px solid #EBEBEB;border-radius:5px;padding:5px" class="jsx-1326206922"/>
+                    </div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0" class="jsx-1326206922">
+                    <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❸ 계좌번호</p>
+                    <div style="margin-top:0px;font-size:15px;color:#999999" class="jsx-1326206922">
+                      <p class="jsx-1326206922">'-'제외하고 숫자만 입력</p>
+                    </div>
+                    <div style="margin-top:0px" class="jsx-1326206922">
+                      <input name="account" maxLength="11" value="" placeholder="예) 25456956512001" style="width:100%;height:58px;border:1px solid #EBEBEB;border-radius:5px;padding:5px" class="jsx-1326206922"/>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </section>
+          <section style="padding-top:87px;background-color:#FAFAFB" class="jsx-1326206922">
+            <div style="width:1000px;margin:0px auto" class="jsx-1326206922">
+              <p style="font-size:27px;font-weight:600;color:#555555" class="jsx-1326206922">2. 반려 경험 및 경력</p>
+              <div style="background-color:white;border:1px solid #EBEBEB;border-radius:12px;padding:75px 80px 80px 80px;margin-top:46px" class="jsx-1326206922">
+                <article style="display:flex;align-items:center" class="jsx-1326206922">
+                  <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0" class="jsx-1326206922">
+                    <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❶ 강아지 반려 경험 유무</p>
+                    <div style="display:flex;margin-top:15px" class="jsx-1326206922">
+                      <div class="jsx-1584129707">
+                        <p class="jsx-1584129707">있음</p>
+                      </div>
+                      <div style="width:10px" class="jsx-1326206922"></div>
+                      <div class="jsx-1584129707">
+                        <p class="jsx-1584129707">없음</p>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+                <article style="margin-top:75px" class="jsx-1326206922">
+                  <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❹ 펫시터 활동 경력</p>
+                  <div style="margin-top:10px;display:grid;grid-template-columns:repeat(2, 1fr)" class="jsx-1326206922">
+                    <div style="margin-top:23px" class="jsx-1326206922">
+                      <div style="display:flex;align-items:center;cursor:pointer;width:fit-content">
+                        <input type="radio" name="experience" value="previous" style="padding-left: 10px"/>
+                        <p style="font-size:17px;color:#333333;margin-right:12px; padding-left: 10px">과거에 활동했지만, 현재는 활동하지 않음</p>
+                      </div>
+                    </div>
+                    <div style="margin-top:23px" class="jsx-1326206922">
+                      <div style="display:flex;align-items:center;cursor:pointer;width:fit-content">
+                        <input type="radio" name="experience" value="current" style="padding-left: 10px"/>
+                        <p style="font-size:17px;color:#333333;margin-right:12px; padding-left: 10px" >현재도 활동하고 있음</p>
+                      </div>
+                    </div>
+                    <div style="margin-top:23px" class="jsx-1326206922">
+                      <div style="display:flex;align-items:center;cursor:pointer;width:fit-content">
+                        <input type="radio" name="experience" value="none" style="padding-left: 10px"/>
+                        <p style="font-size:17px;color:#333333;margin-right:12px; padding-left: 10px">펫시터로 활동을 해본 적이 없음</p>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+                <article style="display:flex;flex-direction:column;margin-top:75px" class="jsx-1326206922">
+                  <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❷ 펫시터 경험 혹은 타인의 반려동물을 돌봐준 경험</p>
+                  <span style="font-size:15px;margin-top:10px;color:#999999" class="jsx-1326206922">
+                                                <p class="jsx-1326206922">자신의 반려동물이 아닌 친구, 다른 가족 구성원의 반려동물을 돌보았던 경험이 있다면 구체적으로 적어주세요. (경험이 없다면 &quot;없습니다&quot;라고 작성)</p>
+                                            </span>
+                  <textarea name="careExperienceOthersPet" placeholder="타인의 반려동물을 돌봐준 경험에 대해서 알려주세요." style="margin-top:31px" class="jsx-1326206922"></textarea>
+                </article>
+              </div>
+            </div>
+          </section>
+          <section style="background-color:#FAFAFB;padding-bottom:208px" class="jsx-1326206922">
+            <div style="width:1000px;margin:0px auto;padding-top:84px" class="jsx-1326206922">
+              <div style="margin-top:80px;display:flex;align-items:center;justify-content:center" class="jsx-1326206922">
+                <div style="width:270px;height:70px;background-color:#71A2FF;border-radius:5px;display:flex;justify-content:center;align-items:center;cursor:pointer" class="jsx-1326206922">
+                  <p style="font-size:20px;font-weight:600;color:white" class="jsx-1326206922">최종 제출</p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <footer id="ft">
+            <script>document.write(new Date().getFullYear())</script> &copy; Minton theme by <a href="" class="text-dark">Coderthemes</a>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script id="__NEXT_DATA__" type="application/json">
+</script>
+<script async="" data-next-page="/applyform" src="/_next/static/r96-BCZo64C9PGBuAtZ98/pages/applyform.js"></script>
+<script async="" data-next-page="/_app" src="/_next/static/r96-BCZo64C9PGBuAtZ98/pages/_app.js"></script>
+<script src="/_next/static/runtime/webpack-4b444dab214c6491079c.js" async=""></script>
+<script src="/_next/static/chunks/commons.58cd47c941173809d3d8.js" async=""></script>
+<script src="/_next/static/chunks/styles.d2c14889900d80d21002.js" async=""></script>
+<script src="/_next/static/runtime/main-0ee1c1962f44d8fad7d7.js" async=""></script>
+<script type="application/ld+json">
+</script>
+</body>
+</html>

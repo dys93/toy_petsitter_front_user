@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <meta name="naver-site-verification" content="9d4ada4a32e188c9c5e42e8a751c4f497033d0c7"/>
+  <link rel="shortcut icon" href="/static/assets/images/favicon.ico"/>
+  <link rel="stylesheet" type="text/css" href="/static/assets/js/slick.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/static/assets/js/slick.min.js"/>
+  <link rel="stylesheet" type="text/css" href="/static/assets/js/slick-theme.min.css"/>
+  <script type="text/javascript" src="/static/assets/js/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="/static/assets/js/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="/static/assets/js/polyfill.min.js"></script>
+  <script type="text/javascript" src="/static/assets/js/kakao.js"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8f23556bd57117a96842def422603994"></script>
+  <script type="text/javascript" src="/static/assets/js/ua-parser.min.js"></script>
+  <script type="text/javascript" src="/static/assets/js/react.production.min.js"></script>
+  <script type="text/javascript" src="/static/assets/js/react-copy-to-clipboard.js"></script>
+
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"/>
+  <meta charSet="utf-8"/>
+
+  <meta name="next-head-count" content="11"/>
+  <link rel="preload" href="/_next/static/r96-BCZo64C9PGBuAtZ98/pages/petsitters.js" as="script"/>
+  <link rel="preload" href="/_next/static/r96-BCZo64C9PGBuAtZ98/pages/_app.js" as="script"/>
+  <link rel="preload" href="/_next/static/runtime/webpack-4b444dab214c6491079c.js" as="script"/>
+  <link rel="preload" href="/_next/static/chunks/commons.58cd47c941173809d3d8.js" as="script"/>
+  <link rel="preload" href="/_next/static/chunks/styles.d2c14889900d80d21002.js" as="script"/>
+  <link rel="preload" href="/_next/static/runtime/main-0ee1c1962f44d8fad7d7.js" as="script"/>
+  <link rel="stylesheet" href="/_next/static/css/styles.f53a334d.chunk.css"/>
+  <link rel="stylesheet" href="/_next/static/css/static/r96-BCZo64C9PGBuAtZ98/pages/_app.js.548dbefb.chunk.css"/>
+</head>
+
+<style>
+  .dropdown{
+    position : relative;
+    display : inline-block;
+  }
+
+  .dropdown-content{
+    display : none;
+    position : absolute;
+    z-index : 1; /*다른 요소들보다 앞에 배치*/
+    font-weight: 400;
+    background-color: #f9f9f9;
+    min-width : 200px;
+  }
+
+  .dropdown-content a{
+    display : block;
+    text-decoration : none;
+    color : rgb(37, 37, 37);
+    font-size: 12px;
+    padding : 12px 20px;
+  }
+
+  .dropdown-content a:hover{
+    background-color : #ececec
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .table {
+    border-top: 1px solid #b0b3b4;
+    border-bottom: 1px solid #b0b3b4;
+    text-align: center;
+    width: 100%;
+  }
+
+  td {
+    border-top: 1px solid #b0b3b4;
+  }
+
+  .rsv-list-th tr {
+    background-color: #EAEAEA;
+  }
+
+  .rsv-list-tb tr {
+    height: 100px;
+  }
+
+  .ft {
+    position : absolute;
+    bottom : 0;
+  }
+
+  .megaseller_rank {
+    clear: both;
+    float: left;
+    border-bottom: 1px solid #e8e8e8;
+    border-top: 1px solid #e8e8e8;
+    padding: 8px 0;
+    width: 100%;
+    margin:0 auto;
+  }
+
+  .megaseller_rank ul {
+    text-align: center;
+    display: table;
+  }
+
+  .megaseller_rank li {
+    float: left;
+    display: inline;
+    padding: 0 13px;
+    background: url(//image.aladin.co.kr/img/megaseller/megaseller_rank_se.gif) no-repeat right;
+  }
+
+  .modal-confirm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-confirm .bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .modal-title {
+    border-bottom: 1px solid grey;
+  }
+
+  .modal-body {
+    position: absolute;
+    background-color: #fff;
+    width: 400px;
+    height: 220px;
+    padding: 15px;
+  }
+
+  .modal-footer {
+    text-align:center;
+    margin-bottom: 20px;
+  }
+
+  .modal-footer button {
+    display: inline-block;
+    width: 80px;
+    border: 1px solid rgb(113, 162, 255);
+    margin-top: 30px;
+  }
+
+  .modal-hidden {
+    display: none;
+  }
+
+</style>
+
+<body>
+<div th:replace="/common/header.html :: fragment-header"></div>
+<div id="body-wrapper" class="wrapper">
+  <div id ="body-content">
+        <div id="service-container">
+          <div class="desktop hidden-s">
+            <div>
+              <div style="width:100%; height:100%; display:flex;justify-content:center;flex-direction:column;align-items:center; padding-bottom:85px;border-bottom:1px solid #E7E9EB; box-shadow:0 2px 20px rgba(0,0,0,0.05)">
+                <div style="justify-content:center;align-items:start;margin-top:50px;position:relative; width: 1200px; height: 680px" >
+                  <div>
+                    <p><h4>예약 리스트</h4></p>
+                    <table class="table">
+                      <thead class="rsv-list-th">
+                        <tr>
+                          <th>예약번호</th>
+                          <th>체크인</th>
+                          <th>체크아웃</th>
+                          <th>예약상세</th>
+                          <th>금액</th>
+                          <th>예약일</th>
+                          <th>예약상태</th>
+                        </tr>
+                      </thead>
+                      <tbody class="rsv-list-tb">
+                        <tr>
+                          <td>01</td>
+                          <td>2023-01-10</td>
+                          <td>2023-01-1</td>
+                          <td>소형0 중형1 대형0</td>
+                          <td>80,000 원</td>
+                          <td>2023-01-06</td>
+                          <td>예약 완료<button type="button" class="modal-open">결제하기</button></td>
+                        </tr>
+                        <tr class="rsv-list">
+                          <td>01</td>
+                          <td>2023-01-10</td>
+                          <td>2023-01-1</td>
+                          <td>소형0 중형1 대형0</td>
+                          <td>80,000 원</td>
+                          <td>2023-01-06</td>
+                          <td>예약 완료<button type="button" hidden>결제하기</button></td>
+                        </tr>
+                        <tr class="rsv-list">
+                          <td>01</td>
+                          <td>2023-01-10</td>
+                          <td>2023-01-1</td>
+                          <td>소형0 중형1 대형0</td>
+                          <td>80,000 원</td>
+                          <td>2023-01-06</td>
+                          <td>예약 완료<button type="button" hidden>결제하기</button></td>
+                        </tr>
+                        <tr class="rsv-list">
+                          <td>01</td>
+                          <td>2023-01-10</td>
+                          <td>2023-01-1</td>
+                          <td>소형0 중형1 대형0</td>
+                          <td>80,000 원</td>
+                          <td>2023-01-06</td>
+                          <td>예약 완료<button type="button" hidden>결제하기</button></td>
+                        </tr>
+                        <tr class="rsv-list">
+                          <td>01</td>
+                          <td>2023-01-10</td>
+                          <td>2023-01-1</td>
+                          <td>소형0 중형1 대형0</td>
+                          <td>80,000 원</td>
+                          <td>2023-01-06</td>
+                          <td>예약 완료<button type="button" hidden>결제하기</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <div class="megaseller_rank">
+                      <ul>
+                        <li><a>화살표</a></li>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>화살표</li>
+                      </ul>
+                    </div>
+
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>
+
+<footer class="ft">
+  <script>document.write(new Date().getFullYear())</script> &copy; Minton theme by <a href="" class="text-dark">Coderthemes</a>
+</footer>
+
+<!-- 결제 모달 -->
+<div id="modal" class="modal-confirm modal-hidden">
+  <div class="bg"></div>
+  <div class="modal-body">
+    <div class="modal-title">
+      <h3>결제 하시겠습니까?</h3>
+    </div>
+    <div>
+      <div>
+        <h4>결제 수단</h4>
+        <div>
+          <input type="radio" name="pay" />카드 결제
+          <input type="radio" name="pay" />계좌이체
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="modal-close">취소</button>
+        <button type="button" class="modal-pay">결제</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const open = () => {
+    document.querySelector(".modal-confirm").classList.remove("modal-hidden");
+  }
+
+  const close = () => {
+    document.querySelector(".modal-confirm").classList.add("modal-hidden");
+  }
+
+  document.querySelector(".modal-open").addEventListener("click", open);
+  document.querySelector(".modal-close").addEventListener("click", close);
+  document.querySelector(".bg").addEventListener("click", close);
+
+</script>
+
+
+<script async="" data-next-page="/petsitters" src="/_next/static/r96-BCZo64C9PGBuAtZ98/pages/petsitters.js"></script>
+<script async="" data-next-page="/_app" src="/_next/static/r96-BCZo64C9PGBuAtZ98/pages/_app.js"></script>
+<script src="/_next/static/runtime/webpack-4b444dab214c6491079c.js" async=""></script>
+<script src="/_next/static/chunks/commons.58cd47c941173809d3d8.js" async=""></script>
+<script src="/_next/static/chunks/styles.d2c14889900d80d21002.js" async=""></script>
+<script src="/_next/static/runtime/main-0ee1c1962f44d8fad7d7.js" async=""></script>
+
+</body>
+
+
+</html>

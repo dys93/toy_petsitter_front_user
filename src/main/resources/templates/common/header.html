@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<style>
+  .dropdown{
+    position : relative;
+    display : inline-block;
+  }
+
+  .dropdown-content{
+    display : none;
+    position : absolute;
+    z-index : 1; /*다른 요소들보다 앞에 배치*/
+    font-weight: 400;
+    background-color: #f9f9f9;
+    min-width : 200px;
+  }
+
+  .dropdown-content a{
+    display : block;
+    text-decoration : none;
+    color : rgb(37, 37, 37);
+    font-size: 12px;
+    padding : 12px 20px;
+  }
+
+  .dropdown-content a:hover{
+    background-color : #ececec
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+</style>
+
+<header th:fragment="fragment-header" id="hd">
+  <div>
+    <div style="float:left;">
+      <img style="height: 60px" src="/static/assets/images/header/logo@2x.png"/>
+    </div>
+    <div style="float:right; display: flex; margin-right: 60px;">
+      <a href="/main" style="text-decoration-line: none; font-size:16px;letter-spacing:0.01em;color:#393C47">
+        <p>펫시터 찾기</p>
+      </a>
+      <div style="margin-right: 10px; margin-left: 10px;">
+        <p>|</p>
+      </div>
+      <div class="dropdown" style="text-decoration-line: none; font-size:16px;letter-spacing:0.01em;color:#393C47">
+        <p>마이페이지</p>
+        <div class="dropdown-content">
+          <a href="/myPage">내 정보</a>
+          <a href="/reservation">예약 내역</a>
+          <a href="#">로그 아웃</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+</html>
