@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="/static/js/slick.min.js"/>
   <link rel="stylesheet" type="text/css" href="/static/js/slick-theme.min.css"/>
   <script type="text/javascript" src="/static/js/jquery-1.11.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/static/js/jquery-migrate-1.2.1.min.js"></script>
   <script type="text/javascript" src="/static/js/polyfill.min.js"></script>
   <script type="text/javascript" src="/static/js/kakao.js"></script>
@@ -294,8 +295,7 @@
   <div>
     <div>
       <div class="wrapper">
-        <header id="hd">
-        </header>
+        <header id="hd"></header>
         <div class="jsx-1326206922 hidden-s">
           <section style="width:100%;background-color:white" class="jsx-1326206922">
             <div style="width:1000px;margin:0px auto;padding-top:158px">
@@ -303,143 +303,150 @@
               <h2 style="font-size:50px;font-weight:600;color:#555555">지원서 작성하기</h2>
             </div>
           </section>
-          <section style="margin-top:102px;background-color:#FAFAFB" class="jsx-1326206922">
-            <div style="width:1000px;margin:0px auto;padding-top:95px" class="jsx-1326206922">
-              <p style="font-size:27px;font-weight:600;color:#555555" class="jsx-1326206922">1. 기본 정보</p>
-              <div style="background-color:white;border:1px solid #EBEBEB;border-radius:12px;padding:75px 80px 80px 80px;margin-top:46px" class="jsx-1326206922">
-                <article style="display:flex;align-items:center" class="jsx-1326206922">
-                  <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0;margin-right:24px" class="jsx-1326206922">
-                    <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❶ 이름</p>
-                    <div style="margin-top:0px" class="jsx-1326206922">
-                      <input type="text" name="username" placeholder="실명 입력" value="" class="jsx-1326206922"/>
-                    </div>
-                  </div>
-                  <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0" class="jsx-1326206922"></div>
-                </article>
-                <article style="display:flex;align-items:center;margin-top:55px" class="jsx-1326206922">
-                  <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0" class="jsx-1326206922">
-                    <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❸ 연락처</p>
-                    <div style="margin-top:0px;font-size:15px;color:#999999" class="jsx-1326206922">
-                      <p class="jsx-1326206922">입력한 휴대폰 번호로 합격 여부를 알려드립니다.</p>
-                    </div>
-                    <div style="margin-top:0px" class="jsx-1326206922">
-                      <input name="phone" maxLength="11" value="" placeholder="예) 01012345678" pattern="\d*" style="width:45%;height:58px;border:1px solid #EBEBEB;border-radius:5px;padding:5px" class="jsx-1326206922"/>
-                    </div>
-                  </div>
-                </article>
-                <article style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0;margin-top:55px" class="jsx-1326206922">
-                  <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❹ 거주지 주소</p>
-                  <p style="margin-top:0px;font-size:13px;color:#999999">시/군/구까지 입력해주세요</p>
-                  <div style="margin-top:0px" class="jsx-1326206922">
-                    <input type="text" name="address" value="" placeholder="예) 서울시 강남구 논현동" style="width:100%;height:58px;border:1px solid #EBEBEB;border-radius:5px;padding:5px" class="jsx-1326206922"/>
-                  </div>
-                </article>
-                <article style="display:flex;align-items:center;margin-top:55px" class="jsx-1326206922">
-                  <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0;margin-right:24px" class="jsx-1326206922">
-                    <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❷ 이메일</p>
-                    <div style="margin-top:0px;font-size:15px;color:#999999" class="jsx-1326206922">
-                      <p class="jsx-1326206922">로그인 시 아이디로 사용</p>
-                    </div>
-                    <div style="margin-top:0px" class="jsx-1326206922">
-                      <input name="id" maxLength="11" value="" placeholder="예) abc@naver.com" style="width:100%;height:58px;border:1px solid #EBEBEB;border-radius:5px;padding:5px" class="jsx-1326206922"/>
-                    </div>
-                  </div>
-                  <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0" class="jsx-1326206922">
-                    <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❸ 패스워드</p>
-                    <div style="margin-top:0px;font-size:15px;color:#999999" class="jsx-1326206922">
-                      <p class="jsx-1326206922">로그인 시 패스워드로 사용</p>
-                    </div>
-                    <div style="margin-top:0px" class="jsx-1326206922">
-                      <input name="password" maxLength="11" value="" placeholder="예) abc12@!" style="width:100%;height:58px;border:1px solid #EBEBEB;border-radius:5px;padding:5px" class="jsx-1326206922"/>
-                    </div>
-                  </div>
-                </article>
-                <article style="display:flex;align-items:center;margin-top:55px" class="jsx-1326206922">
-                  <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0;margin-right:24px" class="jsx-1326206922">
-                    <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❷ 은행</p>
-                    <div style="margin-top:0px;font-size:15px;color:#999999" class="jsx-1326206922">
-                      <p class="jsx-1326206922">계좌이체 시 사용</p>
-                    </div>
-                    <div style="margin-top:0px" class="jsx-1326206922">
-                      <input name="bank" maxLength="11" value="" placeholder="예) 국민은행" style="width:100%;height:58px;border:1px solid #EBEBEB;border-radius:5px;padding:5px" class="jsx-1326206922"/>
-                    </div>
-                  </div>
-                  <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0" class="jsx-1326206922">
-                    <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❸ 계좌번호</p>
-                    <div style="margin-top:0px;font-size:15px;color:#999999" class="jsx-1326206922">
-                      <p class="jsx-1326206922">'-'제외하고 숫자만 입력</p>
-                    </div>
-                    <div style="margin-top:0px" class="jsx-1326206922">
-                      <input name="account" maxLength="11" value="" placeholder="예) 25456956512001" style="width:100%;height:58px;border:1px solid #EBEBEB;border-radius:5px;padding:5px" class="jsx-1326206922"/>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            </div>
-          </section>
-          <section style="padding-top:87px;background-color:#FAFAFB" class="jsx-1326206922">
-            <div style="width:1000px;margin:0px auto" class="jsx-1326206922">
-              <p style="font-size:27px;font-weight:600;color:#555555" class="jsx-1326206922">2. 반려 경험 및 경력</p>
-              <div style="background-color:white;border:1px solid #EBEBEB;border-radius:12px;padding:75px 80px 80px 80px;margin-top:46px" class="jsx-1326206922">
-                <article style="display:flex;align-items:center" class="jsx-1326206922">
-                  <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0" class="jsx-1326206922">
-                    <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❶ 강아지 반려 경험 유무</p>
-                    <div style="display:flex;margin-top:15px" class="jsx-1326206922">
-                      <div class="jsx-1584129707">
-                        <p class="jsx-1584129707">있음</p>
-                      </div>
-                      <div style="width:10px" class="jsx-1326206922"></div>
-                      <div class="jsx-1584129707">
-                        <p class="jsx-1584129707">없음</p>
+          <form id="joinForm" autocomplete="off" novalidate="novalidate">
+            <section style="margin-top:102px;background-color:#FAFAFB" class="jsx-1326206922">
+              <div style="width:1000px;margin:0px auto;padding-top:95px" class="jsx-1326206922">
+                <p style="font-size:27px;font-weight:600;color:#555555" class="jsx-1326206922">1. 기본 정보</p>
+                <div style="background-color:white;border:1px solid #EBEBEB;border-radius:12px;padding:75px 80px 80px 80px;margin-top:46px" class="jsx-1326206922">
+                  <article style="display:flex;align-items:center" class="jsx-1326206922">
+                    <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0;margin-right:24px" class="jsx-1326206922">
+                      <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❶ 이름</p>
+                      <div style="margin-top:0px" class="jsx-1326206922">
+                        <input type="text" name="username" id="username" placeholder="실명 입력" value="" class="jsx-1326206922"/>
                       </div>
                     </div>
-                  </div>
-                </article>
-                <article style="margin-top:75px" class="jsx-1326206922">
-                  <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❹ 펫시터 활동 경력</p>
-                  <div style="margin-top:10px;display:grid;grid-template-columns:repeat(2, 1fr)" class="jsx-1326206922">
-                    <div style="margin-top:23px" class="jsx-1326206922">
-                      <div style="display:flex;align-items:center;cursor:pointer;width:fit-content">
-                        <input type="radio" name="experience" value="previous" style="padding-left: 10px"/>
-                        <p style="font-size:17px;color:#333333;margin-right:12px; padding-left: 10px">과거에 활동했지만, 현재는 활동하지 않음</p>
+                    <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0" class="jsx-1326206922"></div>
+                  </article>
+                  <article style="display:flex;align-items:center;margin-top:55px" class="jsx-1326206922">
+                    <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0" class="jsx-1326206922">
+                      <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❸ 연락처</p>
+                      <div style="margin-top:0px;font-size:15px;color:#999999" class="jsx-1326206922">
+                        <p class="jsx-1326206922">입력한 휴대폰 번호로 합격 여부를 알려드립니다.</p>
+                      </div>
+                      <div style="margin-top:0px" class="jsx-1326206922">
+                        <input name="phone" id="phone" maxLength="11" value="" placeholder="예) 01012345678" pattern="\d*" style="width:45%;height:58px;border:1px solid #EBEBEB;border-radius:5px;padding:5px" class="jsx-1326206922"/>
                       </div>
                     </div>
-                    <div style="margin-top:23px" class="jsx-1326206922">
-                      <div style="display:flex;align-items:center;cursor:pointer;width:fit-content">
-                        <input type="radio" name="experience" value="current" style="padding-left: 10px"/>
-                        <p style="font-size:17px;color:#333333;margin-right:12px; padding-left: 10px" >현재도 활동하고 있음</p>
+                  </article>
+                  <article style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0;margin-top:55px" class="jsx-1326206922">
+                    <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❹ 거주지 주소</p>
+                    <p style="margin-top:0px;font-size:13px;color:#999999">시/군/구까지 입력해주세요</p>
+                    <div style="margin-top:0px" class="jsx-1326206922">
+                      <input type="text" name="address" id="address" value="" placeholder="예) 서울시 강남구 논현동" style="width:100%;height:58px;border:1px solid #EBEBEB;border-radius:5px;padding:5px" class="jsx-1326206922"/>
+                    </div>
+                  </article>
+                  <article style="display:flex;align-items:center;margin-top:55px" class="jsx-1326206922">
+                    <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0;margin-right:24px" class="jsx-1326206922">
+                      <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❷ 이메일</p>
+                      <div style="margin-top:0px;font-size:15px;color:#999999" class="jsx-1326206922">
+                        <p class="jsx-1326206922">로그인 시 아이디로 사용</p>
+                      </div>
+                      <div style="margin-top:0px" class="jsx-1326206922">
+                        <input name="id" id="id" maxLength="30" value="" placeholder="예) abc@naver.com" style="width:100%;height:58px;border:1px solid #EBEBEB;border-radius:5px;padding:5px" class="jsx-1326206922"/>
                       </div>
                     </div>
-                    <div style="margin-top:23px" class="jsx-1326206922">
-                      <div style="display:flex;align-items:center;cursor:pointer;width:fit-content">
-                        <input type="radio" name="experience" value="none" style="padding-left: 10px"/>
-                        <p style="font-size:17px;color:#333333;margin-right:12px; padding-left: 10px">펫시터로 활동을 해본 적이 없음</p>
+                    <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0" class="jsx-1326206922">
+                      <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❸ 패스워드</p>
+                      <div style="margin-top:0px;font-size:15px;color:#999999" class="jsx-1326206922">
+                        <p class="jsx-1326206922">로그인 시 패스워드로 사용</p>
+                      </div>
+                      <div style="margin-top:0px" class="jsx-1326206922">
+                        <input name="password" id="password" maxLength="30" value="" placeholder="예) abc12@!" style="width:100%;height:58px;border:1px solid #EBEBEB;border-radius:5px;padding:5px" class="jsx-1326206922"/>
                       </div>
                     </div>
-                  </div>
-                </article>
-                <article style="display:flex;flex-direction:column;margin-top:75px" class="jsx-1326206922">
-                  <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❷ 펫시터 경험 혹은 타인의 반려동물을 돌봐준 경험</p>
-                  <span style="font-size:15px;margin-top:10px;color:#999999" class="jsx-1326206922">
-                                                <p class="jsx-1326206922">자신의 반려동물이 아닌 친구, 다른 가족 구성원의 반려동물을 돌보았던 경험이 있다면 구체적으로 적어주세요. (경험이 없다면 &quot;없습니다&quot;라고 작성)</p>
-                                            </span>
-                  <textarea name="careExperienceOthersPet" placeholder="타인의 반려동물을 돌봐준 경험에 대해서 알려주세요." style="margin-top:31px" class="jsx-1326206922"></textarea>
-                </article>
-              </div>
-            </div>
-          </section>
-          <section style="background-color:#FAFAFB;padding-bottom:208px" class="jsx-1326206922">
-            <div style="width:1000px;margin:0px auto;padding-top:84px" class="jsx-1326206922">
-              <div style="margin-top:80px;display:flex;align-items:center;justify-content:center" class="jsx-1326206922">
-                <div style="width:270px;height:70px;background-color:#71A2FF;border-radius:5px;display:flex;justify-content:center;align-items:center;cursor:pointer" class="jsx-1326206922">
-                  <p style="font-size:20px;font-weight:600;color:white" class="jsx-1326206922">최종 제출</p>
+                  </article>
+                  <article style="display:flex;align-items:center;margin-top:55px" class="jsx-1326206922">
+                    <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0;margin-right:24px" class="jsx-1326206922">
+                      <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❷ 은행</p>
+                      <div style="margin-top:0px;font-size:15px;color:#999999" class="jsx-1326206922">
+                        <p class="jsx-1326206922">계좌이체 시 사용</p>
+                      </div>
+                      <div style="margin-top:0px" class="jsx-1326206922">
+                        <input name="bank" id="bank" maxLength="20" value="" placeholder="예) 국민은행" style="width:100%;height:58px;border:1px solid #EBEBEB;border-radius:5px;padding:5px" class="jsx-1326206922"/>
+                      </div>
+                    </div>
+                    <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0" class="jsx-1326206922">
+                      <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❸ 계좌번호</p>
+                      <div style="margin-top:0px;font-size:15px;color:#999999" class="jsx-1326206922">
+                        <p class="jsx-1326206922">'-'제외하고 숫자만 입력</p>
+                      </div>
+                      <div style="margin-top:0px" class="jsx-1326206922">
+                        <input name="account" id="account" maxLength="14" value="" placeholder="예) 25456956512001" style="width:100%;height:58px;border:1px solid #EBEBEB;border-radius:5px;padding:5px" class="jsx-1326206922"/>
+                      </div>
+                    </div>
+                  </article>
                 </div>
               </div>
-            </div>
-          </section>
-          <footer id="ft">
-            <script>document.write(new Date().getFullYear())</script> &copy; Minton theme by <a href="" class="text-dark">Coderthemes</a>
-          </footer>
+            </section>
+            <section style="padding-top:87px;background-color:#FAFAFB" class="jsx-1326206922">
+              <div style="width:1000px;margin:0px auto" class="jsx-1326206922">
+                <p style="font-size:27px;font-weight:600;color:#555555" class="jsx-1326206922">2. 반려 경험 및 경력</p>
+                <div style="background-color:white;border:1px solid #EBEBEB;border-radius:12px;padding:75px 80px 80px 80px;margin-top:46px" class="jsx-1326206922">
+                  <article style="display:flex;align-items:center" class="jsx-1326206922">
+                    <div style="display:flex;flex-direction:column;flex-grow:1;flex-basis:0" class="jsx-1326206922">
+                      <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❶ 강아지 반려 경험 유무</p>
+                      <div style="margin-top:10px;display:grid;grid-template-columns:repeat(2, 1fr)" class="jsx-1326206922">
+                        <div style="margin-top:23px" class="jsx-1326206922">
+                          <div style="display:flex;align-items:center;cursor:pointer;width:fit-content">
+                            <input type="radio" name="havePet" id="petY" value="Y" style="padding-left: 10px"/>
+                            <p style="font-size:17px;color:#333333;margin-right:12px; padding-left: 10px">반려견 경험 있음</p>
+                          </div>
+                        </div>
+                        <div style="margin-top:23px" class="jsx-1326206922">
+                          <div style="display:flex;align-items:center;cursor:pointer;width:fit-content">
+                            <input type="radio" name="havePet" id="petN" value="N" style="padding-left: 10px"/>
+                            <p style="font-size:17px;color:#333333;margin-right:12px; padding-left: 10px" >반려견 경험 없음</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                  <article style="margin-top:75px" class="jsx-1326206922">
+                    <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❹ 펫시터 활동 경력</p>
+                    <div style="margin-top:10px;display:grid;grid-template-columns:repeat(2, 1fr)" class="jsx-1326206922">
+                      <div style="margin-top:23px" class="jsx-1326206922">
+                        <div style="display:flex;align-items:center;cursor:pointer;width:fit-content">
+                          <input type="radio" name="experience" id="previous" value="P" style="padding-left: 10px"/>
+                          <p style="font-size:17px;color:#333333;margin-right:12px; padding-left: 10px">과거에 활동했지만, 현재는 활동하지 않음</p>
+                        </div>
+                      </div>
+                      <div style="margin-top:23px" class="jsx-1326206922">
+                        <div style="display:flex;align-items:center;cursor:pointer;width:fit-content">
+                          <input type="radio" name="experience" id="current" value="C" style="padding-left: 10px"/>
+                          <p style="font-size:17px;color:#333333;margin-right:12px; padding-left: 10px" >현재도 활동하고 있음</p>
+                        </div>
+                      </div>
+                      <div style="margin-top:23px" class="jsx-1326206922">
+                        <div style="display:flex;align-items:center;cursor:pointer;width:fit-content">
+                          <input type="radio" name="experience"  id="never" value="N" style="padding-left: 10px"/>
+                          <p style="font-size:17px;color:#333333;margin-right:12px; padding-left: 10px">펫시터로 활동을 해본 적이 없음</p>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                  <article style="display:flex;flex-direction:column;margin-top:75px" class="jsx-1326206922">
+                    <p style="font-size:17px;font-weight:600;color:#555555" class="jsx-1326206922">❷ 펫시터 경험 혹은 타인의 반려동물을 돌봐준 경험</p>
+                    <span style="font-size:15px;margin-top:10px;color:#999999" class="jsx-1326206922">
+                                                  <p class="jsx-1326206922">자신의 반려동물이 아닌 친구, 다른 가족 구성원의 반려동물을 돌보았던 경험이 있다면 구체적으로 적어주세요. (경험이 없다면 &quot;없습니다&quot;라고 작성)</p>
+                                              </span>
+                    <textarea id="exDetail" name="careExperienceOthersPet" placeholder="타인의 반려동물을 돌봐준 경험에 대해서 알려주세요." style="margin-top:31px" class="jsx-1326206922"></textarea>
+                  </article>
+                </div>
+              </div>
+            </section>
+            <section style="background-color:#FAFAFB;padding-bottom:208px" class="jsx-1326206922">
+              <div style="width:1000px;margin:0px auto;padding-top:84px" class="jsx-1326206922">
+                <div style="margin-top:80px;display:flex;align-items:center;justify-content:center" class="jsx-1326206922">
+                  <div style="width:270px;height:70px;background-color:#71A2FF;border-radius:5px;display:flex;justify-content:center;align-items:center;cursor:pointer" class="jsx-1326206922">
+                    <button type="button" id="joinBtn" style="font-size:20px;font-weight:600;color:white" class="jsx-1326206922" onclick="singUp()" disabled="disabled">최종 제출</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <footer id="ft">
+              <script>document.write(new Date().getFullYear())</script> &copy; Minton theme by <a href="" class="text-dark">Coderthemes</a>
+            </footer>
+          </form>
         </div>
       </div>
     </div>
@@ -453,7 +460,81 @@
 <script src="/_next/static/chunks/commons.58cd47c941173809d3d8.js" async=""></script>
 <script src="/_next/static/chunks/styles.d2c14889900d80d21002.js" async=""></script>
 <script src="/_next/static/runtime/main-0ee1c1962f44d8fad7d7.js" async=""></script>
-<script type="application/ld+json">
+<script type="application/ld+json"></script>
+
+<!-- 모든 칸 입력하면 가입하기 버튼 활성화 -->
+<script>
+  const idInput = document.getElementById('id');
+  const pwInput = document.getElementById('password');
+  const nameInput = document.getElementById('username');
+  const phoneInput = document.getElementById('phone');
+  const addrInput = document.getElementById('address');
+  const bankInput = document.getElementById('bank');
+  const accountInput = document.getElementById('account');
+  const petYesInput = document.getElementById('petY');
+  const petNoInput = document.getElementById('petN');
+  const exPrevInput = document.getElementById('previous');
+  const exCurrInput = document.getElementById('current');
+  const exNevInput = document.getElementById('never');
+  const exDetailInput = document.getElementById('exDetail');
+  const joinButton = document.getElementById('joinBtn');
+
+  idInput.addEventListener('keyup', activeEvent);
+  pwInput.addEventListener('keyup', activeEvent);
+  nameInput.addEventListener('keyup', activeEvent);
+  phoneInput.addEventListener('keyup', activeEvent);
+  addrInput.addEventListener('keyup', activeEvent);
+  bankInput.addEventListener('keyup', activeEvent);
+  accountInput.addEventListener('keyup', activeEvent);
+  petYesInput.addEventListener('keyup', activeEvent);
+  petNoInput.addEventListener('keyup', activeEvent);
+  exPrevInput.addEventListener('keyup', activeEvent);
+  exCurrInput.addEventListener('keyup', activeEvent);
+  exNevInput.addEventListener('keyup', activeEvent);
+  exDetailInput.addEventListener('keyup', activeEvent);
+
+  function activeEvent() {
+    switch(!(idInput.value && pwInput.value && nameInput.value && phoneInput.value && addrInput.value && bankInput.value && accountInput.value && (petYesInput.value || petNoInput.value) && (exPrevInput.value || exCurrInput.value || exNevInput.value) && exDetailInput.value )){
+      case true : joinButton.disabled = true; break;
+      case false : joinButton.disabled = false; break;
+    }
+  }
+</script>
+
+<script src="/static/assets/js/toy-common.js"></script>
+<script src="/static/assets/js/toy-error.js"></script>
+
+<script>
+
+  function singUp() {
+
+    toy.apiCall({
+      type: 'POST',
+      url: 'http://localhost:8079/api/v1/user/signUp',
+      data: {
+        authority: "P", //시터회원
+        email : document.getElementById('id').value ,
+        password : document.getElementById('password').value,
+        name : document.getElementById('username').value,
+        phone : document.getElementById('phone').value,
+        address : document.getElementById('address').value,
+        bank : document.getElementById('bank').value,
+        account : document.getElementById('account').value,
+        petYn : document.querySelector('input[name="havePet"]:checked').value,
+        experience : document.querySelector('input[name="experience"]:checked').value,
+        exDetail : document.getElementById('exDetail').value
+      },
+      success: (result) => {
+        alert('지원이 완료되었습니다. \n승인 후 로그인이 가능합니다.')
+        window.location.href="/";
+      },
+      successError: (result) => {
+        toyError.setAlert(result);
+      }
+    });
+
+  }
+
 </script>
 </body>
 </html>
