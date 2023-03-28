@@ -1,4 +1,5 @@
-<html lang="ko"><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=AW-802163829&amp;l=dataLayer&amp;cx=c"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-W1B7E2Q96P&amp;l=dataLayer&amp;cx=c"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-PF7DJTT"></script><head>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=AW-802163829&amp;l=dataLayer&amp;cx=c"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-W1B7E2Q96P&amp;l=dataLayer&amp;cx=c"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-PF7DJTT"></script><head>
   <!-- Google Tag Manager -->
   <script>
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
@@ -54,10 +55,13 @@
   <link rel="stylesheet preload" href="https://static.goodchoice.kr/fonts/css/font.css" as="style" type="text/css" crossorigin="">
 
   <!-- CSS -->
-  <title>회원 가입 | 여기어때</title>
+  <title>회원 가입</title>
   <link rel="stylesheet" href="https://www.goodchoice.kr/css/common.css?rand=1678944379">
   <link rel="canonical" href="https://www.goodchoice.kr/user/join">
-  <script type="text/javascript" src="/js/library/jquery-1.12.4.min.js"></script>
+
+<!--  <script type="text/javascript" src="/js/library/jquery-1.12.4.min.js"></script>-->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 
   <script>
     var _BASE_URL = 'https://www.goodchoice.kr/';
@@ -151,7 +155,7 @@
 
           <b>주소</b>
           <input type="text" id="sample6_postcode" placeholder="우편번호" style="height: 40px; border-radius: 5px; border-color: #adb5bd; margin-bottom: 5px;">
-          <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" ><br>
+          <input type="button" id="zipCode"onclick="sample6_execDaumPostcode()" value="우편번호 찾기" ><br>
           <input type="text" id="sample6_address" placeholder="주소" style="height: 40px; border-radius: 5px; border-color: #adb5bd; margin-bottom: 5px;"><br>
           <input type="text" id="sample6_detailAddress" placeholder="상세주소" style="height: 40px; border-radius: 5px; border-color: #adb5bd; margin-bottom: 5px;">
           <input type="text" id="sample6_extraAddress" placeholder="참고항목" style="height: 40px; border-radius: 5px; border-color: #adb5bd; margin-bottom: 10px;">
@@ -160,7 +164,7 @@
             <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
           </div>
 
-          <button type="button" id="joinBtn" style="background-color: rgb(113, 167, 255); border: none; height: 55px; width: 340px; margin-bottom: 0px; border-radius: 5px; font-size: 18px; font-weight: bold" disabled="disabled">가입하기</button>
+          <button type="button" id="joinBtn" style="background-color: rgb(113, 167, 255); border: none; height: 55px; width: 340px; margin-bottom: 0px; border-radius: 5px; font-size: 18px; font-weight: bold" disabled="disabled" th:onclick="singUp()">가입하기</button>
         </div>
       </form>
     </section>
@@ -265,5 +269,62 @@
       }
     }).open();
   }
+</script>
+
+
+<script src="/static/assets/js/toy-common.js"></script>
+<script src="/static/assets/js/toy-error.js"></script>
+
+<script>
+
+  function singUp() {
+
+    let joinForm = document.getElementById('joinForm')
+    let userData = Array.from(joinForm.elements);
+    let joinFormData = {};
+
+    //모든 항목 입력해야만 버튼 활성화 되므로 불필요
+    // for(let tag of userData) {
+    //   if(tag.name ==="INPUT" && tag.value === '') {
+    //     alert('모든 값을 입력해 주세요');
+    //     return tag.focus()
+    //   } else if(tag.tagName === 'INPUT') joinFormData[tag.id] = tag.value;
+    // }
+
+    for(let tag of userData) {
+      joinFormData[tag.id] = tag.value;
+    }
+
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>joinFormData.gcuseremail:"+joinFormData.gcuseremail);
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>joinFormData.new_pw:"+joinFormData.new_pw);
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>joinFormData.name:"+joinFormData.name);
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>joinFormData.phone:"+joinFormData.phone);
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>joinFormData.sample6_postcode:"+joinFormData.sample6_postcode);
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>joinFormData.sample6_address:"+joinFormData.sample6_address);
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>joinFormData.sample6_detailAddress:"+joinFormData.sample6_detailAddress);
+
+    toy.apiCall({
+      type: 'POST',
+      url: 'http://localhost:8079/api/v1/user/signUp',
+      data: {
+        authority : "N", //일반회원
+        email : joinFormData.gcuseremail ,
+        password : joinFormData.new_pw,
+        name : joinFormData.name,
+        phone : joinFormData.phone,
+        zipCode : joinFormData.sample6_postcode,
+        address : joinFormData.sample6_address,
+        address2 : joinFormData.sample6_detailAddress
+      },
+      success: (result) => {
+        alert('회원 가입이 완료되었습니다.\n로그인 페이지로 이동합니다.')
+        window.location.href="/";
+      },
+      successError: (result) => {
+        toyError.setAlert(result);
+      }
+    });
+  }
+
 </script>
 
