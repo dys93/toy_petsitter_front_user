@@ -303,13 +303,15 @@
     console.log(">>>>>>>>>>>>>>>>>>>>>>>>joinFormData.sample6_address:"+joinFormData.sample6_address);
     console.log(">>>>>>>>>>>>>>>>>>>>>>>>joinFormData.sample6_detailAddress:"+joinFormData.sample6_detailAddress);
 
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>SHA256(joinFormData.new_pw):"+SHA256(joinFormData.new_pw));
+
     toy.apiCall({
       type: 'POST',
       url: 'http://localhost:8079/api/v1/user/signUp',
       data: {
         authority : "N", //일반회원
         email : joinFormData.gcuseremail ,
-        password : joinFormData.new_pw,
+        password : SHA256(joinFormData.new_pw),
         name : joinFormData.name,
         phone : joinFormData.phone,
         zipCode : joinFormData.sample6_postcode,

@@ -17,6 +17,7 @@
 		<!-- icons -->
 		<link href="/static/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     </head>
 
     <body class="loading auth-fluid-pages pb-0">
@@ -56,10 +57,10 @@
                         <p class="text-muted mb-4">이메일 주소와 패스워드를 입력하세요!</p>
 
                         <!-- form -->
-                        <form action="#">
+                        <form >
                             <div class="mb-2">
                                 <label for="emailaddress" class="form-label">이메일 주소</label>
-                                <input class="form-control" type="email" id="emailaddress" required="" placeholder="이메일 주소">
+                                <input class="form-control" type="email" id="emailaddress" placeholder="이메일 주소">
                             </div>
                             <div class="mb-2">
                                 <a href="auth-recoverpw-2.html" class="text-muted float-end"><small>Forgot your password?</small></a>
@@ -73,7 +74,7 @@
                             </div>
 
                             <div class="d-grid text-center">
-                                <button class="btn btn-primary" type="submit"><a href="/main">로그인</a></button>
+                                <button type="button" class="btn btn-primary" onclick="login()" >로그인</button>
                             </div>
                             <!-- social-->
                             <div class="text-center mt-4">
@@ -81,9 +82,6 @@
                                 <p class="text-muted"><a href="/signInUser" class="text-primary fw-medium ms-1">펫플래닛 회원가입</a></p>
                                 <p class="text-muted"><a href="/signUpPetsitter" class="text-primary fw-medium ms-1">펫시터 지원</a></p>
                             </div>
-
-
-
                         </form>
                         <!-- end form-->
 
@@ -104,6 +102,43 @@
 
         <!-- App js -->
         <script src="/static/assets/js/app.min.js"></script>
-        
+
+        <script src="/static/assets/js/toy-common.js"></script>
+        <script src="/static/assets/js/toy-error.js"></script>
+
+        <script>
+
+            function login() {
+                var email = document.getElementById('emailaddress').value
+                var password = SHA256(document.getElementById('password').value)
+
+                console.log(">>>>>>다 email"+email)
+                console.log(">>>>>>다 password"+password)
+                console.log(">>>>>>다 password 암호화 확인"+SHA256(document.getElementById('password').value))
+
+
+                if(email == null || email === "" || password == null || password === ""){
+                    alert('아이디와 비밀번호 모두 입력해 주세요')
+                } else {
+                    console.log(">>>>>>다 입력")
+                    toy.apiCall({
+                       type: 'POST',
+                       url: 'http://localhost:8079/api/v1/user/login',
+                       data: {
+                           id: email,
+                           pwd: password
+                       },
+                       success: (result) => {
+                           //window.location.href="/main";
+                       },
+                       successError: (result) => {
+                           toyError.setAlert(result);
+                       }
+                    });
+                }
+
+            }
+        </script>
+
     </body>
 </html>
