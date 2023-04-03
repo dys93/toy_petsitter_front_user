@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8" />
         <title>Log In 2 | Minton - Admin & Dashboard Template</title>
@@ -107,7 +107,6 @@
         <script src="/static/assets/js/toy-error.js"></script>
 
         <script>
-
             function login() {
                 var email = document.getElementById('emailaddress').value
                 var password = SHA256(document.getElementById('password').value)
@@ -115,7 +114,6 @@
                 console.log(">>>>>>다 email"+email)
                 console.log(">>>>>>다 password"+password)
                 console.log(">>>>>>다 password 암호화 확인"+SHA256(document.getElementById('password').value))
-
 
                 if(email == null || email === "" || password == null || password === ""){
                     alert('아이디와 비밀번호 모두 입력해 주세요')
@@ -129,7 +127,13 @@
                            pwd: password
                        },
                        success: (result) => {
-                           //window.location.href="/main";
+                           //메인 화면 이동
+                           window.location.href="/main";
+                           //토큰 저장
+                           console.log(">>>>>>>>>>>>>>>>result.data.accessToken: "+result.data.accessToken);
+                           console.log(">>>>>>>>>>>>>>>>result.data.refreshToken: "+result.data.refreshToken);
+                           toy.setCookie("accessToken", result.data.accessToken);
+                           toy.setCookie("refreshToken", result.data.refreshToken);
                        },
                        successError: (result) => {
                            toyError.setAlert(result);

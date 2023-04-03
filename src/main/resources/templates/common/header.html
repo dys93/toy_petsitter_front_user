@@ -43,23 +43,54 @@
         <p>펫시터 찾기</p>
       </a>
       <div style="margin-right: 10px; margin-left: 10px;">
-        <p>|</p>
+        <p id="logInBar">|</p>
       </div>
       <a href="/" style="text-decoration-line: none; font-size:16px;letter-spacing:0.01em;color:#393C47">
-        <p>로그인</p>
+        <p id="logIn">로그인</p>
       </a>
       <div style="margin-right: 10px; margin-left: 10px;">
-        <p>|</p>
+        <p id="myPageBar">|</p>
       </div>
-      <div class="dropdown" style="text-decoration-line: none; font-size:16px;letter-spacing:0.01em;color:#393C47">
+      <div id="myPage" class="dropdown" style="text-decoration-line: none; font-size:16px;letter-spacing:0.01em;color:#393C47">
         <p>마이페이지</p>
         <div class="dropdown-content">
-          <a href="/myPage">내 정보</a>
+          <a href="/myPage" >내 정보</a>
           <a href="/reservation">예약 내역</a>
-          <a href="#">로그 아웃</a>
+          <a href="#" onclick="logout();" >로그 아웃</a>
         </div>
       </div>
     </div>
   </div>
+
+  <script src="/static/assets/js/toy-common.js"></script>
+  <script src="/static/assets/js/toy-error.js"></script>
+
+  <script>
+    $(() => {
+      setHeader()
+    })
+
+    function setHeader() {
+      //로그인 상태
+      if(toy.getCookie("accessToken") === "null"){
+        $("#logIn").show();
+        $("#logInBar").show();
+        $("#myPage").hide();
+        $("#myPageBar").hide();
+      } else {
+        $("#logIn").hide();
+        $("#logInBar").hide();
+        $("#myPage").show();
+        $("#myPageBar").show();
+      }
+    }
+
+    function logout() {
+      toy.setCookie("accessToken", null);
+      toy.setCookie("refreshToken", null);
+      window.location.href="/";
+    }
+  </script>
+
 </header>
 </html>
