@@ -56,6 +56,7 @@
         <div class="dropdown-content">
           <a href="/myPage" >내 정보</a>
           <a href="/reservation">예약 내역</a>
+          <a id="myPost" href="/myPage">내 작성글</a>
           <a href="#" onclick="logout();" >로그 아웃</a>
         </div>
       </div>
@@ -78,6 +79,7 @@
         $("#myPage").hide();
         $("#myPageBar").hide();
       } else {
+        checkAuthority()
         $("#logIn").hide();
         $("#logInBar").hide();
         $("#myPage").show();
@@ -90,6 +92,29 @@
       toy.setCookie("refreshToken", null);
       window.location.href="/main";
     }
+
+    function checkAuthority() {
+      toy.apiCall({
+        type: 'POST',
+        url: 'http://localhost:8079/api/v1/user/checkAuthority',
+        success: (result) => {
+          console.log(">>>>>>>>>>>>>>>>권한확인");
+          setAuthority(result.data);
+        },
+        successError: (result) => {
+          toyError.setAlert(result);
+        }
+      });
+    }
+
+    function setAuthority(data) {
+      console.log(">>>>>>>>>>>>data.authority"+data.authority);
+      if(data.authority === "N") {
+        console.log(">>>>>>>>>>>>authority=N:"+data.authority);
+        $("#myPost").hide();
+      }
+    }
+
   </script>
 
 </header>

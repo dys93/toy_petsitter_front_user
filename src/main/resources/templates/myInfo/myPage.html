@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
   <meta name="naver-site-verification" content="9d4ada4a32e188c9c5e42e8a751c4f497033d0c7"/>
@@ -152,7 +152,7 @@
                           <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" ><br>
                           <input type="text" id="sample6_address" placeholder="주소" style="height: 40px; border-radius: 5px; border-color: #adb5bd; margin-bottom: 5px;"><br>
                           <input type="text" id="sample6_detailAddress" placeholder="상세주소" style="height: 40px; border-radius: 5px; border-color: #adb5bd; margin-bottom: 5px;">
-                          <input type="text" id="sample6_extraAddress" placeholder="참고항목" style="height: 40px; border-radius: 5px; border-color: #adb5bd; margin-bottom: 10px;">
+                          <input type="text" id="sample6_extraAddress" placeholder="참고항목" style="height: 40px; border-radius: 5px; border-color: #adb5bd; margin-bottom: 10px;" value="참고항목">
 <!--                          <input type="text" class="form-control" id="address">-->
                           <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
                             <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
@@ -185,6 +185,9 @@
 <script src="/_next/static/chunks/commons.58cd47c941173809d3d8.js" async=""></script>
 <script src="/_next/static/chunks/styles.d2c14889900d80d21002.js" async=""></script>
 <script src="/_next/static/runtime/main-0ee1c1962f44d8fad7d7.js" async=""></script>
+
+<script src="/static/assets/js/toy-common.js"></script>
+<script src="/static/assets/js/toy-error.js"></script>
 
 <!-- 카카오 주소 API -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -237,6 +240,100 @@
     }).open();
   }
 </script>
+
+<script>
+  $(() => {
+    getInfo()
+  })
+
+  function getInfo() {
+    toy.apiCall({
+      type:'POST',
+      url: 'http://localhost:8079/api/v1/user/myPage',
+      success: (result) => {
+        console.log("result"+result.data)
+        alert("성공")
+        setUserInfo(result.data);
+      },
+      successError: (result) => {
+        console.log(">>>>>>>>>>>>>>result.subCode"+result.subCode);
+        if(result.subCode === 2004){ //엑세스 토큰 만료
+          //AccessToken 요청
+          toy.apiCall({
+            type:'POST',
+            url: 'http://localhost:8079/api/v1/user/renewToken',
+            data: {
+              refreshToken: toy.getCookie("refreshToken")
+            },
+            success: (result) => {
+              toy.setCookie("accessToken", result.data.accessToken);
+              toy.setCookie("refreshToken", result.data.refreshToken);
+              alert("성공2")
+              getInfo()
+            },
+            successError: (result) => {
+              toyError.setAlert(result);
+            }
+          })
+        } else {
+          console.log(">>>>>>>>>>>>>>>setAlert")
+          toyError.setAlert(result);
+        }
+
+      }
+    })
+  }
+
+
+  function setUserInfo(data) {
+    $("#name").val(data.name);
+    $("#id").val(data.email);
+    $("#phone").val(data.phone);
+    $("#sample6_postcode").val(data.zip_code);
+    $("#sample6_address").val(data.address);
+    $("#sample6_detailAddress").val(data.address_detail);
+  }
+
+  function save() {
+    let userForm = document.getElementById('userInputs');
+    let userData = Array.from(userForm.elements)
+    let userFormData ={};
+
+    for(let tag of userData) {
+      if(tag.tagName ==="INPUT" && tag.value === '') {
+        alert('모든 값을 입력해주세요.');
+        return tag.focus();
+      } else if(tag.tagName ==='INPUT') userFormData[tag.id] = tag.value
+    }
+
+    console.log(">>>>>>>>>>>>>>>name"+userFormData.name)
+    console.log(">>>>>>>>>>>>>>>email"+userFormData.id)
+    console.log(">>>>>>>>>>>>>>>phone"+userFormData.phone)
+    console.log(">>>>>>>>>>>>>>>sample6_postcode"+userFormData.sample6_postcode)
+    console.log(">>>>>>>>>>>>>>>sample6_address"+userFormData.sample6_address)
+    console.log(">>>>>>>>>>>>>>>sample6_detailAddress"+userFormData.sample6_detailAddress)
+
+    toy.apiCall({
+      type: 'POST',
+      url: 'http://localhost:8079/api/v1/user/saveUserInfo',
+      data: {
+        phone: userFormData.phone,
+        zipCode: userFormData.sample6_postcode,
+        address: userFormData.sample6_address,
+        addressDetail: userFormData.sample6_detailAddress
+      },
+      success: (result) => {
+        alert("수정되었습니다")
+      },
+      successError: (result) => {
+        toyError.setAlert(result);
+      }
+    })
+
+  }
+
+</script>
+
 
 </body>
 
