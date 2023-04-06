@@ -1,5 +1,33 @@
 var toy = {};
 
+//쿠키 set
+toy.setCookie = (name, value, options = {}) => {
+    options = {
+        path: '/',
+        ...options
+    };
+    if (options.expires instanceof Date) {
+        options.expires = options.expires.toUTCString();
+    }
+    let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+    for (let optionKey in options) {
+        updatedCookie += "; " + optionKey;
+        let optionValue = options[optionKey];
+        if (optionValue !== true) {
+            updatedCookie += "=" + optionValue;
+        }
+    }
+    document.cookie = updatedCookie;
+};
+
+//쿠키 get
+toy.getCookie = (name) => {
+    let matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined
+};
+
 //API 호출
 toy.apiCall = (data) => {
     console.log(">>>>>>>common.js")
@@ -8,10 +36,16 @@ toy.apiCall = (data) => {
         url: data.url,
         cache: false,
         data: data.data || null,
-        // beforeSend: (xhr) => {
-        //    //access토큰 담아 보내는지 여부
-        // },
+        beforeSend: (xhr) => {
+           //access토큰 담아 보내는지 여부
+            if(toy.getCookie("accessToken") !=="null") {
+                console.log(">>>>>>>토큰 넣어보냄1"+toy.getCookie("accessToken"))
+                console.log(">>>>>>>토큰 넣어보냄")
+                xhr.setRequestHeader('Authorization', "Bearer "+toy.getCookie("accessToken"))
+            }
+        },
         success: (result) => {
+            console.log(">>>>>>>>>>>>>>>result"+result)
             if(result.subCode !== 0) {
                 if(data.successError) {
                     data.successError(result);
@@ -23,6 +57,13 @@ toy.apiCall = (data) => {
             data.success(result);
         },
         error: (error) => {
+            console.log(">>>>>>>>>>>>>>>>error.subCode"+error.responseJSON.subCode)
+            //4012에러: 만료된 토큰 오류 //토큰 만료 시 쿠키에 토큰 지우고 메인 페이지 이동
+            if(error.responseJSON.subCode === 4012){
+                toy.setCookie("accessToken", null);
+                toy.setCookie("refreshToken", null);
+                window.location.href="/main";
+            }
             if(data.error) return;
             toyError.setAlert(error.responseJSON);
         }

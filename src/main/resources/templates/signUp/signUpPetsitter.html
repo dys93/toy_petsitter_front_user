@@ -514,7 +514,7 @@
       data: {
         authority: "P", //시터회원
         email : document.getElementById('id').value ,
-        password : document.getElementById('password').value,
+        password : SHA256(document.getElementById('password').value),
         name : document.getElementById('username').value,
         phone : document.getElementById('phone').value,
         address : document.getElementById('address').value,

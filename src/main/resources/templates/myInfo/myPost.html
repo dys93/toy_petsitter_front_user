@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <meta name="naver-site-verification" content="9d4ada4a32e188c9c5e42e8a751c4f497033d0c7"/>
+  <link rel="shortcut icon" href="/static/assets/images/favicon.ico"/>
+  <link rel="stylesheet" type="text/css" href="/static/assets/js/slick.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/static/assets/js/slick.min.js"/>
+  <link rel="stylesheet" type="text/css" href="/static/assets/js/slick-theme.min.css"/>
+  <script type="text/javascript" src="/static/assets/js/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="/static/assets/js/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="/static/assets/js/polyfill.min.js"></script>
+  <script type="text/javascript" src="/static/assets/js/kakao.js"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8f23556bd57117a96842def422603994"></script>
+  <script type="text/javascript" src="/static/assets/js/ua-parser.min.js"></script>
+  <script type="text/javascript" src="/static/assets/js/react.production.min.js"></script>
+  <script type="text/javascript" src="/static/assets/js/react-copy-to-clipboard.js"></script>
+
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"/>
+  <meta charSet="utf-8"/>
+
+  <meta name="next-head-count" content="11"/>
+  <link rel="preload" href="/_next/static/r96-BCZo64C9PGBuAtZ98/pages/petsitters.js" as="script"/>
+  <link rel="preload" href="/_next/static/r96-BCZo64C9PGBuAtZ98/pages/_app.js" as="script"/>
+  <link rel="preload" href="/_next/static/runtime/webpack-4b444dab214c6491079c.js" as="script"/>
+  <link rel="preload" href="/_next/static/chunks/commons.58cd47c941173809d3d8.js" as="script"/>
+  <link rel="preload" href="/_next/static/chunks/styles.d2c14889900d80d21002.js" as="script"/>
+  <link rel="preload" href="/_next/static/runtime/main-0ee1c1962f44d8fad7d7.js" as="script"/>
+  <link rel="stylesheet" href="/_next/static/css/styles.f53a334d.chunk.css"/>
+  <link rel="stylesheet" href="/_next/static/css/static/r96-BCZo64C9PGBuAtZ98/pages/_app.js.548dbefb.chunk.css"/>
+</head>
+
+<style>
+  .dropdown{
+    position : relative;
+    display : inline-block;
+  }
+
+  .dropdown-content{
+    display : none;
+    position : absolute;
+    z-index : 1; /*다른 요소들보다 앞에 배치*/
+    font-weight: 400;
+    background-color: #f9f9f9;
+    min-width : 200px;
+  }
+
+  .dropdown-content a{
+    display : block;
+    text-decoration : none;
+    color : rgb(37, 37, 37);
+    font-size: 12px;
+    padding : 12px 20px;
+  }
+
+  .dropdown-content a:hover{
+    background-color : #ececec
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .form-control {
+    height: 40px;
+    border: 1px solid #adb5bd;
+    border-radius: 5px;
+  }
+
+  .mb-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .form-label {
+    font-weight: bold;
+    font-size: 16px;
+    color: #2d353d;
+    margin-bottom: 12px;
+    margin-top: 10px;
+  }
+
+  .text-end {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .text-end button{
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(113, 162, 255);
+    background-color: white;
+    width: 150px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid rgb(113, 162, 255);
+    border-radius: 28px;
+    box-shadow: rgb(0 0 0 / 3%) 0px 3px 3px -3px;
+    cursor: pointer;
+
+  }
+
+  .form-contests{
+    width: 100%;
+    height: 350px;
+    resize: none;
+  }
+
+  .row{
+    margin-top: 37px;
+  }
+
+
+
+</style>
+
+<body>
+<div th:replace="/common/header.html :: fragment-header"></div>
+<div id="body-wrapper" class="wrapper">
+  <div id ="body-content">
+        <div id="service-container">
+          <div class="desktop hidden-s">
+            <div>
+              <div style="width:100%;display:flex;justify-content:center;flex-direction:column;align-items:center; padding-bottom:85px;border-bottom:1px solid #E7E9EB;box-shadow:0 2px 20px rgba(0,0,0,0.05)">
+                <div style="justify-content:center;align-items:center;margin-top:50px;position:relative; width: 500px">
+                  <form id="userInputs" name="userInputs">
+                    <h3 class="mb-3 text-uppercase bg-light p-2"> 게시글 작성 </h3>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="mb-2">
+                          <label for="title" class="form-label">제목</label>
+                          <input type="text" class="form-control" id="title">
+                        </div>
+                      </div>
+                    </div> <!-- end row -->
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="mb-2">
+                          <label for="contents" class="form-label">글 내용</label>
+                          <textarea class="form-contests" id="contents" name="contents" ></textarea>
+                        </div>
+                      </div>
+                    </div> <!-- end row -->
+
+                    <div class="row">
+                      <div>
+                        <div>
+                          <p class="form-label">반려견 여부</p>
+                        </div>
+                        <div>
+                          <div>
+                            <div style="float: left"><label for="yesPet"></label><input type="radio" name="petHave" id="yesPet" value="Y"/></div>
+                            <div><p>현재 반려견이 있음</p></div>
+                          </div>
+                          <div>
+                            <div style="float: left"><label for="noPet"></label><input type="radio" name="petHave" id="noPet" value="N"/></div>
+                            <div><p>현재 반려견이 없음</p></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- end row -->
+
+                    <div class="row">
+                      <div>
+                        <div>
+                          <p class="form-label">픽업 여부</p>
+                        </div>
+                        <div>
+                          <div>
+                            <div style="float: left"><label for="yesPickUp"></label><input type="radio" name="pickUp" id="yesPickUp" value="Y"/></div>
+                            <div><p>픽업이 가능함</p></div>
+                          </div>
+                          <div>
+                            <div style="float: left"><label for="noPickUp"></label><input type="radio" name="pickUp" id="noPickUp" value="N"/></div>
+                            <div><p>픽업이 불가능함</p></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- end row -->
+
+                    <div class="row">
+                      <div>
+                        <div>
+                          <p class="form-label">대형견 가능 여부</p>
+                        </div>
+                        <div>
+                          <div>
+                            <div style="float: left"><label for="yesLargeDog"></label><input type="radio" name="largeDog" id="yesLargeDog" value="Y" onclick="check()"/></div>
+                            <div><p>대형견 가능</p></div>
+                          </div>
+                          <div>
+                            <div style="float: left"><label for="noLargeDog"></label><input type="radio" name="largeDog" id="noLargeDog" value="N" onclick="check()"/></div>
+                            <div><p>대형견 불가능</p></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- end row -->
+
+                    <div class="row">
+                      <div>
+                        <div>
+                          <p class="form-label">마당 여부</p>
+                        </div>
+                        <div>
+                          <div>
+                            <div style="float: left"><label for="yesYard"></label><input type="radio" name="yard" id="yesYard" value="Y"/></div>
+                            <div><p>마당 있음</p></div>
+                          </div>
+                          <div>
+                            <div style="float: left"><label for="noYard"></label><input type="radio" name="yard" id="noYard" value="N"/></div>
+                            <div><p>마당 없음</p></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- end row -->
+
+                    <div class="row">
+                      <div>
+                        <div>
+                          <p class="form-label"> 노견 여부</p>
+                        </div>
+                        <div>
+                          <div>
+                            <div style="float: left"><label for="yesOldDog"></label><input type="radio" name="oldDog" id="yesOldDog" value="Y"/></div>
+                            <div><p>노견 케어 가능</p></div>
+                          </div>
+                          <div>
+                            <div style="float: left"><label for="noOldDog"></label><input type="radio" name="oldDog" id="noOldDog" value="N"/></div>
+                            <div><p>노견 케어 불가능</p></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- end row -->
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="mb-2">
+                          <label for="largePrice" class="form-label">대형견 케어 가격</label>
+                          <input type="text" class="form-control" id="largePrice" value=0>
+                        </div>
+                      </div>
+                    </div> <!-- end row -->
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="mb-2">
+                          <label for="mediumPrice" class="form-label">중형견 케어 가격</label>
+                          <input type="text" class="form-control" id="mediumPrice">
+                        </div>
+                      </div>
+                    </div> <!-- end row -->
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="mb-2">
+                          <label for="smallPrice" class="form-label">소형견 케어 가격</label>
+                          <input type="text" class="form-control" id="smallPrice">
+                        </div>
+                      </div>
+                    </div> <!-- end row -->
+
+
+                    <div class="text-end">
+                      <button type="button" id="saveButton" class="btn btn-success waves-effect waves-light mt-2" th:onclick="save()" disabled="disabled">게시하기</button>
+                    </div>
+                    <div class="text-end">
+                      <button type="button" id="modifyButton" class="btn btn-success waves-effect waves-light mt-2" th:onclick="modify()" disabled="disabled">수정하기</button>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>
+
+<footer class="ft">
+  <script>document.write(new Date().getFullYear())</script> &copy; Minton theme by <a href="" class="text-dark">Coderthemes</a>
+</footer>
+
+
+<script async="" data-next-page="/petsitters" src="/_next/static/r96-BCZo64C9PGBuAtZ98/pages/petsitters.js"></script>
+<script async="" data-next-page="/_app" src="/_next/static/r96-BCZo64C9PGBuAtZ98/pages/_app.js"></script>
+<script src="/_next/static/runtime/webpack-4b444dab214c6491079c.js" async=""></script>
+<script src="/_next/static/chunks/commons.58cd47c941173809d3d8.js" async=""></script>
+<script src="/_next/static/chunks/styles.d2c14889900d80d21002.js" async=""></script>
+<script src="/_next/static/runtime/main-0ee1c1962f44d8fad7d7.js" async=""></script>
+
+<script src="/static/assets/js/toy-common.js"></script>
+<script src="/static/assets/js/toy-error.js"></script>
+
+
+<script>
+  $(()=>{
+    //불러오기
+    getPost();
+  })
+
+  const title = document.getElementById('title');
+  const contents = document.getElementById('contents');
+  const yesPet = document.getElementById('yesPet');
+  const noPet = document.getElementById('noPet');
+  const yesPickUp = document.getElementById('yesPickUp');
+  const noPickUp = document.getElementById('noPickUp');
+  const yesYard = document.getElementById('yesYard');
+  const noYard = document.getElementById('noYard');
+  const yesOldDog = document.getElementById('yesOldDog');
+  const noOldDog = document.getElementById('noOldDog');
+  const largePrice = document.getElementById('largePrice');
+  const mediumPrice = document.getElementById('mediumPrice');
+  const smallPrice = document.getElementById('smallPrice');
+  const saveButton = document.getElementById('saveButton');
+  const modifyButton = document.getElementById('modifyButton');
+
+  title.addEventListener('keyup', activeEvent);
+  contents.addEventListener('keyup', activeEvent);
+  yesPet.addEventListener('keyup', activeEvent);
+  noPet.addEventListener('keyup', activeEvent);
+  yesPickUp.addEventListener('keyup', activeEvent);
+  noPickUp.addEventListener('keyup', activeEvent);
+  yesYard.addEventListener('keyup', activeEvent);
+  noYard.addEventListener('keyup', activeEvent);
+  yesOldDog.addEventListener('keyup', activeEvent);
+  noOldDog.addEventListener('keyup', activeEvent);
+  largePrice.addEventListener('keyup', activeEvent);
+  mediumPrice.addEventListener('keyup', activeEvent);
+  smallPrice.addEventListener('keyup', activeEvent);
+
+  function activeEvent() {
+    switch (!(title.value && contents.value && largePrice.value && mediumPrice.value && smallPrice.value && (yesPet.value || noPet.value)
+            && (yesPickUp.value || noPickUp.value) && (yesYard.value || noYard.value) && (yesOldDog.value || noOldDog.value))) {
+      case true : saveButton.disabled = true; modifyButton.disabled = true; break;
+      case false : saveButton.disabled = false; modifyButton.disabled = false; break;
+    }
+  }
+
+
+  //저장하기
+  function save() {
+    if(document.querySelector('input[name="largeDog"]:checked').value ==="N") {
+      largePrice.value = 0
+    }
+    toy.apiCall({
+      type: 'POST',
+      url: 'http://localhost:8079/api/v1/petSit/saveMyPost',
+      data: {
+        title: title.value,
+        contents: contents.value,
+        petYn: document.querySelector('input[name="petHave"]:checked').value,
+        pickupYn: document.querySelector('input[name="pickUp"]:checked').value,
+        largeDogYn: document.querySelector('input[name="largeDog"]:checked').value,
+        yardYn: document.querySelector('input[name="yard"]:checked').value,
+        oldDogYn: document.querySelector('input[name="oldDog"]:checked').value,
+        priceLarge: largePrice.value,
+        priceMedium: mediumPrice.value,
+        priceSmall: smallPrice.value
+      },
+      success: (result) => {
+        alert('저장성공')
+      },
+      successError: (result) => {
+        toyError.setAlert(result);
+      }
+    });
+  }
+
+  //수정하기
+  function modify() {
+    if(document.querySelector('input[name="largeDog"]:checked').value ==="N") {
+      largePrice.value = 0
+    }
+    toy.apiCall({
+      type: 'POST',
+      url: 'http://localhost:8079/api/v1/petSit/modifyMyPost',
+      data: {
+        title: title.value,
+        contents: contents.value,
+        petYn: document.querySelector('input[name="petHave"]:checked').value,
+        pickupYn: document.querySelector('input[name="pickUp"]:checked').value,
+        largeDogYn: document.querySelector('input[name="largeDog"]:checked').value,
+        yardYn: document.querySelector('input[name="yard"]:checked').value,
+        oldDogYn: document.querySelector('input[name="oldDog"]:checked').value,
+        priceLarge: largePrice.value,
+        priceMedium: mediumPrice.value,
+        priceSmall: smallPrice.value
+      },
+      success: (result) => {
+        alert('수정되었습니다')
+      },
+      successError: (result) => {
+        toyError.setAlert(result);
+      }
+    });
+  }
+
+  //불러오기
+  function getPost() {
+    toy.apiCall({
+      type: 'GET',
+      url: 'http://localhost:8079/api/v1/petSit/getMyPost',
+      success: (result) => {
+        if(result.data == null || result.data === "null") {
+          console.log(">>>>>>>>result가 null");
+          setPostEmpty()
+        } else {
+          console.log(">>>>>>>>result가 not null")
+          setPost(result.data)
+        }
+      },
+      successError: (result) => {
+        toyError.setAlert(result);
+      }
+    });
+  }
+
+  function setPost(data) {
+    //게시하기 버튼 숨김
+    $("#saveButton").hide();
+
+    $("#title").val(data.title);
+    $("#contents").val(data.content);
+
+    if(data.pet_yn === "Y") {
+      $("input:radio[name='petHave']:radio[value='Y']").prop('checked', true);
+    } else {
+      $("input:radio[name='petHave']:radio[value='N']").prop('checked', true);
+    }
+
+    if(data.pickup_yn === "Y") {
+      $("input:radio[name='pickUp']:radio[value='Y']").prop('checked', true);
+    } else {
+      $("input:radio[name='pickUp']:radio[value='N']").prop('checked', true);
+    }
+
+    if(data.large_dog_yn === "Y") {
+      $("input:radio[name='largeDog']:radio[value='Y']").prop('checked', true);
+    } else {
+      $("input:radio[name='largeDog']:radio[value='N']").prop('checked', true);
+    }
+
+    if(data.yard_yn === "Y") {
+      $("input:radio[name='yard']:radio[value='Y']").prop('checked', true);
+    } else {
+      $("input:radio[name='yard']:radio[value='N']").prop('checked', true);
+    }
+
+    if(data.old_dog_yn === "Y") {
+      $("input:radio[name='oldDog']:radio[value='Y']").prop('checked', true);
+    } else {
+      $("input:radio[name='oldDog']:radio[value='N']").prop('checked', true);
+    }
+
+    $("#largePrice").val(data.price_large);
+    $("#mediumPrice").val(data.price_medium);
+    $("#smallPrice").val(data.price_small);
+
+  }
+
+  function setPostEmpty() {
+    console.log("수정이 아닌 저장 필요할 때 여기로 오는지")
+    //null 이면 수정하기 버튼 hide
+    $("#modifyButton").hide();
+  }
+
+  function check() {
+    console.log("언제 여기 타는지")
+    if(document.querySelector('input[name="largeDog"]:checked').value ==="N"){
+      console.log("disabled 되었는지? true")
+      largePrice.disabled = true;
+    } else {
+      console.log("disabled 되었는지? false")
+      largePrice.disabled = false;
+    }
+  }
+
+</script>
+
+
+</body>
+
+
+</html>

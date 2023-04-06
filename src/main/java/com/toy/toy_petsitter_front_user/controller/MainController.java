@@ -64,4 +64,12 @@ public class MainController {
         return "myInfo/reservation";
     }
 
+    /*
+    내 작성글
+     */
+    @GetMapping("/myPost")
+    public String myPost() {
+        return "myInfo/myPost";
+    }
+
 }
