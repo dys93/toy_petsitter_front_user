@@ -268,10 +268,13 @@
 
 
                     <div class="text-end">
-                      <button type="button" id="saveButton" class="btn btn-success waves-effect waves-light mt-2" th:onclick="save()" disabled="disabled">게시하기</button>
+                      <button type="button" id="saveButton" class="btn btn-success waves-effect waves-light mt-2" th:onclick="save()">게시하기</button>
                     </div>
                     <div class="text-end">
-                      <button type="button" id="modifyButton" class="btn btn-success waves-effect waves-light mt-2" th:onclick="modify()" disabled="disabled">수정하기</button>
+                      <button type="button" id="modifyButton" class="btn btn-success waves-effect waves-light mt-2" th:onclick="modify()">수정하기</button>
+                    </div>
+                    <div class="text-end">
+                      <button type="button" id="deleteButton" class="btn btn-success waves-effect waves-light mt-2" th:onclick="deletePost()">삭제하기</button>
                     </div>
                   </form>
 
@@ -318,88 +321,42 @@
   const largePrice = document.getElementById('largePrice');
   const mediumPrice = document.getElementById('mediumPrice');
   const smallPrice = document.getElementById('smallPrice');
-  const saveButton = document.getElementById('saveButton');
-  const modifyButton = document.getElementById('modifyButton');
-
-  title.addEventListener('keyup', activeEvent);
-  contents.addEventListener('keyup', activeEvent);
-  yesPet.addEventListener('keyup', activeEvent);
-  noPet.addEventListener('keyup', activeEvent);
-  yesPickUp.addEventListener('keyup', activeEvent);
-  noPickUp.addEventListener('keyup', activeEvent);
-  yesYard.addEventListener('keyup', activeEvent);
-  noYard.addEventListener('keyup', activeEvent);
-  yesOldDog.addEventListener('keyup', activeEvent);
-  noOldDog.addEventListener('keyup', activeEvent);
-  largePrice.addEventListener('keyup', activeEvent);
-  mediumPrice.addEventListener('keyup', activeEvent);
-  smallPrice.addEventListener('keyup', activeEvent);
-
-  function activeEvent() {
-    switch (!(title.value && contents.value && largePrice.value && mediumPrice.value && smallPrice.value && (yesPet.value || noPet.value)
-            && (yesPickUp.value || noPickUp.value) && (yesYard.value || noYard.value) && (yesOldDog.value || noOldDog.value))) {
-      case true : saveButton.disabled = true; modifyButton.disabled = true; break;
-      case false : saveButton.disabled = false; modifyButton.disabled = false; break;
-    }
-  }
-
 
   //저장하기
   function save() {
     if(document.querySelector('input[name="largeDog"]:checked').value ==="N") {
       largePrice.value = 0
     }
-    toy.apiCall({
-      type: 'POST',
-      url: 'http://localhost:8079/api/v1/petSit/saveMyPost',
-      data: {
-        title: title.value,
-        contents: contents.value,
-        petYn: document.querySelector('input[name="petHave"]:checked').value,
-        pickupYn: document.querySelector('input[name="pickUp"]:checked').value,
-        largeDogYn: document.querySelector('input[name="largeDog"]:checked').value,
-        yardYn: document.querySelector('input[name="yard"]:checked').value,
-        oldDogYn: document.querySelector('input[name="oldDog"]:checked').value,
-        priceLarge: largePrice.value,
-        priceMedium: mediumPrice.value,
-        priceSmall: smallPrice.value
-      },
-      success: (result) => {
-        alert('저장성공')
-      },
-      successError: (result) => {
-        toyError.setAlert(result);
-      }
-    });
-  }
-
-  //수정하기
-  function modify() {
-    if(document.querySelector('input[name="largeDog"]:checked').value ==="N") {
-      largePrice.value = 0
+    if(!(title.value && contents.value && largePrice.value && mediumPrice.value && smallPrice.value && (yesPet.value || noPet.value)
+            && (yesPickUp.value || noPickUp.value) && (yesYard.value || noYard.value) && (yesOldDog.value || noOldDog.value))) {
+      alert('모든 항목을 입력해 주세요')
+    } else {
+      toy.apiCall({
+        type: 'POST',
+        url: 'http://localhost:8079/api/v1/petSit/saveMyPost',
+        data: {
+          title: title.value,
+          contents: contents.value,
+          petYn: document.querySelector('input[name="petHave"]:checked').value,
+          pickupYn: document.querySelector('input[name="pickUp"]:checked').value,
+          largeDogYn: document.querySelector('input[name="largeDog"]:checked').value,
+          yardYn: document.querySelector('input[name="yard"]:checked').value,
+          oldDogYn: document.querySelector('input[name="oldDog"]:checked').value,
+          priceLarge: largePrice.value,
+          priceMedium: mediumPrice.value,
+          priceSmall: smallPrice.value
+        },
+        success: (result) => {
+          alert('게시글이 작성되었습니다')
+          getPost()
+          $("#modifyButton").show();
+          $("#deleteButton").show();
+        },
+        successError: (result) => {
+          toyError.setAlert(result);
+        }
+      });
     }
-    toy.apiCall({
-      type: 'POST',
-      url: 'http://localhost:8079/api/v1/petSit/modifyMyPost',
-      data: {
-        title: title.value,
-        contents: contents.value,
-        petYn: document.querySelector('input[name="petHave"]:checked').value,
-        pickupYn: document.querySelector('input[name="pickUp"]:checked').value,
-        largeDogYn: document.querySelector('input[name="largeDog"]:checked').value,
-        yardYn: document.querySelector('input[name="yard"]:checked').value,
-        oldDogYn: document.querySelector('input[name="oldDog"]:checked').value,
-        priceLarge: largePrice.value,
-        priceMedium: mediumPrice.value,
-        priceSmall: smallPrice.value
-      },
-      success: (result) => {
-        alert('수정되었습니다')
-      },
-      successError: (result) => {
-        toyError.setAlert(result);
-      }
-    });
   }
 
   //불러오기
@@ -421,6 +378,61 @@
       }
     });
   }
+
+  //수정하기
+  function modify() {
+    if(document.querySelector('input[name="largeDog"]:checked').value ==="N") {
+      largePrice.value = 0
+    }
+
+    if(!(title.value && contents.value && largePrice.value && mediumPrice.value && smallPrice.value && (yesPet.value || noPet.value)
+            && (yesPickUp.value || noPickUp.value) && (yesYard.value || noYard.value) && (yesOldDog.value || noOldDog.value))) {
+      alert('모든 항목을 입력해 주세요')
+    } else {
+      toy.apiCall({
+        type: 'POST',
+        url: 'http://localhost:8079/api/v1/petSit/modifyMyPost',
+        data: {
+          title: title.value,
+          contents: contents.value,
+          petYn: document.querySelector('input[name="petHave"]:checked').value,
+          pickupYn: document.querySelector('input[name="pickUp"]:checked').value,
+          largeDogYn: document.querySelector('input[name="largeDog"]:checked').value,
+          yardYn: document.querySelector('input[name="yard"]:checked').value,
+          oldDogYn: document.querySelector('input[name="oldDog"]:checked').value,
+          priceLarge: largePrice.value,
+          priceMedium: mediumPrice.value,
+          priceSmall: smallPrice.value
+        },
+        success: (result) => {
+          alert('수정되었습니다')
+          getPost();
+        },
+        successError: (result) => {
+          toyError.setAlert(result);
+        }
+      });
+    }
+  }
+
+  function deletePost() {
+    if(document.querySelector('input[name="largeDog"]:checked').value ==="N") {
+      largePrice.value = 0
+    }
+    toy.apiCall({
+      type: 'POST',
+      url: 'http://localhost:8079/api/v1/petSit/deleteMyPost',
+      success: (result) => {
+        alert('삭제되었습니다')
+        getPost();
+        $("#saveButton").show();
+      },
+      successError: (result) => {
+        toyError.setAlert(result);
+      }
+    });
+  }
+
 
   function setPost(data) {
     //게시하기 버튼 숨김
@@ -445,6 +457,7 @@
       $("input:radio[name='largeDog']:radio[value='Y']").prop('checked', true);
     } else {
       $("input:radio[name='largeDog']:radio[value='N']").prop('checked', true);
+      largePrice.disabled = true;
     }
 
     if(data.yard_yn === "Y") {
@@ -467,17 +480,29 @@
 
   function setPostEmpty() {
     console.log("수정이 아닌 저장 필요할 때 여기로 오는지")
-    //null 이면 수정하기 버튼 hide
+    //null 이면 수정하기, 삭제하기 버튼 hide
     $("#modifyButton").hide();
+    $("#deleteButton").hide();
+
+    //삭제 후 페이지 새로고침의 경우
+    $("#title").val(null);
+    $("#contents").val(null);
+    $('input[name="petHave"]').removeAttr('checked');
+    $('input[name="pickUp"]').removeAttr('checked');
+    $('input[name="largeDog"]').removeAttr('checked');
+    $('input[name="yard"]').removeAttr('checked');
+    $('input[name="oldDog"]').removeAttr('checked');
+    $("#largePrice").val(0);
+    $("#mediumPrice").val(null);
+    $("#smallPrice").val(null);
+
   }
 
   function check() {
     console.log("언제 여기 타는지")
     if(document.querySelector('input[name="largeDog"]:checked').value ==="N"){
-      console.log("disabled 되었는지? true")
       largePrice.disabled = true;
     } else {
-      console.log("disabled 되었는지? false")
       largePrice.disabled = false;
     }
   }
