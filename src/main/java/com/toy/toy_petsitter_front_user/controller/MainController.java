@@ -2,7 +2,9 @@ package com.toy.toy_petsitter_front_user.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 @RequiredArgsConstructor
@@ -43,8 +45,11 @@ public class MainController {
     /*
     상세 페이지
      */
-    @GetMapping("/petsitDetail")
-    public String petsitDetail() {
+    @GetMapping("/petsitDetail/{petsitSeq}")
+    public String petsitDetail(
+            @PathVariable(required = false) String petsitSeq, Model model) {
+        model.addAttribute("petsitSeq", petsitSeq);
+        System.out.println(">>>>>>>>>>controller"+petsitSeq);
         return "petsitter/petsitDetail";
     }
 
