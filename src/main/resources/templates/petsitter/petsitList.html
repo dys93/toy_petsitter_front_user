@@ -15,90 +15,6 @@
   <script type="text/javascript" src="/static/assets/js/ua-parser.min.js"></script>
   <script type="text/javascript" src="/static/assets/js/react.production.min.js"></script>
   <script type="text/javascript" src="/static/assets/js/react-copy-to-clipboard.js"></script>
-<!--  <script>-->
-<!--    (function() {-->
-<!--              var w = window;-->
-<!--              if (w.ChannelIO) {-->
-<!--                return (window.console.error || window.console.log || function() {}-->
-<!--                )('ChannelIO script included twice.');-->
-<!--              }-->
-<!--              var d = window.document;-->
-<!--              var ch = function() {-->
-<!--                ch.c(arguments);-->
-<!--              };-->
-<!--              ch.q = [];-->
-<!--              ch.c = function(args) {-->
-<!--                ch.q.push(args);-->
-<!--              }-->
-<!--              ;-->
-<!--              w.ChannelIO = ch;-->
-<!--              function l() {-->
-<!--                if (w.ChannelIOInitialized) {-->
-<!--                  return;-->
-<!--                }-->
-<!--                w.ChannelIOInitialized = true;-->
-<!--                var s = document.createElement('script');-->
-<!--                s.type = 'text/javascript';-->
-<!--                s.async = true;-->
-<!--                s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';-->
-<!--                s.charset = 'UTF-8';-->
-<!--                var x = document.getElementsByTagName('script')[0];-->
-<!--                x.parentNode.insertBefore(s, x);-->
-<!--              }-->
-<!--              if (document.readyState === 'complete') {-->
-<!--                l();-->
-<!--              } else if (window.attachEvent) {-->
-<!--                window.attachEvent('onload', l);-->
-<!--              } else {-->
-<!--                window.addEventListener('DOMContentLoaded', l, false);-->
-<!--                window.addEventListener('load', l, false);-->
-<!--              }-->
-<!--            }-->
-<!--    )();-->
-<!--    ChannelIO('boot', {-->
-<!--      "pluginKey": "28718193-bc8b-4f0a-bcee-32aff281d5f2",-->
-<!--      "customLauncherSelector": "#channel-io-button, .custom-channel-io-button",-->
-<!--      "hideDefaultLauncher": true-->
-<!--    });-->
-<!--  </script>-->
-<!--  <script>-->
-<!--    (function(w, d, s, l, i) {-->
-<!--              w[l] = w[l] || [];-->
-<!--              w[l].push({-->
-<!--                'gtm.start': new Date().getTime(),-->
-<!--                event: 'gtm.js'-->
-<!--              });-->
-<!--              var f = d.getElementsByTagName(s)[0]-->
-<!--                      , j = d.createElement(s)-->
-<!--                      , dl = l != 'dataLayer' ? '&l=' + l : '';-->
-<!--              j.async = true;-->
-<!--              j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;-->
-<!--              f.parentNode.insertBefore(j, f);-->
-<!--            }-->
-<!--    )(window, document, 'script', 'dataLayer', 'GTM-PDQCPDS');-->
-<!--  </script>-->
-<!--  <script>-->
-<!--    (function() {-->
-<!--              if (typeof NodeList.prototype.forEach === "function")-->
-<!--                return false;-->
-<!--              NodeList.prototype.forEach = Array.prototype.forEach;-->
-<!--            }-->
-<!--    )();-->
-<!--  </script>-->
-<!--  <script>-->
-
-<!--    var parser = new UAParser();-->
-<!--    var browser = parser.getResult().browser;-->
-<!--    if (browser.name === 'IE' && parseInt(browser.version) < 11) {-->
-<!--      if (window.location.pathname !== '/notsupported') {-->
-<!--        window.location.href = '/notsupported';-->
-<!--      }-->
-<!--    } else {-->
-<!--      if (window.location.pathname === '/notsupported') {-->
-<!--        window.location.href = '/';-->
-<!--      }-->
-<!--    }-->
-<!--  </script>-->
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"/>
   <meta charSet="utf-8"/>
   <title>펫시터를 찾고 강아지 돌봄을 예약해보세요 | 펫플래닛</title>
@@ -197,21 +113,21 @@
                   <p style="font-size:15px;font-weight:600;color:#393C47;margin-bottom:27px;margin-left:3px">원하시는 조건을 선택하세요</p>
                   <div style="display:flex;justify-content:space-between">
                     <div style="display:flex;justify-content:space-between;width:712px">
-                      <div id="noPet"  style="width:150px;height:55px;display:flex;align-items:center;justify-content:center;border:1.5px solid #71A2FF;border-radius:28px;box-shadow:0px 3px 3px -3px rgba(0, 0, 0, 0.03);cursor:pointer">
-                        <p style="font-size:15px;font-weight:600;color:#71A2FF" >반려동물 없음</p>
-                      </div>
-                      <div style="width:122px;height:55px;display:flex;align-items:center;justify-content:center;border:1.5px solid #DFE3EA;border-radius:28px;box-shadow:0px 2px 3px 0px rgba(0, 0, 0, 0.03);cursor:pointer">
-                        <p style="font-size:15px;font-weight:600;color:#BBC1CC">픽업 가능</p>
-                      </div>
-                      <div style="width:136px;height:55px;display:flex;align-items:center;justify-content:center;border:1.5px solid #DFE3EA;border-radius:28px;box-shadow:0px 2px 3px 0px rgba(0, 0, 0, 0.03);cursor:pointer">
-                        <p style="font-size:15px;font-weight:600;color:#BBC1CC">대형견 가능</p>
-                      </div>
-                      <div style="width:122px;height:55px;display:flex;align-items:center;justify-content:center;border:1.5px solid #DFE3EA;border-radius:28px;box-shadow:0px 2px 3px 0px rgba(0, 0, 0, 0.03);cursor:pointer">
-                        <p style="font-size:15px;font-weight:600;color:#BBC1CC">마당 있음</p>
-                      </div>
-                      <div style="width:122px;height:55px;display:flex;align-items:center;justify-content:center;border:1.5px solid #DFE3EA;border-radius:28px;box-shadow:0px 2px 3px 0px rgba(0, 0, 0, 0.03);cursor:pointer">
-                        <p style="font-size:15px;font-weight:600;color:#BBC1CC">노견 케어</p>
-                      </div>
+                      <button id="noPet"  style=" background-color: #E2E5EAFF; width:150px;height:55px;display:flex;align-items:center;justify-content:center;border:1.5px solid #DFE3EA;border-radius:28px;box-shadow:0px 3px 3px -3px rgba(0, 0, 0, 0.03);cursor:pointer;">
+                        <p id="noPetP"style="font-size:15px;font-weight:600;color:#BBC1CC" >반려동물 없음</p>
+                      </button>
+                      <button id="pickup" style=" background-color: #E2E5EAFF; width:122px;height:55px;display:flex;align-items:center;justify-content:center;border:1.5px solid #DFE3EA;border-radius:28px;box-shadow:0px 2px 3px 0px rgba(0, 0, 0, 0.03);cursor:pointer">
+                        <p id="pickupP" style="font-size:15px;font-weight:600;color:#BBC1CC">픽업 가능</p>
+                      </button>
+                      <button id="largeDog" style=" background-color: #E2E5EAFF; width:136px;height:55px;display:flex;align-items:center;justify-content:center;border:1.5px solid #DFE3EA;border-radius:28px;box-shadow:0px 2px 3px 0px rgba(0, 0, 0, 0.03);cursor:pointer">
+                        <p id="largeDogP" style="font-size:15px;font-weight:600;color:#BBC1CC">대형견 가능</p>
+                      </button>
+                      <button id="yard" style="background-color: #E2E5EAFF; width:122px;height:55px;display:flex;align-items:center;justify-content:center;border:1.5px solid #DFE3EA;border-radius:28px;box-shadow:0px 2px 3px 0px rgba(0, 0, 0, 0.03);cursor:pointer">
+                        <p id="yardP" style="font-size:15px;font-weight:600;color:#BBC1CC">마당 있음</p>
+                      </button>
+                      <button id="oldDog" style="background-color: #E2E5EAFF; width:122px;height:55px;display:flex;align-items:center;justify-content:center;border:1.5px solid #DFE3EA;border-radius:28px;box-shadow:0px 2px 3px 0px rgba(0, 0, 0, 0.03);cursor:pointer">
+                        <p id="oldDogP" style="font-size:15px;font-weight:600;color:#BBC1CC">노견 케어</p>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -230,143 +146,16 @@
                       개의 후기를 가지고 있습니다</p>
                     <div id="test" style="display:flex;justify-content:flex-end">
                       <div style="display:flex;justify-content:space-between;width:203px;align-items:center">
-                        <p style="font-size:14px;color:#393C47;cursor:pointer">가까운순</p>
-                        <p style="font-size:14px;color:#AAAAAA;cursor:pointer">인기순</p>
-                        <p style="font-size:14px;color:#AAAAAA;cursor:pointer">가격순</p>
+                        <p id='regDate' style="font-size:14px;color:#393C47;cursor:pointer" onclick="getListWithOrderBy('regDate')">최신순</p>
+                        <p id='popular' style="font-size:14px;color:#AAAAAA;cursor:pointer" onclick="getListWithOrderBy('popular')">후기많은순</p>
+                        <p id='price' style="font-size:14px;color:#AAAAAA;cursor:pointer" onclick="getListWithOrderBy('price')">가격순</p>
                         <img src="/static/assets/images/common/filter.png" style="width:15px;height:15px"/>
                       </div>
                     </div>
                   </div>
                   <div id="list"></div>
-<!--                  <div id="paging"></div>-->
-<!--                  <div style="display:flex;margin-top:55px">-->
-<!--                    <div onclick="location.href='/petsitDetail'"; style="width:1028px;height:260px;border:1px solid #EBEBEB;display:flex;border-radius:8px;box-shadow:0px 0px 12px 0px rgba(0, 0, 0, 0.07);position:relative;align-items:center">-->
-<!--                      <div style="width:390px;height:250px;border-radius:5px;margin-left:5px;overflow:hidden;position:relative">-->
-<!--                        <div>-->
-<!--                          <div class="slick-slider slick-initialized" dir="ltr">-->
-<!--                            <div class="slick-list">-->
-<!--                              <div class="slick-track" style="width:1300%;left:-100%">-->
-<!--                                <div data-index="-1" tabindex="-1" class="slick-slide slick-cloned" aria-hidden="true" style="width:7.6923076923076925%"></div>-->
-<!--                                <div data-index="0" class="slick-slide slick-active slick-current" tabindex="-1" aria-hidden="false" style="outline:none;width:7.6923076923076925%">-->
-<!--                                  <div>-->
-<!--                                    <a target="_blank" style="width:100%;display:inline-block" tabindex="-1">-->
-<!--                                      <img src="https://d1cd60iwvuzqnn.cloudfront.net/resized/page/e67495cc2a534617969773b27c5415e7.JPG" style="width:390px;height:250px;border-radius:3px;object-fit:cover" alt="책임감 있는 펫시팅🐶"/>-->
-<!--                                      <div style="width:390px;height:50px;display:flex;position:absolute;bottom:5px;justify-content:center;background-image:linear-gradient(to top, rgba(51, 51, 51, 0.2), rgba(128, 128, 128, 0));z-index:20"></div>-->
-<!--                                    </a>-->
-<!--                                  </div>-->
-<!--                                </div>-->
-<!--                                <div data-index="1" class="slick-slide" tabindex="-1" aria-hidden="true" style="outline:none;width:7.6923076923076925%"></div>-->
-<!--                                <div data-index="2" class="slick-slide" tabindex="-1" aria-hidden="true" style="outline:none;width:7.6923076923076925%"></div>-->
-<!--                                <div data-index="3" class="slick-slide" tabindex="-1" aria-hidden="true" style="outline:none;width:7.6923076923076925%"></div>-->
-<!--                                <div data-index="4" class="slick-slide" tabindex="-1" aria-hidden="true" style="outline:none;width:7.6923076923076925%"></div>-->
-<!--                                <div data-index="5" class="slick-slide" tabindex="-1" aria-hidden="true" style="outline:none;width:7.6923076923076925%"></div>-->
-<!--                                <div data-index="6" tabindex="-1" class="slick-slide slick-cloned" aria-hidden="true" style="width:7.6923076923076925%">-->
-<!--                                  <div>-->
-<!--                                    <a href="" target="_blank" style="width:100%;display:inline-block" tabindex="-1">-->
-<!--                                      <img src="https://d1cd60iwvuzqnn.cloudfront.net/resized/page/e67495cc2a534617969773b27c5415e7.JPG" style="width:390px;height:250px;border-radius:3px;object-fit:cover" alt="책임감 있는 펫시팅🐶"/>-->
-<!--                                      <div style="width:390px;height:50px;display:flex;position:absolute;bottom:5px;justify-content:center;background-image:linear-gradient(to top, rgba(51, 51, 51, 0.2), rgba(128, 128, 128, 0));z-index:20"></div>-->
-<!--                                    </a>-->
-<!--                                  </div>-->
-<!--                                </div>-->
-<!--                                <div data-index="7" tabindex="-1" class="slick-slide slick-cloned" aria-hidden="true" style="width:7.6923076923076925%"></div>-->
-<!--                                <div data-index="8" tabindex="-1" class="slick-slide slick-cloned" aria-hidden="true" style="width:7.6923076923076925%"></div>-->
-<!--                                <div data-index="9" tabindex="-1" class="slick-slide slick-cloned" aria-hidden="true" style="width:7.6923076923076925%"></div>-->
-<!--                                <div data-index="10" tabindex="-1" class="slick-slide slick-cloned" aria-hidden="true" style="width:7.6923076923076925%"></div>-->
-<!--                                <div data-index="11" tabindex="-1" class="slick-slide slick-cloned" aria-hidden="true" style="width:7.6923076923076925%"></div>-->
-<!--                              </div>-->
-<!--                            </div>-->
-<!--                          </div>-->
-<!--                          <div>-->
-<!--                            <img width="100%" height="59px" src="/static/assets/images/page_details/gradient.png" style="object-fit:cover;position:absolute;bottom:0;left:0;right:0"/>-->
-<!--                          </div>-->
-<!--                          <div style="display:flex;flex-direction:row;justify-content:center;align-items:flex-end;position:absolute;z-index:999;bottom:0;left:0;right:0;height:59px">-->
-<!--                            <div style="display:flex;flex-direction:row;align-items:center;justify-content:center;margin-bottom:12px">-->
-<!--                              <div style="width:8px;height:8px;border-radius:50%;background-color:white;margin-left:4px;margin-right:4px"></div>-->
-<!--                              <div style="width:6px;height:6px;border-radius:50%;background-color:rgba(255, 255, 255, 0.7);margin-left:4px;margin-right:4px"></div>-->
-<!--                              <div style="width:6px;height:6px;border-radius:50%;background-color:rgba(255, 255, 255, 0.7);margin-left:4px;margin-right:4px"></div>-->
-<!--                              <div style="width:4px;height:4px;border-radius:50%;background-color:rgba(255, 255, 255, 0.7);margin-left:4px;margin-right:4px"></div>-->
-<!--                              <div style="width:2px;height:2px;border-radius:50%;background-color:rgba(255, 255, 255, 0.7);margin-left:4px;margin-right:4px"></div>-->
-<!--                            </div>-->
-<!--                          </div>-->
-<!--                          <div style="position:absolute;left:0;top:0;bottom:0;width:50px;display:flex;align-items:center;justify-content:center;z-index:10;cursor:pointer;background-image:linear-gradient(to right, rgba(51, 51, 51, 0.3), rgba(128, 128, 128, 0))">-->
-<!--                            <div style="width:40px;height:40px;z-index:10;display:flex;align-items:center;justify-content:center">-->
-<!--                              <img src="/static/images/common/arrow_white_left.png" style="width:10px;height:20px"/>-->
-<!--                            </div>-->
-<!--                          </div>-->
-<!--                          <div style="position:absolute;right:0;top:0;bottom:0;width:50px;display:flex;align-items:center;justify-content:center;z-index:10;cursor:pointer;background-image:linear-gradient(to left, rgba(51, 51, 51, 0.3), rgba(128, 128, 128, 0))">-->
-<!--                            <div style="width:40px;height:40px;z-index:10;display:flex;align-items:center;justify-content:center">-->
-<!--                              <img src="/static/images/common/arrow_white_right.png" style="width:10px;height:20px"/>-->
-<!--                            </div>-->
-<!--                          </div>-->
-<!--                        </div>-->
-<!--                      </div>-->
-<!--                      <a href="/" target="_blank" style="padding:30px 33px 0 38px;height:100%;display:flex;flex-grow:1;flex-direction:column;justify-content:space-between;align-items:center">-->
-<!--                        <div style="width:100%;border-bottom:1px solid #EBEBEB;padding-bottom:15px">-->
-<!--                          <p style="font-family:Noto Sans KR;font-size:14px;letter-spacing:-0.1px;color:#5E636D">-->
-<!--                            서울 동작구 흑석동<span style="color:#5E636D">· </span>-->
-<!--                            <span style="color:#4483F3">프로펫시터</span>-->
-<!--                          </p>-->
-<!--                          <p style="font-size:20px;font-family:Noto Sans KR;letter-spacing:-0.2px;color:#383C48;margin-top:9.5px">책임감 있는 펫시팅🐶</p>-->
-<!--                        </div>-->
-<!--                        <div style="display:flex;justify-content:space-between;width:100%;height:100%;padding-top:18px">-->
-<!--                          <div style="display:flex;flex-direction:column;justify-content:space-between">-->
-<!--                            <p style="color:#383C48;font-size:13px;letter-spacing:-0.3px;max-width:400px">아파트 · 산책로 있어요 · 3인 가구 · 반려동물 없어요</p>-->
-<!--                            <div style="display:flex;align-items:center;flex-direction:row;margin-bottom:30px">-->
-<!--                              <div style="width:64.63px;display:flex;justify-content:space-between">-->
-<!--                                <div style="display:flex;flex:1;justify-content:space-between">-->
-<!--                                  <img src="/static/assets/images/common/star_1.png" style="width:11px;height:11px"/>-->
-<!--                                  <img src="/static/assets/images/common/star_1.png" style="width:11px;height:11px"/>-->
-<!--                                  <img src="/static/assets/images/common/star_1.png" style="width:11px;height:11px"/>-->
-<!--                                  <img src="/static/assets/images/common/star_1.png" style="width:11px;height:11px"/>-->
-<!--                                  <img src="/static/assets/images/common/star_1.png" style="width:11px;height:11px"/>-->
-<!--                                </div>-->
-<!--                              </div>-->
-<!--                              <p style="font-family:Noto Sans KR;font-size:12px;line-height:18px;color:#5E636D;letter-spacing:-0.2px;margin-left:8px">후기-->
-<!--                                &lt;!&ndash; &ndash;&gt;-->
-<!--                                78-->
-<!--                                &lt;!&ndash; &ndash;&gt;-->
-<!--                                개</p>-->
-<!--                            </div>-->
-<!--                          </div>-->
-<!--                          <div style="display:flex;flex-direction:column;justify-content:flex-end;margin-bottom:30px">-->
-<!--                            <div style="display:flex;align-items:center">-->
-<!--                              <p style="font-size:17px;color:#4F525A;letter-spacing:0.5px">₩-->
-<!--                                &lt;!&ndash; &ndash;&gt;-->
-<!--                                55,000</p>-->
-<!--                              <div style="width:32px;height:21px;border:1px solid #C5C9D0;border-radius:3px;display:flex;align-items:center;justify-content:center;margin-left:10px">-->
-<!--                                <p style="font-family:Noto Sans KR;font-size:11px;letter-spacing:-0.2px;color:#4F525A">1 박</p>-->
-<!--                              </div>-->
-<!--                            </div>-->
-<!--                            <div style="display:flex;margin-top:10px;align-items:center">-->
-<!--                              <p style="font-size:17px;color:#4F525A;letter-spacing:0.5px">₩-->
-<!--                                &lt;!&ndash; &ndash;&gt;-->
-<!--                                45,000</p>-->
-<!--                              <div style="width:32px;height:21px;border:1px solid #C5C9D0;border-radius:3px;display:flex;align-items:center;justify-content:center;margin-left:10px">-->
-<!--                                <p style="-->
-<!--                                font-family:Noto Sans KR;font-size:11px;letter-spacing:-0.2px;color:#4F525A">하루</p>-->
-<!--                              </div>-->
-<!--                            </div>-->
-<!--                          </div>-->
-<!--                        </div>-->
-<!--                      </a>-->
-<!--                    </div>-->
-<!--                  </div>-->
-                  <!-- 스핀 -->
-<!--                  <div style="width:100%;display:flex;align-items:center;justify-content:center;margin-top:80px;margin-bottom:40px">-->
-<!--                    <div class="ant-spin ant-spin-spinning">-->
-<!--                      <i aria-label="icon: loading" style="font-size:40px" class="anticon anticon-loading ant-spin-dot">-->
-<!--                        <svg viewBox="0 0 1024 1024" focusable="false" class="anticon-spin" data-icon="loading" width="1em" height="1em" fill="currentColor" aria-hidden="true">-->
-<!--                          <path d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"></path>-->
-<!--                        </svg>-->
-<!--                      </i>-->
-<!--                    </div>-->
-<!--                  </div>-->
                       <div class="paging" style="width: 100%; display: inline-flex; align-items: center; margin-top: 80px; justify-content: center">
-<!--                        <i class="fa-solid fa-angles-left"></i>-->
-<!--                        <i class="fa-solid fa-angle-left"></i>-->
                         <div id="pages"></div>
-<!--                        <i class="fa-solid fa-angle-right" style="margin-left: 15px;"></i>-->
-<!--                        <i class="fa-solid fa-angles-right"></i>-->
                       </div>
                 </div>
               </div>
@@ -393,24 +182,50 @@
 <script src="/static/assets/js/toy-error.js"></script>
 <script src="/static/assets/js/toy-pagination.js"></script>
 
+<script type="text/javascript">history.replaceState({}, null, location.pathname)</script>
+
 <script>
   let listPageParam = {page: 0, targetId: 'list'} //회원리스트 페이지 파라미터
   let pageNumber = '';
-  var pageNum = 1;
+  let pageNum = 1;
+  let orderBy = "regDate";
+
+  let petYn = null;
+  let pickupYn = null;
+  let largeDogYn = null;
+  let yardYn = null;
+  let oldDogYn = null;
+
+  let petBtn = false;
+  let pickUpBtn = false;
+  let largeDogBtn = false;
+  let yardBtn = false;
+  let oldDogBtn = false;
 
   $(() => {
+    history.replaceState({}, null, location.pathname);
     getList(pageNum);
-
     setButtonEvent();
   });
 
   function getList(pageNum) {
-    console.log(">>>>>>>>>>>>>>getList_pageNUm"+pageNum)
+    console.log(">>>>>>>>>>>>>>getList_pageNUm"+pageNum);
+    console.log(">>>>>>>>>>>>>>orderBy"+orderBy);
+
+    //버튼 선택 되었는지 여부 확인
+
+
     toy.apiCall({
       type: 'GET',
       url: 'http://localhost:8079/api/v1/petSit/getPostList',
       data: {
-        pageNum: pageNum
+        pageNum: pageNum,
+        orderBy: orderBy,
+        petYn : petYn,
+        pickupYn : pickupYn,
+        largeDogYn : largeDogYn,
+        yardYn: yardYn,
+        oldDogYn: oldDogYn
       },
       success: (result) => {
         setList(result.data)
@@ -441,9 +256,30 @@
     let htmls = "";
 
     $.each(petsitList, (idx, item) => {
+      console.log(">>>>>>>>>>>>>>>>>item"+item.address);
+
+      let petYn ="";
+      let largeDogYn ="";
+      let oldDogYn ="";
+      if(item.pet_yn === 'Y') {
+        petYn ="반려동물 있어요";
+      } else {
+        petYn ="반려동물 없어요";
+      }
+      if(item.large_dog_yn === 'Y') {
+        largeDogYn ="대형견 가능해요";
+      } else {
+        largeDogYn ="대형견 안돼요";
+      }
+      if(item.old_dog_yn === 'Y') {
+        oldDogYn ="노견케어 가능해요";
+      } else {
+        oldDogYn ="노견케어 안돼요";
+      }
+
        htmls +=
               `<div style="display:flex;margin-top:55px">
-                    <div onclick="location.href='/petsitDetail/${item.petsit_seq}'"; style="width:1028px;height:260px;border:1px solid #EBEBEB;display:flex;border-radius:8px;box-shadow:0px 0px 12px 0px rgba(0, 0, 0, 0.07);position:relative;align-items:center">
+                    <div onclick="location.href='/petsitDetail/${item.petsit_seq}'";  style="width:1028px;height:260px;border:1px solid #EBEBEB;display:flex;border-radius:8px;box-shadow:0px 0px 12px 0px rgba(0, 0, 0, 0.07);position:relative;align-items:center">
                       <div style="width:390px;height:250px;border-radius:5px;margin-left:5px;overflow:hidden;position:relative">
                         <div>
                           <div class="slick-slider slick-initialized" dir="ltr">
@@ -453,7 +289,7 @@
                                 <div data-index="0" class="slick-slide slick-active slick-current" tabindex="-1" aria-hidden="false" style="outline:none;width:7.6923076923076925%">
                                   <div>
                                     <a target="_blank" style="width:100%;display:inline-block" tabindex="-1">
-                                      <img src="https://d1cd60iwvuzqnn.cloudfront.net/resized/page/e67495cc2a534617969773b27c5415e7.JPG" style="width:390px;height:250px;border-radius:3px;object-fit:cover" alt="책임감 있는 펫시팅🐶"/>
+                                      <img src="/static/assets/images/dog_main.png" style="width:390px;height:250px;border-radius:3px;object-fit:cover" alt="책임감 있는 펫시팅🐶"/>
                                       <div style="width:390px;height:50px;display:flex;position:absolute;bottom:5px;justify-content:center;background-image:linear-gradient(to top, rgba(51, 51, 51, 0.2), rgba(128, 128, 128, 0));z-index:20"></div>
                                     </a>
                                   </div>
@@ -466,7 +302,7 @@
                                 <div data-index="6" tabindex="-1" class="slick-slide slick-cloned" aria-hidden="true" style="width:7.6923076923076925%">
                                   <div>
                                     <a href="" target="_blank" style="width:100%;display:inline-block" tabindex="-1">
-                                      <img src="https://d1cd60iwvuzqnn.cloudfront.net/resized/page/e67495cc2a534617969773b27c5415e7.JPG" style="width:390px;height:250px;border-radius:3px;object-fit:cover" alt="책임감 있는 펫시팅🐶"/>
+<!--                                      <img src="https://d1cd60iwvuzqnn.cloudfront.net/resized/page/e67495cc2a534617969773b27c5415e7.JPG" style="width:390px;height:250px;border-radius:3px;object-fit:cover" alt="책임감 있는 펫시팅🐶"/>-->
                                       <div style="width:390px;height:50px;display:flex;position:absolute;bottom:5px;justify-content:center;background-image:linear-gradient(to top, rgba(51, 51, 51, 0.2), rgba(128, 128, 128, 0));z-index:20"></div>
                                     </a>
                                   </div>
@@ -479,18 +315,18 @@
                               </div>
                             </div>
                           </div>
-                          <div>
-                            <img width="100%" height="59px" src="/static/assets/images/page_details/gradient.png" style="object-fit:cover;position:absolute;bottom:0;left:0;right:0"/>
-                          </div>
-                          <div style="display:flex;flex-direction:row;justify-content:center;align-items:flex-end;position:absolute;z-index:999;bottom:0;left:0;right:0;height:59px">
-                            <div style="display:flex;flex-direction:row;align-items:center;justify-content:center;margin-bottom:12px">
-                              <div style="width:8px;height:8px;border-radius:50%;background-color:white;margin-left:4px;margin-right:4px"></div>
-                              <div style="width:6px;height:6px;border-radius:50%;background-color:rgba(255, 255, 255, 0.7);margin-left:4px;margin-right:4px"></div>
-                              <div style="width:6px;height:6px;border-radius:50%;background-color:rgba(255, 255, 255, 0.7);margin-left:4px;margin-right:4px"></div>
-                              <div style="width:4px;height:4px;border-radius:50%;background-color:rgba(255, 255, 255, 0.7);margin-left:4px;margin-right:4px"></div>
-                              <div style="width:2px;height:2px;border-radius:50%;background-color:rgba(255, 255, 255, 0.7);margin-left:4px;margin-right:4px"></div>
-                            </div>
-                          </div>
+<!--                          <div>-->
+<!--                            <img width="100%" height="59px" src="/static/assets/images/page_details/gradient.png" style="object-fit:cover;position:absolute;bottom:0;left:0;right:0"/>-->
+<!--                          </div>-->
+<!--                          <div style="display:flex;flex-direction:row;justify-content:center;align-items:flex-end;position:absolute;z-index:999;bottom:0;left:0;right:0;height:59px">-->
+<!--                            <div style="display:flex;flex-direction:row;align-items:center;justify-content:center;margin-bottom:12px">-->
+<!--                              <div style="width:8px;height:8px;border-radius:50%;background-color:white;margin-left:4px;margin-right:4px"></div>-->
+<!--                              <div style="width:6px;height:6px;border-radius:50%;background-color:rgba(255, 255, 255, 0.7);margin-left:4px;margin-right:4px"></div>-->
+<!--                              <div style="width:6px;height:6px;border-radius:50%;background-color:rgba(255, 255, 255, 0.7);margin-left:4px;margin-right:4px"></div>-->
+<!--                              <div style="width:4px;height:4px;border-radius:50%;background-color:rgba(255, 255, 255, 0.7);margin-left:4px;margin-right:4px"></div>-->
+<!--                              <div style="width:2px;height:2px;border-radius:50%;background-color:rgba(255, 255, 255, 0.7);margin-left:4px;margin-right:4px"></div>-->
+<!--                            </div>-->
+<!--                          </div>-->
                           <div style="position:absolute;left:0;top:0;bottom:0;width:50px;display:flex;align-items:center;justify-content:center;z-index:10;cursor:pointer;background-image:linear-gradient(to right, rgba(51, 51, 51, 0.3), rgba(128, 128, 128, 0))">
                             <div style="width:40px;height:40px;z-index:10;display:flex;align-items:center;justify-content:center">
                               <img src="/static/images/common/arrow_white_left.png" style="width:10px;height:20px"/>
@@ -512,7 +348,7 @@
                         </div>
                         <div style="display:flex;justify-content:space-between;width:100%;height:100%;padding-top:18px">
                           <div style="display:flex;flex-direction:column;justify-content:space-between">
-                            <p style="color:#383C48;font-size:13px;letter-spacing:-0.3px;max-width:400px">아파트 · 산책로 있어요 · 3인 가구 · 반려동물 없어요</p>
+                            <p style="color:#383C48;font-size:13px;letter-spacing:-0.3px;max-width:400px">${petYn} · ${largeDogYn} ·  ${oldDogYn}</p>
                             <div style="display:flex;align-items:center;flex-direction:row;margin-bottom:30px">
                               <div style="width:64.63px;display:flex;justify-content:space-between">
                                 <div style="display:flex;flex:1;justify-content:space-between">
@@ -532,13 +368,13 @@
                           </div>
                           <div style="display:flex;flex-direction:column;justify-content:flex-end;margin-bottom:30px">
                             <div style="display:flex;align-items:center">
-                              <p style="font-size:17px;color:#4F525A;letter-spacing:0.5px">₩${item.price_large}</p>
+                              <p style="font-size:17px;color:#4F525A;letter-spacing:0.5px">₩${item.price_small_day}</p>
                               <div style="width:32px;height:21px;border:1px solid #C5C9D0;border-radius:3px;display:flex;align-items:center;justify-content:center;margin-left:10px">
                                 <p style="font-family:Noto Sans KR;font-size:11px;letter-spacing:-0.2px;color:#4F525A">1 박</p>
                               </div>
                             </div>
                             <div style="display:flex;margin-top:10px;align-items:center">
-                              <p style="font-size:17px;color:#4F525A;letter-spacing:0.5px">₩${item.price_medium}</p>
+                              <p style="font-size:17px;color:#4F525A;letter-spacing:0.5px">₩${item.price_small}</p>
                               <div style="width:32px;height:21px;border:1px solid #C5C9D0;border-radius:3px;display:flex;align-items:center;justify-content:center;margin-left:10px">
                                 <p style="
                                 font-family:Noto Sans KR;font-size:11px;letter-spacing:-0.2px;color:#4F525A">하루</p>
@@ -573,6 +409,138 @@
     });
 
   }
+
+  //정렬조건 클릭 시 글자 색상 변경
+  function getListWithOrderBy(condition){
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>orderBy popular"+orderBy)
+    let popular = document.getElementById('popular');
+    let price = document.getElementById('price');
+    let regDate = document.getElementById('regDate');
+
+    orderBy = condition;
+    if(condition === 'popular') {
+      popular.style.color='#393C47';
+      price.style.color='#AAAAAA';
+      regDate.style.color='#AAAAAA';
+    } else if(condition === 'price') {
+      popular.style.color='#AAAAAA';
+      price.style.color='#393C47';
+      regDate.style.color='#AAAAAA';
+    } else {
+      popular.style.color='#AAAAAA';
+      price.style.color='#AAAAAA';
+      regDate.style.color='#393C47';
+    }
+    getList(1)
+  }
+
+  //조건 클릭 시 색상 및 api data 값 변경
+  document.getElementById("noPet").onclick = function () {
+    let petBtnStyle = document.getElementById('noPet');
+    let petBtnPStyle = document.getElementById('noPetP');
+
+     if(petBtn === 'true') {
+       petBtn = 'false';
+       petYn = null;
+       petBtnStyle.style.backgroundColor='#E2E5EAFF';
+       petBtnStyle.style.borderColor='#E2E5EAFF';
+       petBtnPStyle.style.color='#BBC1CC';
+       console.log(">>>>>>>>>>>>petBtn"+petBtn)
+     } else {
+       petBtn = 'true';
+       petYn = 'Y';
+       petBtnStyle.style.backgroundColor='white';
+       petBtnStyle.style.borderColor='#71A2FF'
+       petBtnPStyle.style.color='#71A2FF';
+     }
+     getList(1)
+  }
+
+  document.getElementById("pickup").onclick = function () {
+    let pickupBtnStyle = document.getElementById('pickup');
+    let pickupPBtnStyle = document.getElementById('pickupP');
+    console.log(">>>>>>>>>>>>클릭")
+    if(pickUpBtn === 'true') {
+      console.log(">>>>>>>>>>>>클릭 true?")
+      pickUpBtn = 'false';
+      pickupYn = null;
+      pickupBtnStyle.style.backgroundColor='#E2E5EAFF';
+      pickupBtnStyle.style.borderColor='#E2E5EAFF';
+      pickupPBtnStyle.style.color='#BBC1CC';
+    } else {
+      console.log(">>>>>>>>>>>>클릭 false?")
+      pickUpBtn = 'true';
+      pickupYn = 'Y';
+      pickupBtnStyle.style.backgroundColor='white';
+      pickupBtnStyle.style.borderColor='#71A2FF'
+      pickupBtnStyle.style.color='#71A2FF';
+    }
+    getList(1)
+  }
+
+  document.getElementById("largeDog").onclick = function () {
+    let largeDogBtnStyle = document.getElementById('largeDog');
+    let largeDogPBtnStyle = document.getElementById('largeDogP');
+
+    if(largeDogBtn === 'true') {
+      largeDogBtn = 'false';
+      largeDogYn = null;
+      largeDogBtnStyle.style.backgroundColor='#E2E5EAFF';
+      largeDogBtnStyle.style.borderColor='#E2E5EAFF';
+      largeDogPBtnStyle.style.color='#BBC1CC';
+    } else {
+      console.log(">>>>>>>>>>>>클릭 false?")
+      largeDogBtn = 'true';
+      largeDogYn = 'Y';
+      largeDogBtnStyle.style.backgroundColor='white';
+      largeDogBtnStyle.style.borderColor='#71A2FF'
+      largeDogPBtnStyle.style.color='#71A2FF';
+    }
+    getList(1)
+  }
+
+  document.getElementById("yard").onclick = function () {
+    let yardBtnStyle = document.getElementById('yard');
+    let yardPBtnStyle = document.getElementById('yardP');
+    if(yardBtn === 'true') {
+      yardBtn = 'false';
+      yardYn = null;
+      yardBtnStyle.style.backgroundColor='#E2E5EAFF';
+      yardBtnStyle.style.borderColor='#E2E5EAFF';
+      yardPBtnStyle.style.color='#BBC1CC';
+    } else {
+      yardBtn = 'true';
+      yardYn = 'Y';
+      yardBtnStyle.style.backgroundColor='white';
+      yardBtnStyle.style.borderColor='#71A2FF'
+      yardPBtnStyle.style.color='#71A2FF';
+    }
+    getList(1)
+  }
+
+  document.getElementById("oldDog").onclick = function () {
+    let oldDogBtnStyle = document.getElementById('oldDog');
+    let oldDogPBtnStyle = document.getElementById('oldDogP');
+    if(oldDogBtn === 'true') {
+      oldDogBtn = 'false';
+      oldDogYn = null;
+      oldDogBtnStyle.style.backgroundColor='#E2E5EAFF';
+      oldDogBtnStyle.style.borderColor='#E2E5EAFF';
+      oldDogPBtnStyle.style.color='#BBC1CC';
+    } else {
+      oldDogBtn = 'true';
+      oldDogYn = 'Y';
+      oldDogBtnStyle.style.backgroundColor='white';
+      oldDogBtnStyle.style.borderColor='#71A2FF'
+      oldDogPBtnStyle.style.color='#71A2FF';
+    }
+    getList(1)
+  }
+
+
+
+
+
 
 </script>
 
