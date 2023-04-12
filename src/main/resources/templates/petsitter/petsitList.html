@@ -212,9 +212,6 @@
     console.log(">>>>>>>>>>>>>>getList_pageNUm"+pageNum);
     console.log(">>>>>>>>>>>>>>orderBy"+orderBy);
 
-    //버튼 선택 되었는지 여부 확인
-
-
     toy.apiCall({
       type: 'GET',
       url: 'http://localhost:8079/api/v1/petSit/getPostList',
@@ -237,6 +234,14 @@
   }
 
   function setList(data) {
+    console.log(">>>>>>>>>>>...."+data.totalCount)
+    if(data.totalCount === 0) {
+      console.log(">>>>>>>>>>>....조건일치")
+      let htmls = "";
+      htmls += `<div><p>조건에 맞는 결과가 없습니다.</p></div>`
+      $("#list").html(htmls);
+    }
+
     const petsitList = data.list;
     const totalCount = data.totalCount
 
@@ -473,7 +478,7 @@
       pickupYn = 'Y';
       pickupBtnStyle.style.backgroundColor='white';
       pickupBtnStyle.style.borderColor='#71A2FF'
-      pickupBtnStyle.style.color='#71A2FF';
+      pickupPBtnStyle.style.color='#71A2FF';
     }
     getList(1)
   }
