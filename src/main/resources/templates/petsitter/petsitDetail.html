@@ -28,6 +28,22 @@
     <link rel="preload" href="/_next/static/runtime/main-0ee1c1962f44d8fad7d7.js" as="script"/>
     <link rel="stylesheet" href="/_next/static/css/styles.f53a334d.chunk.css"/>
     <link rel="stylesheet" href="/_next/static/css/static/r96-BCZo64C9PGBuAtZ98/pages/_app.js.548dbefb.chunk.css"/>
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+    <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" ></script>
+
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.css">-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.js"></script>-->
+
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+<!--    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>-->
+
 </head>
 
 <style>
@@ -133,7 +149,7 @@
         background-color: #fff;
         color: #4C5056;
         width: 100%;
-        padding: 11px 20px 9px;
+        padding-left: 10px;
         border: 0;
         border-top: 0;
         border-right: 0;
@@ -145,7 +161,7 @@
     }
 
     .reserve-detail {
-        height: 810px;
+        height: 870px;
         margin-top: 38px;
 
         width: 375px;
@@ -321,7 +337,9 @@
     }
 
     .sumPrice{
+        margin-right: 21px;
         margin-bottom: 7px;
+        text-align: right;
     }
 
     .bar{
@@ -424,7 +442,7 @@
     }
 
     .pet-type p {
-        margin: 0 0;
+        margin-right: 20px;
     }
 
     .type-L {
@@ -550,6 +568,49 @@
         font-weight: bold;
     }
 
+    .timeBar {
+        margin-top: 20px;
+        margin-bottom: 16px;
+    }
+
+    .timeBar span {
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 14px;
+        letter-spacing: -0.2px;
+        line-height: 20px;
+        color: rgb(57, 60, 71);
+        margin-top: 28px;
+    }
+
+    .fee span {
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 13px;
+    }
+
+    .price-dropdown-contents {
+        display : none;
+        position : absolute;
+        z-index : 1; /*다른 요소들보다 앞에 배치*/
+        font-weight: 400;
+        background-color: #f9f9f9;
+        min-width : 290px;
+        padding: 15px;
+    }
+
+    .price-dropdown-contents div:hover {
+        background-color: #ddd;
+    }
+
+    .price-dropdown:hover .price-dropdown-contents {
+        display: block;
+    }
+
+    .price-dropdown-contents p {
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 12px;
+    }
+
+
 </style>
 
 
@@ -598,7 +659,7 @@
                                                 <div class="fofile-c">
                                                     <span th:id="pet">#반려동물 있어요</span>
                                                     <span th:id="pickup">픽업 가능</span>
-                                                    <span th:id="large">#대형견 가능</span>
+                                                    <span th:id="largeDog">#대형견 가능</span>
                                                     <span th:id="yard">#마당 보유</span>
                                                     <span th:id="old">#대형견 가능</span>
                                                 </div>
@@ -607,7 +668,7 @@
 
                                         <div class="verification">
                                             <div>
-                                                <img src="/static/assets/images/verification.png" height="26" />&nbsp;&nbsp;<span>시원 및 환경 검증 완료</span>
+                                                <img src="/static/assets/images/verification.png" height="26" />&nbsp;&nbsp;<span>신원 및 환경 검증 완료</span>
                                             </div>
                                             <p>5단계 신원 검증 및 돌봄 환경의 안전성 검증이 완료된 펫시터 입니다</p>
                                         </div>
@@ -696,19 +757,29 @@
                                                     <p style="text-align: left;"><b>언제 펫시터가 필요한가요?</b></p>
                                                     <div class="dateBar">
                                                         <div class="dateBar-part">
-                                                            <input class="checkDate" type="text" id="checkIn" name="checkIn" value="" placeholder=" 체크인 날짜">
+                                                            <input class="checkDate" type="text" id="checkIn" name="checkIn" value="" placeholder=" 체크인 날짜" >
                                                         </div>
                                                         <div class="pointR">
                                                             <img width="10" height="10" src="/static/assets/images/common/arrow_right_gray.png" style="margin-top: 20px;"/>
                                                         </div>
                                                         <div class="dateBar-part">
-                                                            <input class="checkDate" type="text" id="checkOut" name="checkOut" placeholder=" 체크아웃 날짜">
+                                                            <input class="checkDate" type="text" id="checkOut" name="checkOut" placeholder=" 체크아웃 날짜" disabled="disabled" >
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="reserve-time">
-                                                    <p> 체크인 가능 시간은 오후 14:00 이후 이며,</p>
-                                                    <p> 체크아웃 가능 시간은 오전  11:00 까지 입니다.</p>
+                                                    <div class="timeBar">
+                                                    <span style="text-align: left;"><b>체크인 시간</b></span><span style="text-align: left; padding-left: 90px"><b>체크아웃 시간</b></span>
+                                                    </div>
+                                                    <div class="dateBar">
+                                                        <div class="dateBar-part">
+                                                            <input class="checkDate" type="text" id="checkInTime" name="checkInTime" value="" placeholder=" 체크인 시간" disabled="disabled">
+                                                        </div>
+                                                        <div class="pointR">
+                                                            <img width="10" height="10" src="/static/assets/images/common/arrow_right_gray.png" style="margin-top: 20px;"/>
+                                                        </div>
+                                                        <div class="dateBar-part">
+                                                            <input class="checkDate" type="text" id="checkOutTime" name="checkOutTime" placeholder=" 체크아웃 시간" disabled="disabled">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <p class="pet-p"><b>맡기시는 반려동물</b></p>
                                                 <div class="selectB" id="selectBox">
@@ -719,11 +790,14 @@
                                                         </div>
                                                         <div class="lineR">
                                                             <div class="pmBtn">
-                                                                <input type="button" value=" - " class="pmBtn btnSM">
+                                                                <input id = "smallBtnM" type="button" onclick="changeQtyS('minus')" value=" - " class="pmBtn btnSM" disabled="disabled">
                                                             </div>
-                                                            <input type="text" name="small" value="0" class="quantity" readonly="readonly">
+<!--                                                            <label>-->
+<!--                                                                <input type="text" name="small" th:id="small"  value="0" class="quantity" readonly="readonly">-->
+<!--                                                            </label>-->
+                                                            <div name="small" th:id="small" class="quantity">0</div>
                                                             <div class="pmBtn">
-                                                                <input type="button" value=" + " class="pmBtn btnSP" >
+                                                                <input id = "smallBtnP" type="button" onclick="changeQtyS('plus')" value=" + " class="pmBtn btnSP" disabled="disabled">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -734,11 +808,14 @@
                                                         </div>
                                                         <div class="lineR">
                                                             <div class="pmBtn">
-                                                                <input type="button" value=" - " class="pmBtn btnMM">
+                                                                <input id = "mediumBtnM" type="button" value=" - " onclick="changeQtyM('minus')" class="pmBtn btnMM" disabled="disabled">
                                                             </div>
-                                                            <input type="text" name="medium" value="0" class="quantity" readonly="readonly">
+<!--                                                            <label>-->
+<!--                                                                <input type="text" name="medium" value="0" class="quantity" readonly="readonly">-->
+<!--                                                            </label>-->
+                                                            <div name="medium" th:id="medium" class="quantity">0</div>
                                                             <div class="pmBtn">
-                                                                <input type="button" value=" + " class="pmBtn btnMP" >
+                                                                <input id = "mediumBtnP" type="button" onclick="changeQtyM('plus')" value=" + " class="pmBtn btnMP" disabled="disabled">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -749,11 +826,14 @@
                                                         </div>
                                                         <div class="lineR">
                                                             <div class="pmBtn">
-                                                                <input type="button" value=" - " class="pmBtn btnLM" disabled="disabled">
+                                                                <input th:id="largeBtnM" type="button" onclick="changeQtyL('minus')" value=" - " class="pmBtn btnLM" disabled="disabled">
                                                             </div>
-                                                            <input type="text" name="large" value="0" class="quantity" readonly="readonly" disabled="disabled">
+<!--                                                            <label>-->
+<!--                                                                <input type="text" name="large" value="0" class="quantity" readonly="readonly" disabled="disabled">-->
+<!--                                                            </label>-->
+                                                            <div name="large" th:id="large" class="quantity">0</div>
                                                             <div class="pmBtn">
-                                                                <input type="button" value=" + " class="pmBtn btnLP" disabled="disabled" >
+                                                                <input th:id="largeBtnP" type="button" onclick="changeQtyL('plus')" value=" + " class="pmBtn btnLP" disabled="disabled" >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -763,23 +843,35 @@
                                                 </div>
                                                 <div class="paymentPart" style="margin-top: 30px;">
                                                     <div class="sum" style="margin-right: 20px">
-                                                        <span>합계비용</span><input type="text" name="finalPrice" class="sumInput inputSum"  value="" readonly="readonly">원
+                                                        <span>합계비용</span><input type="text" id="finalPrice" name="finalPrice" class="sumInput inputSum"  value="" readonly="readonly">원
                                                     </div>
                                                     <div class="bar" ></div>
                                                     <div class="sumPrice">
-                                                        <span><input type="text" name="dayCnt" class="day" value="" readonly="readonly">박</span> /&nbsp;
-                                                        <span>소형</span><input type="text" name="small" value="0" class="quantity subQty" readonly="readonly">
-                                                        <span>중형</span><input type="text" name="medium" value="0" class="quantity subQty" readonly="readonly">
-                                                        <span>대형</span><input type="text" name="large" value="0" class="quantity subQty" readonly="readonly">
-                                                        <span><input type="text" name="sum" class="sumInput" value="" readonly="readonly">원</span>
+                                                        <span><input type="text" id="dayCnt" name="dayCnt" class="day" value="" readonly="readonly">박</span> /
+                                                        <span>소형</span><span id="totalCntSmall" class="quantity subQty">0</span>
+                                                        <span>중형</span><span id="totalCntMedium" class="quantity subQty">0</span>
+                                                        <span>대형</span><span id="totalCntLarge" class="quantity subQty">0</span>
+                                                        <span><input type="text" id="sum" name="sum" class="sumInput" value="" readonly="readonly"></span>원
                                                     </div>
-                                                    <div class="sumPrice" style="text-align: right; padding-right: 28px">
-                                                        <span>부가세(10%)</span><span><input type="text" name="tax" class="sumInput" value="" readonly="readonly">원</span>
+                                                    <div class="price-dropdown">
+                                                    <div class="sumPrice" style="text-align: right;">
+                                                        <span style="margin-right: 10px">초과 비용</span><i class="fa fa-question-circle dropbtn" aria-hidden="true"></i><span><input type="text" id="extraFee" name="extraFee" class="sumInput" value="" readonly="readonly"></span>원
+                                                    </div>
+                                                    <div class="price-dropdown-contents">
+                                                        <p>24시간 기준(데이케어는 12시간 기준)으로<br>
+                                                            체크아웃 시간 초과비용이 발생합니다.</p>
+                                                        <p>*데이케어 기준 10,000원 일괄<br>
+                                                            *1박 기준 12시간 미만 = 데이케어 소형견 기준 반값<br>
+                                                            *1박 기준 12시간 이상 = 데이케어 소형견 가격</p>
+                                                    </div>
+                                                    </div>
+                                                    <div class="sumPrice" style="text-align: right;">
+                                                        <span>부가세(10%)</span><span><input type="text" id="tax" name="tax" class="sumInput" value="" readonly="readonly"></span>원
                                                     </div>
                                                     <span></span>
                                                 </div>
                                                 <div class="reserve-send">
-                                                    <button type="button" class="rvBtn" onclick="sendReservation()"><p>예약요청</p></button>
+                                                    <button type="button" class="rvBtn" onclick="requestReservation()"><p>예약요청</p></button>
                                                 </div>
                                                 <input type="hidden" name="petImg" value="${listFile[0].petImg}"> <!-- 펫시터가 등록한 사진 -->
                                                 <input type="hidden" name="petNum" value="${dto.petNum}">	<!-- 현재 글의 petNum -->
@@ -788,6 +880,10 @@
                                         <div class="price">
                                             <div class="price-title">
                                                 <p>이용요금</p>
+                                                <div class="fee" style="float: right">
+                                                    <span>1박 요금</span>
+                                                    <span style="margin-right: 13px"> 데이 요금</span>
+                                                </div>
                                             </div>
                                             <div class="bar" ></div>
                                             <div class="pet-type">
@@ -796,9 +892,8 @@
                                                     <p>소형견</p>
                                                     <p>7kg 미만</p>
                                                 </div>
-
                                                 <div class="type-R">
-                                                    <p th:id="samllPrice">40,000원</p>
+                                                    <span th:id="samllPrice"></span>원<span th:id="smallPriceDay" style="margin-left: 15px"></span>원
                                                 </div>
                                             </div>
                                             <div class="pet-type">
@@ -808,7 +903,7 @@
                                                     <p>15kg 미만</p>
                                                 </div>
                                                 <div class="type-R">
-                                                    <p th:id="mediumPrice">50,000원</p>
+                                                    <span th:id="mediumPrice"></span>원<span th:id="mediumPriceDay" style="margin-left: 15px"></span>원
                                                 </div>
                                             </div>
                                             <div class="pet-type">
@@ -818,7 +913,7 @@
                                                     <p>15kg 이상</p>
                                                 </div>
                                                 <div class="type-R">
-                                                    <p th:id="largePrice">60,000원</p>
+                                                    <span th:id="largePrice"></span>원<span th:id="largePriceDay" style="margin-left: 15px"></span>원
                                                 </div>
                                             </div>
                                         </div>
@@ -906,8 +1001,50 @@
     let listPageParam = {page: 0, targetId: 'list'} //회원리스트 페이지 파라미터
     let pageNumber = '';
     var pageNum = 1;
+    let calPrice = 0;
+    let largeDogYn = 'false';
+    let hours = "";
+    let extraFee = document.getElementById('extraFee');
+    let finalPrice = document.getElementById('finalPrice');
+    let sum = document.getElementById('sum');
+    let tax = document.getElementById('tax');
 
+    let selectedCheckIn =""
+    let selectedCheckOut =""
+
+    //마릿수 변경 버튼
+    const btnMSmallDisabled = document.getElementById('smallBtnM');
+    const btnPSmallDisabled = document.getElementById('smallBtnP');
+    const btnMMediumDisabled = document.getElementById('mediumBtnM');
+    const btnPMediumDisabled = document.getElementById('mediumBtnP');
+    const btnMLargeDisabled = document.getElementById('largeBtnM');
+    const btnPLargeDisabled = document.getElementById('largeBtnP');
+
+    //글번호
     const seq = [[${petsitSeq}]];
+
+    const resultSmall = document.getElementById('small');
+    const resultMedium = document.getElementById('medium');
+    const resultLarge = document.getElementById('large');
+    let small = resultSmall.innerText;
+    let medium = resultMedium.innerText;
+    let large = resultLarge.innerText;
+
+    let checkInDate = "";
+    let checkOutDate = "";
+
+    let totalDiffDays = 0;
+    let totalDiffTimes = 0;
+
+    let dayCnt = document.getElementById('dayCnt');
+
+    //가격
+    let samllNightPrice = 0;
+    let mediumNightPrice = 0;
+    let largeNightPrice = 0;
+    let smallDayPrice = 0;
+    let mediumDayPrice = 0;
+    let largeDayPrice = 0;
 
     $(()=>{
         getPostDetail(seq)
@@ -915,6 +1052,7 @@
         setButtonEvent()
     })
 
+    //내용 가져오기 api
     function getPostDetail(seq) {
         toy.apiCall({
             type: 'GET',
@@ -931,6 +1069,7 @@
         });
     }
 
+    //리뷰 가져오기 api
     function getReview(seq,pageNum) {
         toy.apiCall({
             type: 'GET',
@@ -948,10 +1087,11 @@
         });
     }
 
+    //내용 set
     function setDetail(data) {
         $('#pet').hide();
         $('#pickup').hide();
-        $('#large').hide();
+        $('#largeDog').hide();
         $('#yard').hide();
         $('#old').hide();
 
@@ -962,14 +1102,33 @@
         $('#samllPrice').text(data.price_small);
         $('#mediumPrice').text(data.price_medium);
         $('#largePrice').text(data.price_large);
+        $('#smallPriceDay').text(data.price_small_day);
+        $('#mediumPriceDay').text(data.price_medium_day);
+        $('#largePriceDay').text(data.price_large_day);
 
-        if(data.petYn == "Y") $('#pet').show();
-        if(data.pickupYn == "Y") $('#pet').show();
-        if(data.largeDogYn == "Y") $('#pet').show();
-        if(data.yardYn == "Y") $('#pet').show();
-        if(data.oldDogYn == "Y") $('#pet').show();
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>data.price_small_day"+data.price_small_day);
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>data.price_medium_day"+data.price_medium_day);
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>data.price_large_day"+data.price_large_day);
+
+        smallNightPrice = data.price_small;
+        mediumNightPrice = data.price_medium;
+        largeNightPrice = data.price_large;
+        smallDayPrice = data.price_small_day;
+        mediumDayPrice = data.price_medium_day;
+        largeDayPrice = data.price_large_day;
+
+
+        if(data.pet_yn == "Y") $('#pet').show();
+        if(data.pickup_yn == "Y") $('#pickup').show();
+        if(data.large_dog_yn == "Y") {
+            $('#largeDog').show();
+            largeDogYn = 'true'
+        }
+        if(data.yard_yn == "Y") $('#yard').show();
+        if(data.old_dog_yn == "Y") $('#old').show();
     }
 
+    //리뷰 set, 페이징
     function setReview(data) {
         const totalCount = data.totalCount
 
@@ -1003,13 +1162,11 @@
 
         `
         });
-
         $("#reviewArea").html(htmls);
     }
 
     //버튼 이벤트 정의
     function setButtonEvent() {
-
         //페이지 이동
         $(document).on('click', '.page-link', function() {
             let id = $(this).attr('id');
@@ -1022,10 +1179,286 @@
             getReview(seq ,page)
 
         });
+    }
+
+    //소형견 마릿수 변경
+    function changeQtyS(type) {
+        if(type === 'plus') {
+            if(parseInt(small)+parseInt(medium)+parseInt(large)<4){
+                small = parseInt(small) +1;
+            }
+        } else {
+            if(small > 0) {
+                small = parseInt(small) - 1;
+            }
+        }
+        resultSmall.innerText = small;
+
+        const totalCntSmall = document.getElementById('totalCntSmall');
+        totalCntSmall.innerText =small
+
+        activeEvent();
+    }
+
+    //중형견 마릿수 변경
+    function changeQtyM(type) {
+        if(type === 'plus') {
+            if(parseInt(small)+parseInt(medium)+parseInt(large)<4){
+                medium = parseInt(medium) +1;
+            }
+        } else {
+            if(medium > 0) {
+                medium = parseInt(medium) - 1;
+            }
+        }
+        resultMedium.innerText = medium;
+
+        const totalCntMedium = document.getElementById('totalCntMedium');
+        totalCntMedium.innerText =medium
+        activeEvent()
+    }
+
+    //대형견 마릿수 변경
+    function changeQtyL(type) {
+        if(type === 'plus') {
+            if(parseInt(small)+parseInt(medium)+parseInt(large)<4){
+                large = parseInt(large) +1;
+            }
+        } else {
+            if(large > 0) {
+                large = parseInt(large) - 1;
+            }
+        }
+        resultLarge.innerText = large;
+
+        const totalCntLarge = document.getElementById('totalCntLarge');
+        totalCntLarge.innerText =large
+        activeEvent()
+    }
+
+    //checkIn datepicker
+    $(function() {
+       $("#checkIn").datepicker({
+           dateFormat: 'yy-mm-dd' //달력 날짜 형태
+           ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+           ,showMonthAfterYear:true // 월- 년 순서가아닌 년도 - 월 순서
+           ,yearSuffix: "년" //달력의 년도 부분 뒤 텍스트
+           ,monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 텍스트
+           ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip
+           ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 텍스트
+           ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
+           ,minDate: 0
+           ,onClose: function( selectedDate ) {
+               // 시작일(fromDate) datepicker가 닫힐때
+               // 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
+               $("#checkOut").datepicker( "option", "minDate", selectedDate );
+               checkInDate = selectedDate;
+               const checkOutDisabled = document.getElementById('checkOut');
+               checkOutDisabled.disabled = false;
+           },
+       });
+    });
+
+    //checkOut datepicker
+    $(function() {
+        $("#checkOut").datepicker({
+            dateFormat: 'yy-mm-dd'
+            ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+            ,showMonthAfterYear:true // 월- 년 순서가아닌 년도 - 월 순서
+            ,yearSuffix: "년" //달력의 년도 부분 뒤 텍스트
+            ,monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 텍스트
+            ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip
+            ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 텍스트
+            ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
+            ,minDate: 0
+            ,onClose: function( selectedDate ) {
+                // 종료일(toDate) datepicker가 닫힐때
+                // 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정
+                $("#checkIn").datepicker( "option", "maxDate", selectedDate );
+                checkOutDate = selectedDate;
+
+                const checkInTimeDisabled = document.getElementById('checkInTime');
+                checkInTimeDisabled.disabled = false;
+            }
+        });
+    });
+
+    //checkIn timepicker
+    $(function() {
+        $("#checkInTime").timepicker({
+            timeFormat: 'H:mm'
+            ,interval: 60
+            ,dynamic: false
+            ,dropdown: true
+            ,scrollbar: true
+            ,change: function(time) {
+                const checkOutTimeDisabled = document.getElementById('checkOutTime');
+                checkOutTimeDisabled.disabled = false;
+                //동일한 일자인지 확인
+                checkSame()
+            }
+        });
+    });
+
+    //checkOut timepicker
+    $(function() {
+        $("#checkOutTime").timepicker({
+            timeFormat: 'H:mm'
+            ,interval: 60
+            ,dynamic: false
+            ,dropdown: true
+            ,scrollbar: true
+            ,change: function(time) {
+                btnMSmallDisabled.disabled = false;
+                btnPSmallDisabled.disabled = false;
+                btnMMediumDisabled.disabled = false;
+                btnPMediumDisabled.disabled = false;
+
+                if(largeDogYn ==='true') {
+                    btnMLargeDisabled.disabled = false;
+                    btnPLargeDisabled.disabled = false;
+                }
+
+                //날짜 계산
+                calDay()
+            }
+        });
+    });
+
+    //당일 선택의 경우 checkInTime < checkOutTime
+    function checkSame() {
+        if(checkInDate === checkOutDate) {
+            var slectedTime = $('#checkInTime').val();
+            $('#checkOutTime').timepicker('option', 'minTime', slectedTime);
+        }
+    }
+
+    //날짜/시간 계산
+    function calDay() {
+        selectedCheckIn = $('#checkInTime').val();
+        selectedCheckOut = $('#checkOutTime').val();
+
+        const checkInTime = selectedCheckIn.split(':');
+        const checkOutTime = selectedCheckOut.split(':');
+
+        const checkInHour = checkInTime[0];
+        const checkOutHour = checkOutTime[0];
+
+        const calCheckIn = 24 - parseInt(checkInHour);
+        const calCheckOut = checkOutHour;
+        hours = calCheckIn+parseInt(calCheckOut);
+
+        //날짜 계산
+        const splitDateCheckIn = checkInDate.split('-');
+        const splitDateCheckOut = checkOutDate.split('-');
+
+        const dat1 = new Date(splitDateCheckIn[0], splitDateCheckIn[1], splitDateCheckIn[2]);
+        const dat2 = new Date(splitDateCheckOut[0], splitDateCheckOut[1], splitDateCheckOut[2]);
+        const diff = dat2 - dat1;
+        const currDay = 24 * 60 * 60 * 1000;
+        const diffDays = parseInt(diff/currDay);
+        const diffTimes = (((parseInt(diff/currDay) - 1) * 24) + hours);
+
+        console.log(">>>>>>>>>>>>>>>>>>>diffDays"+diffDays);
+        console.log(">>>>>>>>>>>>>>>>>>>diffTimes"+diffTimes);
+
+        //날짜차이
+        totalDiffDays = diffDays;
+        //시간차이
+        totalDiffTimes = diffTimes;
+
+        dayCnt.value = totalDiffDays;
 
     }
 
+    samllNightPrice = data.price_small;
+    mediumNightPrice = data.price_medium;
+    largeNightPrice = data.price_large;
+    samllDayPrice = data.price_small_day;
+    mediumDayPrice = data.price_medium_day;
+    largeDayPrice = data.price_large_day;
 
+
+    //계산
+    function activeEvent() {
+        //1.당일, 초과 x
+        if(totalDiffTimes <= 12){
+            sum.value = ((parseInt(small) * smallDayPrice) + (parseInt(medium) * mediumDayPrice) + (parseInt(large) * largeDayPrice));
+            tax.value = (parseInt(sum.value) * 0.1);
+            finalPrice.value = parseInt(sum.value) + parseInt(tax.value);
+            //2.당일, 초과 0
+        } else if(12 < totalDiffTimes && totalDiffTimes < 24) {
+            sum.value = ((parseInt(small) * smallDayPrice) + (parseInt(medium) * mediumDayPrice) + (parseInt(large) * largeDayPrice));
+            extraFee.value = (10000 * (parseInt(small)+parseInt(medium)+(parseInt(large))));
+            tax.value = ((parseInt(extraFee.value)+parseInt(sum.value)) * 0.1);
+            finalPrice.value = parseInt(extraFee.value) + parseInt(sum.value) + parseInt(tax.value);
+            //3.1박 이상
+        } else if(totalDiffTimes >= 24) {
+            console.log(">>>>>>>>>>>>>>>totalDiffTimes%24 > 0"+totalDiffTimes%24)
+            //초과 0
+            let rest = totalDiffTimes%24
+            console.log(">>>>>>>>>>>>>>>>rest"+rest)
+            if(rest > 0){
+                console.log(">>>>>>>>>>>>>>>초과")
+                extraFee.value = (smallDayPrice/2 * (parseInt(small)+parseInt(medium)+parseInt(large)));
+                if(rest>=12) {
+                    console.log(">>>>>>>>>>>>>>>초과12")
+                    extraFee.value = ((smallDayPrice) * (parseInt(small)+parseInt(medium)+(parseInt(large))));
+                    console.log(">>>>>>>>>>>>>>>smallDayPrice"+smallDayPrice)
+                }
+                sum.value = (((parseInt(small) * smallNightPrice) + (parseInt(medium) * mediumNightPrice) + (parseInt(large) * largeNightPrice)) *totalDiffDays);
+                console.log(">>>>>>>>>>>>>>>>>>>.totalDiffDays"+totalDiffDays)
+                tax.value = ((parseInt(extraFee.value)+parseInt(sum.value)) * 0.1);
+                finalPrice.value = parseInt(extraFee.value) + parseInt(sum.value) + parseInt(tax.value);
+                //초과 x
+            } else {
+                console.log(">>>>>>>>>>>>>>>초과x")
+                sum.value = (((parseInt(small) * samllNightPrice) + (parseInt(medium) * mediumNightPrice) + (parseInt(large) * largeNightPrice)) *totalDiffDays);
+                tax.value = ((parseInt(extraFee.value)+parseInt(sum.value)) * 0.1);
+                finalPrice.value = parseInt(extraFee.value) + parseInt(sum.value) + parseInt(tax.value);
+            }
+        }
+    }
+
+    //예약 요청하기
+    function requestReservation() {
+        //모든 항목 입력해야 함
+
+        console.log(">>>>>>>>>>>>>>>>>>>>>>finalPrice"+finalPrice.value);
+        console.log(">>>>>>>>>>>>>>>>>>>>>>small "+small );
+        console.log(">>>>>>>>>>>>>>>>>>>>>>medium "+medium );
+        console.log(">>>>>>>>>>>>>>>>>>>>>>large "+large );
+        console.log(">>>>>>>>>>>>>>>>>>>>>>checkInDate "+checkInDate );
+        console.log(">>>>>>>>>>>>>>>>>>>>>>checkOutDate "+checkOutDate );
+        console.log(">>>>>>>>>>>>>>>>>>>>>>selectedCheckIn "+selectedCheckIn );
+        console.log(">>>>>>>>>>>>>>>>>>>>>>selectedCheckOut "+selectedCheckOut );
+
+        if(!(finalPrice.value && (parseInt(small) + parseInt(medium) + parseInt(large) >0) && checkInDate && checkOutDate
+            && selectedCheckIn && selectedCheckOut)) {
+            alert('모든 항목을 입력해 주세요')
+        } else {
+            toy.apiCall({
+                type: 'POST',
+                url: 'http://localhost:8079/api/v1/petSit/requestReservation',
+                data: { //날짜,
+                    checkIn: checkInDate+" "+selectedCheckIn,
+                    checkOut: checkOutDate+" "+selectedCheckOut,
+                    price: finalPrice.value,
+                    smallCnt: small,
+                    mediumCnt: medium,
+                    largeCnt: large,
+                    petSitSeq: seq
+                },
+                success: (result) => {
+                    alert('예약이 성공적으로 요청되었습니다')
+                },
+                successError: (result) => {
+                    toyError.setAlert(result);
+                }
+            });
+
+        }
+    }
 
 </script>
 
