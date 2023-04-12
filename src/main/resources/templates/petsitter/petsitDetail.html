@@ -517,7 +517,7 @@
         margin-top: 38px;
         margin-bottom: 34px;
 
-        width: 297px;
+        width: 317px;
         height: 140px;
     }
 
@@ -528,11 +528,13 @@
         line-height: 25px;
         color: rgb(57, 60, 71);
 
-        width: 130px;
+        width: 110px;
         height: 80px;
     }
 
     .ContentR {
+        width: 200px;
+        float: left;
         box-sizing: border-box;
     }
 
@@ -541,7 +543,7 @@
         letter-spacing: -0.2px;
         line-height: 20px;
         color: rgb(57 60 71);
-        width: 160px;
+        width: 200px;
         font-family: "Noto Sans KR", sans-serif;
         margin: 3px 0 0;
 
@@ -553,7 +555,7 @@
         letter-spacing: -0.2px;
         line-height: 20px;
         color: rgb(57 60 71);
-        width: 160px;
+        width: 200px;
         margin: 5px 0 0;
         height: 40px;
     }
@@ -690,6 +692,7 @@
                                                     <img src="/static/assets/images/common/star_1.png" height="23" />
                                                 </div>
                                             </div>
+                                            <div class="reviewNone" th:id="reviewNone"><p>아직 등록된 리뷰가 없습니다!</p></div>
                                             <div class="review" th:id="reviewArea" style="margin-top: 20px;"></div>
                                             <div class="paging" style="width: 100%; display: inline-flex; align-items: center; margin-top: 25px; justify-content: center">
                                                 <div id="pages"></div>
@@ -869,7 +872,7 @@
                                                 <div class="topContent">
                                                     <p>펫시터님 위치</p>
                                                     <div class="ContentR">
-                                                        <p>강남구 개포동</p>
+                                                        <p id="sitterAddress">강남구 개포동</p>
                                                         <p>정확한 주소는 예약 완료후 확인 가능합니다.</p>
                                                     </div>
                                                 </div>
@@ -1022,6 +1025,7 @@
         $('#mediumPriceDay').text(data.price_medium_day);
         $('#largePriceDay').text(data.price_large_day);
         $('#address').text(data.address);
+        $('#sitterAddress').text(data.address);
 
         sitterAddress = data.address
 
@@ -1046,6 +1050,10 @@
 
     //리뷰 set, 페이징
     function setReview(data) {
+        if(data.totalCount != 0) {
+            $("#reviewNone").hide();
+        }
+
         const totalCount = data.totalCount
 
         let totalPage = Math.ceil(totalCount /5);
