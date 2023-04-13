@@ -39,13 +39,11 @@ toy.apiCall = (data) => {
         beforeSend: (xhr) => {
            //access토큰 담아 보내는지 여부
             if(toy.getCookie("accessToken") !=="null") {
-                console.log(">>>>>>>토큰 넣어보냄1"+toy.getCookie("accessToken"))
-                console.log(">>>>>>>토큰 넣어보냄")
                 xhr.setRequestHeader('Authorization', "Bearer "+toy.getCookie("accessToken"))
             }
         },
         success: (result) => {
-            console.log(">>>>>>>>>>>>>>>result"+result)
+            console.log(">>>>>>>>>>>>>>>toy-common: success_result: "+result)
             if(result.subCode !== 0) {
                 if(data.successError) {
                     data.successError(result);
@@ -57,7 +55,7 @@ toy.apiCall = (data) => {
             data.success(result);
         },
         error: (error) => {
-            console.log(">>>>>>>>>>>>>>>>error.subCode"+error.responseJSON.subCode)
+            console.log(">>>>>>>>>>>>>>>>toy-common: error.subCode:"+error.responseJSON.subCode)
             //4012에러: 만료된 토큰 오류 //토큰 만료 시 쿠키에 토큰 지우고 메인 페이지 이동
             if(error.responseJSON.subCode === 4012){
                 toy.setCookie("accessToken", null);

@@ -59,8 +59,8 @@
                         <!-- form -->
                         <form >
                             <div class="mb-2">
-                                <label for="emailaddress" class="form-label">이메일 주소</label>
-                                <input class="form-control" type="email" id="emailaddress" placeholder="이메일 주소">
+                                <label for="emailAddress" class="form-label">이메일 주소</label>
+                                <input class="form-control" type="email" id="emailAddress" placeholder="이메일 주소">
                             </div>
                             <div class="mb-2">
                                 <a href="auth-recoverpw-2.html" class="text-muted float-end"><small>Forgot your password?</small></a>
@@ -108,17 +108,12 @@
 
         <script>
             function login() {
-                var email = document.getElementById('emailaddress').value
-                var password = SHA256(document.getElementById('password').value)
-
-                console.log(">>>>>>다 email"+email)
-                console.log(">>>>>>다 password"+password)
-                console.log(">>>>>>다 password 암호화 확인"+SHA256(document.getElementById('password').value))
+                let email = document.getElementById('emailAddress').value
+                let password = SHA256(document.getElementById('password').value)
 
                 if(email == null || email === "" || password == null || password === ""){
                     alert('아이디와 비밀번호 모두 입력해 주세요')
                 } else {
-                    console.log(">>>>>>다 입력")
                     toy.apiCall({
                        type: 'POST',
                        url: 'http://localhost:8079/api/v1/user/login',
@@ -132,8 +127,10 @@
                            //토큰 저장
                            console.log(">>>>>>>>>>>>>>>>result.data.accessToken: "+result.data.accessToken);
                            console.log(">>>>>>>>>>>>>>>>result.data.refreshToken: "+result.data.refreshToken);
+
                            toy.setCookie("accessToken", result.data.accessToken);
                            toy.setCookie("refreshToken", result.data.refreshToken);
+
                        },
                        successError: (result) => {
                            toyError.setAlert(result);
