@@ -353,7 +353,19 @@
           $("#deleteButton").show();
         },
         successError: (result) => {
-          toyError.setAlert(result);
+          if(result.subCode === 2004){ //엑세스 토큰 만료
+            toy.access({
+              success: (result) => {
+                console.log(">>>>>>>>>>>>>>>>>>>>>>성공 응답을 받았다면 다시 요청")
+                save()
+              },
+              successError: (result) => {
+                toyError.setAlert(result);
+              }
+            });
+          } else {
+            toyError.setAlert(result);
+          }
         }
       });
     }
@@ -374,7 +386,19 @@
         }
       },
       successError: (result) => {
-        toyError.setAlert(result);
+        if(result.subCode === 2004){ //엑세스 토큰 만료
+          toy.access({
+            success: (result) => {
+              console.log(">>>>>>>>>>>>>>>>>>>>>>성공 응답을 받았다면 다시 요청")
+              getPost()
+            },
+            successError: (result) => {
+              toyError.setAlert(result);
+            }
+          });
+        } else {
+          toyError.setAlert(result);
+        }
       }
     });
   }

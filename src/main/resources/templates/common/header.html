@@ -104,7 +104,19 @@
           setAuthority(result.data);
         },
         successError: (result) => {
-          toyError.setAlert(result);
+          console.log(">>>>>>>>>>>>>>>>>>>>>>>successError");
+          if(result.subCode === 2004){ //엑세스 토큰 만료
+            toy.access({
+              success: (result) => {
+                checkAuthority()
+              },
+              successError: (result) => {
+                toyError.setAlert(result);
+              }
+            });
+          } else {
+            toyError.setAlert(result);
+          }
         }
       });
     }
@@ -112,7 +124,6 @@
     function setAuthority(data) {
       console.log(">>>>>>>>>>>>data.authority"+data.authority);
       if(data.authority === "N") {
-        console.log(">>>>>>>>>>>>authority=N:"+data.authority);
         $("#myPost").hide();
       }
     }

@@ -1369,7 +1369,19 @@
                     alert('예약이 성공적으로 요청되었습니다')
                 },
                 successError: (result) => {
-                    toyError.setAlert(result);
+                    if(result.subCode === 2004){ //엑세스 토큰 만료
+                        toy.access({
+                            success: (result) => {
+                                console.log(">>>>>>>>>>>>>>>>>>>>>>성공 응답을 받았다면 다시 요청")
+                                requestReservation();
+                            },
+                            successError: (result) => {
+                                toyError.setAlert(result);
+                            }
+                        });
+                    } else {
+                        toyError.setAlert(result);
+                    }
                 }
             });
 

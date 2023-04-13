@@ -43,7 +43,6 @@ toy.apiCall = (data) => {
             }
         },
         success: (result) => {
-            console.log(">>>>>>>>>>>>>>>toy-common: success_result: "+result)
             if(result.subCode !== 0) {
                 if(data.successError) {
                     data.successError(result);
@@ -67,6 +66,27 @@ toy.apiCall = (data) => {
         }
     })
 };
+
+toy.access = (data) => {
+    console.log(">>>>>>>toy.access")
+    toy.apiCall({
+        type:'POST',
+        url: 'http://localhost:8079/api/v1/user/renewToken',
+        data: {
+            refreshToken: toy.getCookie("refreshToken")
+        },
+        success: (result) => {
+            console.log(">>>>>>>>>>>>>>>>>>accessRenew_success")
+            toy.setCookie("accessToken", result.data.accessToken);
+            toy.setCookie("refreshToken", result.data.refreshToken);
+            data.success(result);
+        },
+        successError: (result) => {
+            toyError.setAlert(result);
+        }
+    })
+};
+
 
 //비밀번호 단방향 암호화
 function SHA256(s){
