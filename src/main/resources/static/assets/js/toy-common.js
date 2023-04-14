@@ -44,6 +44,13 @@ toy.apiCall = (data) => {
         },
         success: (result) => {
             if(result.subCode !== 0) {
+                if(result.subCode === 2005){
+                    toyError.setAlert(result);
+                    toy.setCookie("accessToken", null);
+                    toy.setCookie("refreshToken", null);
+                    window.location.href="/main";
+                    return;
+                }
                 if(data.successError) {
                     data.successError(result);
                     return;
