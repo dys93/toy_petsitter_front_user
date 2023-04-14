@@ -102,7 +102,7 @@
                       </div>
                       <div style="display:flex;flex-grow:1;align-items:center">
                         <div style="display:flex;flex-grow:1;align-items:center;justify-content:space-between">
-                          <input type="text" class="addressInput" style="flex-grow:1;height:52px;margin-left:12px;margin-right:12px;font-size:17px;color:#383C48; border:none; max-width:350px" placeholder="동 이름을 검색하세요 (예. 논현동)" value=""/>
+                          <input th:id="search" type="text" class="addressInput" style="flex-grow:1;height:52px;margin-left:12px;margin-right:12px;font-size:17px;color:#383C48; border:none; max-width:350px" placeholder="동 이름을 검색하세요 (예. 논현동)" value="" th:onkeypress="searchAddress(event)"/>
                         </div>
                       </div>
                     </div>
@@ -202,8 +202,9 @@
   let yardBtn = false;
   let oldDogBtn = false;
 
+  let search = null;
+
   $(() => {
-    history.replaceState({}, null, location.pathname);
     getList(pageNum);
     setButtonEvent();
   });
@@ -211,6 +212,8 @@
   function getList(pageNum) {
     console.log(">>>>>>>>>>>>>>getList_pageNUm"+pageNum);
     console.log(">>>>>>>>>>>>>>orderBy"+orderBy);
+    console.log(">>>>>>>>>>>>>>search value"+document.getElementById('search').value);
+
 
     toy.apiCall({
       type: 'GET',
@@ -222,7 +225,8 @@
         pickupYn : pickupYn,
         largeDogYn : largeDogYn,
         yardYn: yardYn,
-        oldDogYn: oldDogYn
+        oldDogYn: oldDogYn,
+        search: document.getElementById('search').value
       },
       success: (result) => {
         setList(result.data)
@@ -542,7 +546,11 @@
     getList(1)
   }
 
-
+  function searchAddress(e) {
+    if(e.keyCode == 13){
+      getList(1)
+    }
+  }
 
 
 
