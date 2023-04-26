@@ -87,7 +87,7 @@
     justify-content: center;
   }
 
-  .text-end button{
+  .text-end button {
     font-size: 18px;
     font-weight: bold;
     color: rgb(113, 162, 255);
@@ -101,8 +101,54 @@
     border-radius: 28px;
     box-shadow: rgb(0 0 0 / 3%) 0px 3px 3px -3px;
     cursor: pointer;
-
   }
+
+  .modal-withdrawal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-withdrawal .bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .modal-title {
+    border-bottom: 1px solid grey;
+  }
+
+  .modal-body {
+    position: absolute;
+    background-color: #fff;
+    width: 400px;
+    height: 220px;
+    padding: 15px;
+  }
+
+  .modal-footer {
+    text-align:center;
+    margin-bottom: 20px;
+  }
+
+  .modal-footer button {
+    display: inline-block;
+    width: 80px;
+    border: 1px solid rgb(113, 162, 255);
+    margin-top: 30px;
+  }
+
+  .modal-hidden {
+    display: none;
+  }
+
+
 </style>
 
 <body>
@@ -138,6 +184,17 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="mb-2">
+                          <label for="password" class="form-label">비밀번호</label>
+                          <input type="password" class="form-control" style="margin-bottom: 10px" id="password">
+                          <input type="password" class="form-control" style="margin-bottom: 10px" id="passwordConfirm">
+                          <input type="button" onclick="changePassword()" value="비밀번호 번경" ><br>
+                        </div>
+                      </div>
+                    </div> <!-- end row -->
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="mb-2">
                           <label for="phone" class="form-label">전화번호</label>
                           <input type="text" class="form-control" id="phone">
                         </div>
@@ -164,6 +221,10 @@
                     <div class="text-end">
                       <button type="button" class="btn btn-success waves-effect waves-light mt-2" th:onclick="save()">수정하기</button>
                     </div>
+
+                    <div class="text-end">
+                      <button type="button" class="btn btn-success waves-effect waves-light mt-2 widhdrawal-modal" >탈퇴하기</button>
+                    </div>
                   </form>
 
                 </div>
@@ -178,6 +239,27 @@
   <script>document.write(new Date().getFullYear())</script> &copy; Minton theme by <a href="" class="text-dark">Coderthemes</a>
 </footer>
 
+<!-- 탈퇴 모달 -->
+<div id="modal_withdrawal" class="modal-withdrawal modal-hidden">
+  <div class="bg"></div>
+  <div class="modal-body">
+    <div class="modal-title">
+      <h3>탈퇴 하시겠습니까?</h3>
+    </div>
+    <div>
+      <div>
+        <div>
+          <p> 정말 탈퇴 하시겠습니까?</p>
+          <p> 탈퇴 시 약관에 따라 탈퇴가 진행됩니다.</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="modal-close-withdrawal">취소</button>
+        <button type="button" class="modal-pay" onclick="withdrawal()">네</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script async="" data-next-page="/petsitters" src="/_next/static/r96-BCZo64C9PGBuAtZ98/pages/petsitters.js"></script>
 <script async="" data-next-page="/_app" src="/_next/static/r96-BCZo64C9PGBuAtZ98/pages/_app.js"></script>
@@ -329,8 +411,96 @@
         }
       }
     })
+  }
+
+  //비밀번호 변경
+  function changePassword() {
+    let passwordFirst = document.getElementById('password').value;
+    let passwordSecond = document.getElementById('passwordConfirm').value;
+
+    console.log(">>>>>>>>>>>>>>>>>passwordFirst"+passwordFirst);
+    console.log(">>>>>>>>>>>>>>>>>passwordSecond"+passwordSecond);
+
+    if(passwordFirst === passwordSecond && passwordFirst!=="") {
+      toy.apiCall({
+        type: 'POST',
+        url: 'http://localhost:8079/api/v1/user/changePassword',
+        data: {
+          password: passwordFirst
+        },
+        success: (result) => {
+          alert("비밀번호가 변경되었습니다. 새로운 비밀번호로 다시 로그인 해주세요.");
+          document.getElementById('password').value = "";
+          document.getElementById('passwordConfirm').value = "";
+          toy.setCookie("accessToken", null);
+          toy.setCookie("refreshToken", null);
+          window.location.href="/";
+        },
+        successError: (result) => {
+          if(result.subCode === 2004){ //엑세스 토큰 만료
+            toy.access({
+              success: (result) => {
+                console.log(">>>>>>>>>>>>>>>>>>>>>>성공 응답을 받았다면 다시 요청")
+                changePassword()
+              },
+              successError: (result) => {
+                toyError.setAlert(result);
+              }
+            });
+          } else {
+            toyError.setAlert(result);
+          }
+        }
+      });
+    } else {
+      alert('입력하신 비밀번호를 다시 확인해 주세요')
+    }
+  }
+
+  //회원탈퇴
+  function withdrawal() {
+    console.log(">>>>>>>>>>>>>>>>>>>>>>withdrawal")
+
+    toy.apiCall({
+      type: 'PUT',
+      url: 'http://localhost:8079/api/v1/user/withdrawal',
+      success: (result) => {
+        alert("탈퇴가 완료되었습니다");
+        toy.setCookie("accessToken", null);
+        toy.setCookie("refreshToken", null);
+        window.location.href="/main";
+      },
+      successError: (result) => {
+        if(result.subCode === 2004){ //엑세스 토큰 만료
+          toy.access({
+            success: (result) => {
+              console.log(">>>>>>>>>>>>>>>>>>>>>>성공 응답을 받았다면 다시 요청")
+              withdrawal()
+            },
+            successError: (result) => {
+              toyError.setAlert(result);
+            }
+          });
+        } else {
+          toyError.setAlert(result);
+        }
+      }
+    });
 
   }
+
+  const openWithdrawal = () => {
+    document.querySelector(".modal-withdrawal").classList.remove("modal-hidden");
+  }
+  const closeWithdrawal = () => {
+    document.querySelector(".modal-withdrawal").classList.add("modal-hidden");
+  }
+  document.querySelector(".modal-close-withdrawal").addEventListener("click", closeWithdrawal);
+  document.querySelector(".bg").addEventListener("click", closeWithdrawal);
+
+  document.querySelector(".widhdrawal-modal").addEventListener("click", openWithdrawal)
+
+
 
 </script>
 
