@@ -49,7 +49,6 @@ public class MainController {
     public String petsitDetail(
             @PathVariable(required = false) String petsitSeq, Model model) {
         model.addAttribute("petsitSeq", petsitSeq);
-        System.out.println(">>>>>>>>>>controller"+petsitSeq);
         return "petsitter/petsitDetail";
     }
 
@@ -67,6 +66,14 @@ public class MainController {
     @GetMapping("/reservation")
     public String reservation() {
         return "myInfo/reservation";
+    }
+
+    /*
+    예약 관리
+     */
+    @GetMapping("/reservationManage")
+    public String reservationManage() {
+        return "myInfo/reservationManage";
     }
 
     /*

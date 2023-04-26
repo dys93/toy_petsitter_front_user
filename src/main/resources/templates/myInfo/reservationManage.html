@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <meta name="naver-site-verification" content="9d4ada4a32e188c9c5e42e8a751c4f497033d0c7"/>
+  <link rel="shortcut icon" href="/static/assets/images/favicon.ico"/>
+  <link rel="stylesheet" type="text/css" href="/static/assets/js/slick.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/static/assets/js/slick.min.js"/>
+  <link rel="stylesheet" type="text/css" href="/static/assets/js/slick-theme.min.css"/>
+  <script type="text/javascript" src="/static/assets/js/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="/static/assets/js/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="/static/assets/js/polyfill.min.js"></script>
+  <script type="text/javascript" src="/static/assets/js/kakao.js"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8f23556bd57117a96842def422603994"></script>
+  <script type="text/javascript" src="/static/assets/js/ua-parser.min.js"></script>
+  <script type="text/javascript" src="/static/assets/js/react.production.min.js"></script>
+  <script type="text/javascript" src="/static/assets/js/react-copy-to-clipboard.js"></script>
+
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"/>
+  <meta charSet="utf-8"/>
+
+  <meta name="next-head-count" content="11"/>
+  <link rel="preload" href="/_next/static/r96-BCZo64C9PGBuAtZ98/pages/petsitters.js" as="script"/>
+  <link rel="preload" href="/_next/static/r96-BCZo64C9PGBuAtZ98/pages/_app.js" as="script"/>
+  <link rel="preload" href="/_next/static/runtime/webpack-4b444dab214c6491079c.js" as="script"/>
+  <link rel="preload" href="/_next/static/chunks/commons.58cd47c941173809d3d8.js" as="script"/>
+  <link rel="preload" href="/_next/static/chunks/styles.d2c14889900d80d21002.js" as="script"/>
+  <link rel="preload" href="/_next/static/runtime/main-0ee1c1962f44d8fad7d7.js" as="script"/>
+  <link rel="stylesheet" href="/_next/static/css/styles.f53a334d.chunk.css"/>
+  <link rel="stylesheet" href="/_next/static/css/static/r96-BCZo64C9PGBuAtZ98/pages/_app.js.548dbefb.chunk.css"/>
+</head>
+
+<style>
+  .dropdown{
+    position : relative;
+    display : inline-block;
+  }
+
+  .dropdown-content{
+    display : none;
+    position : absolute;
+    z-index : 1; /*다른 요소들보다 앞에 배치*/
+    font-weight: 400;
+    background-color: #f9f9f9;
+    min-width : 200px;
+  }
+
+  .dropdown-content a{
+    display : block;
+    text-decoration : none;
+    color : rgb(37, 37, 37);
+    font-size: 12px;
+    padding : 12px 20px;
+  }
+
+  .active {
+    color: orange;
+    font-weight: bold;
+  }
+
+  .dropdown-content a:hover{
+    background-color : #ececec
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .table {
+    border-top: 1px solid #b0b3b4;
+    border-bottom: 1px solid #b0b3b4;
+    text-align: center;
+    width: 100%;
+  }
+
+  td {
+    border-top: 1px solid #b0b3b4;
+  }
+
+  .rsv-list-th tr {
+    background-color: #EAEAEA;
+  }
+
+  .rsv-list-tb tr {
+    height: 100px;
+  }
+
+  .ft {
+    position : absolute;
+    bottom : 0;
+  }
+
+  .megaseller_rank {
+    clear: both;
+    float: left;
+    border-bottom: 1px solid #e8e8e8;
+    border-top: 1px solid #e8e8e8;
+    padding: 8px 0;
+    width: 100%;
+    margin:0 auto;
+  }
+
+  .megaseller_rank ul {
+    text-align: center;
+    display: table;
+  }
+
+  .megaseller_rank li {
+    float: left;
+    display: inline;
+    padding: 0 13px;
+    background: url(//image.aladin.co.kr/img/megaseller/megaseller_rank_se.gif) no-repeat right;
+  }
+
+  .modal-confirm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-confirm .bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .modal-confirm-cancel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-confirm-cancel .bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .modal-confirm-review {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-confirm-review .bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .textArea {
+    width: 100%;
+    height: 100%;
+  }
+
+  .modal-title {
+    border-bottom: 1px solid grey;
+  }
+
+  .modal-body {
+    position: absolute;
+    background-color: #fff;
+    width: 400px;
+    height: 220px;
+    padding: 15px;
+  }
+
+  .modal-body-review {
+    position: absolute;
+    background-color: #fff;
+    width: 400px;
+    height: 420px;
+    padding: 15px;
+  }
+
+  .modal-footer {
+    text-align:center;
+    margin-bottom: 20px;
+  }
+
+  .modal-footer button {
+    display: inline-block;
+    width: 80px;
+    border: 1px solid rgb(113, 162, 255);
+    margin-top: 30px;
+  }
+
+  .modal-hidden {
+    display: none;
+  }
+
+</style>
+
+<body>
+<div th:replace="/common/header.html :: fragment-header"></div>
+<div id="body-wrapper" class="wrapper">
+  <div id ="body-content">
+    <div id="service-container">
+      <div class="desktop hidden-s">
+        <div>
+          <div style="width:100%; height:100%; display:flex;justify-content:center;flex-direction:column;align-items:center; padding-bottom:85px;border-bottom:1px solid #E7E9EB; box-shadow:0 2px 20px rgba(0,0,0,0.05)">
+            <div style="justify-content:center;align-items:start;margin-top:50px;position:relative; width: 1200px; height: 680px" >
+              <div>
+                <p><h4>예약 리스트</h4></p>
+                <table class="table">
+                  <thead class="rsv-list-th">
+                  <tr>
+                    <th>예약번호</th>
+                    <th>체크인</th>
+                    <th>체크아웃</th>
+                    <th>예약상세</th>
+                    <th>금액</th>
+                    <th>예약일</th>
+                    <th>예약상태</th>
+                    <th>예약관리</th>
+                  </tr>
+                  </thead>
+                  <tbody id="list" class="rsv-list-tb">
+                  <tr>
+                    <td>01</td>
+                    <td>2023-01-10</td>
+                    <td>2023-01-1</td>
+                    <td>소형0 중형1 대형0</td>
+                    <td>80,000 원</td>
+                    <td>2023-01-06</td>
+                    <td>예약 완료</td>
+                  </tr>
+                  </tbody>
+                </table>
+
+                <div class="paging" style="width: 100%; display: inline-flex; align-items: center; margin-top: 25px; justify-content: center">
+                  <div id="pages"></div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="ft">
+  <script>document.write(new Date().getFullYear())</script> &copy; Minton theme by <a href="" class="text-dark">Coderthemes</a>
+</footer>
+
+<!-- 결정 모달 -->
+<div id="modal" class="modal-confirm modal-hidden">
+  <div class="bg"></div>
+  <div class="modal-body">
+    <div class="modal-title">
+      <h3>예약 요청 수락 / 거절</h3>
+    </div>
+    <div>
+      <div>
+        <h4>수락 / 거절을 선택해 주세요</h4>
+        <div>
+          <input type="radio" name="confirm" value="Y"/>수락
+          <input type="radio" name="confirm" value="N"/>거절
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="modal-close">취소</button>
+        <button type="button" class="modal-pay" onclick="confirm()">결정</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 취소 모달 -->
+<div id="modal_cancel" class="modal-confirm-cancel modal-hidden">
+  <div class="bg"></div>
+  <div class="modal-body">
+    <div class="modal-title">
+      <h3>취소 하시겠습니까?</h3>
+    </div>
+    <div>
+      <div>
+        <div>
+          <p> 정말 취소 하시겠습니까?</p>
+          <p> 취소 시 약관에 따라 취소가 진행됩니다.</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="modal-close-pay">아니요</button>
+        <button type="button" class="modal-pay" onclick="payCancel()">네</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/static/assets/js/toy-common.js"></script>
+<script src="/static/assets/js/toy-error.js"></script>
+<script src="/static/assets/js/toy-pagination.js"></script>
+
+<script>
+  let listPageParam = {page: 0, targetId: 'list'} //회원리스트 페이지 파라미터
+  let pageNum = 1;
+  let seqReservation = null;
+
+  $(() => {
+    console.log(">>>>>>>>>>>>>>>>pageNUm"+pageNum);
+    getReservationManageList(pageNum)
+    setButtonEvent();
+  });
+
+  function getReservationManageList(pageNum) {
+    console.log(">>>>>>>>>>>>>>>>>>>getReservationManageList API CALL")
+
+    toy.apiCall({
+      type: 'GET',
+      url: 'http://localhost:8079/api/v1/petSit/getReservationManageList',
+      data: {
+        pageNum: pageNum,
+      },
+      success: (result) => {
+        console.log(">>>>>>>>>>>>>>>>>>>getReservationManageList API RETURN SUCCESS")
+        setManageList(result.data)
+      },
+      successError: (result) => {
+        if(result.subCode === 2004){ //엑세스 토큰 만료
+          toy.access({
+            success: (result) => {
+              console.log(">>>>>>>>>>>>>>>>>>>>>>성공 응답을 받았다면 다시 요청")
+              getReservationManageList()
+            },
+            successError: (result) => {
+              toyError.setAlert(result);
+            }
+          });
+        } else {
+          toyError.setAlert(result);
+        }
+      }
+    });
+  }
+
+  function setManageList(data) {
+    let status ="";
+    console.log(">>>>>>>>>>>reservation setManageList"+data.totalCount)
+    if(data.totalCount === 0) {
+      console.log("예약 내역이 없음")
+      let htmls = "";
+      htmls += `<div><p>아직 예약하신 내역이 없습니다!</p></div>`
+      $("#list").html(htmls);
+    }
+
+    const reservationManageList = data.reservationList;
+    const totalCount = data.totalCount;
+
+    let totalPage = Math.ceil(totalCount/5);
+
+    const pagination =new Pagination(data.page, listPageParam.targetId, 5, totalPage, data.startPage, data.endPage);
+
+    //페이징 객체 호출
+    const pageObj = pagination.paging();
+    listPageParam.next = pageObj.next;
+    listPageParam.prev = pageObj.prev;
+
+    //페이징 출력
+    $('#pages').html(pageObj.htmls);
+
+    let htmls = "";
+
+    $.each(reservationManageList, (idx, item) => {
+
+      if(item.reservation_status ==="R"){
+        status = "예약요청"
+        htmls +=
+                `<tr>
+                          <td>${item.reservation_seq}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td>${status}</td>
+                          <td><button type="button" class="modal-open" onclick="getValue(${item.reservation_seq})">예약결정</button></td>
+                        </tr>`
+      } else if(item.reservation_status ==="RR") {
+        status = "예약거절"
+        htmls +=
+                `<tr>
+                          <td>${item.reservation_seq}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td>${status}</td>
+                          <td>취소불가</td>
+                        </tr>`
+      } else if(item.reservation_status ==="RP") {
+        status = "결제완료"
+        htmls +=
+                `<tr>
+                          <td>${item.reservation_seq}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td>${status}</td>
+                          <td><button type="button" class="modal-cancel" onclick="getValue(${item.reservation_seq})">예약취소</button></td>
+                        </tr>`
+      } else if(item.reservation_status ==="RA") {
+        status = "예약수락"
+        htmls +=
+                `<tr>
+                          <td>${item.reservation_seq}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td>${status}</td>
+                          <td><button type="button" class="modal-cancel" onclick="getValue(${item.reservation_seq})">예약취소</button></td>
+                        </tr>`
+      } else if(item.reservation_status ==="RC"){
+        status = "이용완료"
+        htmls +=
+                `<tr>
+                          <td>${item.reservation_seq}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td>${status}</td>
+                          <td>취소불가</td>
+                        </tr>`
+      } else if(item.reservation_status ==="RCC" ){
+        status = "예약취소"
+        htmls +=
+                `<tr>
+                          <td>${item.reservation_seq}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td>${status}</td>
+                          <td>취소완료</td>
+                        </tr>`
+      } else if(item.reservation_status ==="PC" ){
+        status = "결제완료"
+        htmls +=
+                `<tr>
+                          <td>${item.reservation_seq}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td>${status}</td>
+                          <td><button type="button" class="modal-cancel" onclick="getValue(${item.reservation_seq})">예약취소</button></td>
+                        </tr>`
+      } else if(item.reservation_status ==="RRQ" ){
+        status = "환불요청"
+        htmls +=
+                `<tr>
+                          <td>${item.reservation_seq}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td>${status}</td>
+                          <td>취소완료</td>
+                        </tr>`
+      } else if(item.reservation_status ==="RCP" ){
+        status = "환불완료"
+        htmls +=
+                `<tr>
+                          <td>${item.reservation_seq}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td>${status}</td>
+                          <td>취소완료</td>
+                        </tr>`
+      } else if(item.reservation_status ==="RVC" ){
+        status = "후기완료"
+        htmls +=
+                `<tr>
+                          <td>${item.reservation_seq}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td>${status}</td>
+                          <td>취소불가</td>
+                        </tr>`
+      } else {
+        status = "이용완료"
+        htmls +=
+                `<tr>
+                          <td>${item.reservation_seq}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td>${status}</td>
+                          <td>취소불가</td>
+                        </tr>`
+      }
+
+      $("#list").html(htmls);
+
+    });
+
+    //예약결정 버튼 이벤트 //동일 class가 여러개라서 querySelectorAll 사용
+    const modalBtn = document.querySelectorAll(".modal-open");
+    modalBtn.forEach((aItem) => {
+      aItem.addEventListener("click", open);
+    })
+
+    //취소하기 버튼 이벤트
+    const cancelBtn = document.querySelectorAll(".modal-cancel");
+    cancelBtn.forEach((aItem) => {
+      aItem.addEventListener("click", openCancel);
+    })
+
+  }
+
+  //클릭한 버튼 reservation_seq 가져오기
+  function getValue(seq){
+    seqReservation = seq;
+  }
+
+  //결제
+  const open = () => {
+    document.querySelector(".modal-confirm").classList.remove("modal-hidden");
+  }
+  const close = () => {
+    document.querySelector(".modal-confirm").classList.add("modal-hidden");
+    //라디오 선택 해제
+    $('input[name=confirm]').prop('checked', false);
+  }
+  document.querySelector(".modal-close").addEventListener("click", close);
+  document.querySelector(".bg").addEventListener("click", close);
+
+  //취소
+  const openCancel = () => {
+    document.querySelector(".modal-confirm-cancel").classList.remove("modal-hidden");
+  }
+  const closeCancel = () => {
+    document.querySelector(".modal-confirm-cancel").classList.add("modal-hidden");
+  }
+  document.querySelector(".modal-close-pay").addEventListener("click", closeCancel);
+  document.querySelector(".bg").addEventListener("click", closeCancel);
+
+  //버튼 이벤트 정의
+  function setButtonEvent() {
+
+    //페이지 이동
+    $(document).on('click', '.page-link', function() {
+      let id = $(this).attr('id');
+      let page = $(this).text();
+
+      if(id === 'prev') page = listPageParam.prev;
+      if(id === 'next') page = listPageParam.next;
+
+      listPageParam.page = page;
+      getReservationManageList(page)
+
+    });
+
+  }
+
+  //수락/거절
+  function confirm() {
+    console.log(">>>>>>>>>>>>>>>>>>>confirm API CALL")
+    console.log(">>>>>>>>>>>>>>>>>>>confirm API CALL:"+$('input[name=confirm]:checked').val())
+    if(!$('input[name=confirm]').is(":checked")) {
+      alert('수락 혹은 거절을 선택해 주세요')
+    } else {
+      toy.apiCall({
+        type: 'PUT',
+        url: 'http://localhost:8079/api/v1/petSit/confirmReservation',
+        data: {
+          reservationSeq: seqReservation,
+          confirm: $('input[name=confirm]:checked').val()
+        },
+        success: (result) => {
+          console.log(">>>>>>>>>>>>>>>>>>>getReservationList API RETURN SUCCESS")
+          document.querySelector(".modal-confirm").classList.add("modal-hidden");
+          alert('수락 혹은 거절이 완료되었습니다')
+          getReservationManageList(pageNum)
+          //라디오 선택 해제
+          $('input[name=confirm]').prop('checked', false);
+        },
+        successError: (result) => {
+          if(result.subCode === 2004){ //엑세스 토큰 만료
+            toy.access({
+              success: (result) => {
+                console.log(">>>>>>>>>>>>>>>>>>>>>>성공 응답을 받았다면 다시 요청")
+                document.querySelector(".modal-confirm").classList.add("modal-hidden");
+                confirm()
+              },
+              successError: (result) => {
+                toyError.setAlert(result);
+              }
+            });
+          } else {
+            toyError.setAlert(result);
+          }
+        }
+      });
+    }
+  }
+
+  //취소
+  function payCancel() {
+    console.log(">>>>>>>>>>>>>>>>>>>payCancel API CALL")
+    toy.apiCall({
+      type: 'PUT',
+      url: 'http://localhost:8079/api/v1/petSit/cancelReservation',
+      data: {
+        reservationSeq: seqReservation
+      },
+      success: (result) => {
+        console.log(">>>>>>>>>>>>>>>>>>>payCancel API RETURN SUCCESS")
+        //reload
+        window.location.href="/reservation";
+      },
+      successError: (result) => {
+        if(result.subCode === 2004){ //엑세스 토큰 만료
+          toy.access({
+            success: (result) => {
+              console.log(">>>>>>>>>>>>>>>>>>>>>>성공 응답을 받았다면 다시 요청")
+              payCancel()
+            },
+            successError: (result) => {
+              toyError.setAlert(result);
+            }
+          });
+        } else {
+          toyError.setAlert(result);
+        }
+      }
+    });
+  }
+
+
+</script>
+
+
+<script async="" data-next-page="/petsitters" src="/_next/static/r96-BCZo64C9PGBuAtZ98/pages/petsitters.js"></script>
+<script async="" data-next-page="/_app" src="/_next/static/r96-BCZo64C9PGBuAtZ98/pages/_app.js"></script>
+<script src="/_next/static/runtime/webpack-4b444dab214c6491079c.js" async=""></script>
+<script src="/_next/static/chunks/commons.58cd47c941173809d3d8.js" async=""></script>
+<script src="/_next/static/chunks/styles.d2c14889900d80d21002.js" async=""></script>
+<script src="/_next/static/runtime/main-0ee1c1962f44d8fad7d7.js" async=""></script>
+
+</body>
+
+
+</html>
