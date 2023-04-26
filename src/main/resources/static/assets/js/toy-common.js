@@ -43,6 +43,7 @@ toy.apiCall = (data) => {
             }
         },
         success: (result) => {
+            console.log(">>>>>>>>>>>>>>>>>>common result"+result);
             if(result.subCode !== 0) {
                 if(result.subCode === 2005){
                     toyError.setAlert(result);
