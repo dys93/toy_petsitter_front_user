@@ -1283,9 +1283,6 @@
         const diffDays = parseInt(diff/currDay);
         const diffTimes = (((parseInt(diff/currDay) - 1) * 24) + hours);
 
-        console.log(">>>>>>>>>>>>>>>>>>>diffDays"+diffDays);
-        console.log(">>>>>>>>>>>>>>>>>>>diffTimes"+diffTimes);
-
         //날짜차이
         totalDiffDays = diffDays;
         //시간차이
@@ -1310,25 +1307,18 @@
             finalPrice.value = parseInt(extraFee.value) + parseInt(sum.value) + parseInt(tax.value);
             //3.1박 이상
         } else if(totalDiffTimes >= 24) {
-            console.log(">>>>>>>>>>>>>>>totalDiffTimes%24 > 0"+totalDiffTimes%24)
             //초과 0
             let rest = totalDiffTimes%24
-            console.log(">>>>>>>>>>>>>>>>rest"+rest)
             if(rest > 0){
-                console.log(">>>>>>>>>>>>>>>초과")
                 extraFee.value = (smallDayPrice/2 * (parseInt(small)+parseInt(medium)+parseInt(large)));
                 if(rest>=12) {
-                    console.log(">>>>>>>>>>>>>>>초과12")
                     extraFee.value = ((smallDayPrice) * (parseInt(small)+parseInt(medium)+(parseInt(large))));
-                    console.log(">>>>>>>>>>>>>>>smallDayPrice"+smallDayPrice)
                 }
                 sum.value = (((parseInt(small) * smallNightPrice) + (parseInt(medium) * mediumNightPrice) + (parseInt(large) * largeNightPrice)) *totalDiffDays);
-                console.log(">>>>>>>>>>>>>>>>>>>.totalDiffDays"+totalDiffDays)
                 tax.value = ((parseInt(extraFee.value)+parseInt(sum.value)) * 0.1);
                 finalPrice.value = parseInt(extraFee.value) + parseInt(sum.value) + parseInt(tax.value);
                 //초과 x
             } else {
-                console.log(">>>>>>>>>>>>>>>초과x")
                 sum.value = (((parseInt(small) * smallNightPrice) + (parseInt(medium) * mediumNightPrice) + (parseInt(large) * largeNightPrice)) *totalDiffDays);
                 tax.value = ((parseInt(extraFee.value)+parseInt(sum.value)) * 0.1);
                 finalPrice.value = parseInt(extraFee.value) + parseInt(sum.value) + parseInt(tax.value);
@@ -1339,15 +1329,6 @@
     //예약 요청하기
     function requestReservation() {
         //모든 항목 입력해야 함
-
-        console.log(">>>>>>>>>>>>>>>>>>>>>>finalPrice"+finalPrice.value);
-        console.log(">>>>>>>>>>>>>>>>>>>>>>small "+small );
-        console.log(">>>>>>>>>>>>>>>>>>>>>>medium "+medium );
-        console.log(">>>>>>>>>>>>>>>>>>>>>>large "+large );
-        console.log(">>>>>>>>>>>>>>>>>>>>>>checkInDate "+checkInDate );
-        console.log(">>>>>>>>>>>>>>>>>>>>>>checkOutDate "+checkOutDate );
-        console.log(">>>>>>>>>>>>>>>>>>>>>>selectedCheckIn "+selectedCheckIn );
-        console.log(">>>>>>>>>>>>>>>>>>>>>>selectedCheckOut "+selectedCheckOut );
 
         if(!(finalPrice.value && (parseInt(small) + parseInt(medium) + parseInt(large) >0) && checkInDate && checkOutDate
             && selectedCheckIn && selectedCheckOut)) {
@@ -1367,6 +1348,7 @@
                 },
                 success: (result) => {
                     alert('예약이 성공적으로 요청되었습니다')
+                    window.location.href="/petsitDetail/"+seq;
                 },
                 successError: (result) => {
                     if(result.subCode === 2004){ //엑세스 토큰 만료
