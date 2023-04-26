@@ -88,17 +88,17 @@
   </script>
   <script>
 
-    var parser = new UAParser();
-    var browser = parser.getResult().browser;
-    if (browser.name === 'IE' && parseInt(browser.version) < 11) {
-      if (window.location.pathname !== '/notsupported') {
-        window.location.href = '/notsupported';
-      }
-    } else {
-      if (window.location.pathname === '/notsupported') {
-        window.location.href = '/';
-      }
-    }
+    // var parser = new UAParser();
+    // var browser = parser.getResult().browser;
+    // if (browser.name === 'IE' && parseInt(browser.version) < 11) {
+    //   if (window.location.pathname !== '/notsupported') {
+    //     window.location.href = '/notsupported';
+    //   }
+    // } else {
+    //   if (window.location.pathname === '/notsupported') {
+    //     window.location.href = '/';
+    //   }
+    // }
   </script>
   <meta charSet="utf-8"/>
   <title class="jsx-1326206922">펫시터 교육과 지원을 통해 전문가로 성장하세요 | 펫플래닛</title>
@@ -507,12 +507,13 @@
 <script>
 
   function singUp() {
+    console.log(">>>>>>>>>>>>>>>>document.getElementById('phone').value"+document.getElementById('phone').value)
 
     toy.apiCall({
       type: 'POST',
       url: 'http://localhost:8079/api/v1/user/signUp',
       data: {
-        authority: "P", //시터회원
+        authority: "N", //시터회원
         email : document.getElementById('id').value ,
         password : SHA256(document.getElementById('password').value),
         name : document.getElementById('username').value,
@@ -522,10 +523,11 @@
         account : document.getElementById('account').value,
         petYn : document.querySelector('input[name="havePet"]:checked').value,
         experience : document.querySelector('input[name="experience"]:checked').value,
-        exDetail : document.getElementById('exDetail').value
+        exDetail : document.getElementById('exDetail').value,
+        approvalStatus : "C"
       },
       success: (result) => {
-        alert('지원이 완료되었습니다. \n승인 후 로그인이 가능합니다.')
+        alert('지원이 완료되었습니다. \n승인 후 시터활동이 가능합니다.')
         window.location.href="/";
       },
       successError: (result) => {
