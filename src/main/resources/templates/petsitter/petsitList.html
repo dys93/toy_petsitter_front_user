@@ -238,9 +238,8 @@
   }
 
   function setList(data) {
-    console.log(">>>>>>>>>>>...."+data.totalCount)
+    console.log(">>>>>>>>>>>데이터 없음: "+data.totalCount)
     if(data.totalCount === 0) {
-      console.log(">>>>>>>>>>>....조건일치")
       let htmls = "";
       htmls += `<div><p>조건에 맞는 결과가 없습니다.</p></div>`
       $("#list").html(htmls);
@@ -265,8 +264,6 @@
     let htmls = "";
 
     $.each(petsitList, (idx, item) => {
-      console.log(">>>>>>>>>>>>>>>>>item"+item.address);
-
       let petYn ="";
       let largeDogYn ="";
       let oldDogYn ="";
@@ -421,7 +418,6 @@
 
   //정렬조건 클릭 시 글자 색상 변경
   function getListWithOrderBy(condition){
-    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>orderBy popular"+orderBy)
     let popular = document.getElementById('popular');
     let price = document.getElementById('price');
     let regDate = document.getElementById('regDate');
@@ -454,7 +450,6 @@
        petBtnStyle.style.backgroundColor='#E2E5EAFF';
        petBtnStyle.style.borderColor='#E2E5EAFF';
        petBtnPStyle.style.color='#BBC1CC';
-       console.log(">>>>>>>>>>>>petBtn"+petBtn)
      } else {
        petBtn = 'true';
        petYn = 'Y';
@@ -468,16 +463,14 @@
   document.getElementById("pickup").onclick = function () {
     let pickupBtnStyle = document.getElementById('pickup');
     let pickupPBtnStyle = document.getElementById('pickupP');
-    console.log(">>>>>>>>>>>>클릭")
+
     if(pickUpBtn === 'true') {
-      console.log(">>>>>>>>>>>>클릭 true?")
       pickUpBtn = 'false';
       pickupYn = null;
       pickupBtnStyle.style.backgroundColor='#E2E5EAFF';
       pickupBtnStyle.style.borderColor='#E2E5EAFF';
       pickupPBtnStyle.style.color='#BBC1CC';
     } else {
-      console.log(">>>>>>>>>>>>클릭 false?")
       pickUpBtn = 'true';
       pickupYn = 'Y';
       pickupBtnStyle.style.backgroundColor='white';
@@ -498,7 +491,6 @@
       largeDogBtnStyle.style.borderColor='#E2E5EAFF';
       largeDogPBtnStyle.style.color='#BBC1CC';
     } else {
-      console.log(">>>>>>>>>>>>클릭 false?")
       largeDogBtn = 'true';
       largeDogYn = 'Y';
       largeDogBtnStyle.style.backgroundColor='white';
