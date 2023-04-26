@@ -53,6 +53,11 @@
     padding : 12px 20px;
   }
 
+  .active {
+    color: orange;
+    font-weight: bold;
+  }
+
   .dropdown-content a:hover{
     background-color : #ececec
   }
@@ -124,6 +129,45 @@
     background-color: rgba(0, 0, 0, 0.6);
   }
 
+  .modal-confirm-cancel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-confirm-cancel .bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .modal-confirm-review {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-confirm-review .bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .textArea {
+    width: 100%;
+    height: 100%;
+  }
+
   .modal-title {
     border-bottom: 1px solid grey;
   }
@@ -133,6 +177,14 @@
     background-color: #fff;
     width: 400px;
     height: 220px;
+    padding: 15px;
+  }
+
+  .modal-body-review {
+    position: absolute;
+    background-color: #fff;
+    width: 400px;
+    height: 420px;
     padding: 15px;
   }
 
@@ -175,9 +227,10 @@
                           <th>금액</th>
                           <th>예약일</th>
                           <th>예약상태</th>
+                          <th>예약취소</th>
                         </tr>
                       </thead>
-                      <tbody class="rsv-list-tb">
+                      <tbody id="list" class="rsv-list-tb">
                         <tr>
                           <td>01</td>
                           <td>2023-01-10</td>
@@ -185,58 +238,62 @@
                           <td>소형0 중형1 대형0</td>
                           <td>80,000 원</td>
                           <td>2023-01-06</td>
-                          <td>예약 완료<button type="button" class="modal-open">결제하기</button></td>
+                          <td>예약 완료</td>
                         </tr>
-                        <tr class="rsv-list">
-                          <td>01</td>
-                          <td>2023-01-10</td>
-                          <td>2023-01-1</td>
-                          <td>소형0 중형1 대형0</td>
-                          <td>80,000 원</td>
-                          <td>2023-01-06</td>
-                          <td>예약 완료<button type="button" hidden>결제하기</button></td>
-                        </tr>
-                        <tr class="rsv-list">
-                          <td>01</td>
-                          <td>2023-01-10</td>
-                          <td>2023-01-1</td>
-                          <td>소형0 중형1 대형0</td>
-                          <td>80,000 원</td>
-                          <td>2023-01-06</td>
-                          <td>예약 완료<button type="button" hidden>결제하기</button></td>
-                        </tr>
-                        <tr class="rsv-list">
-                          <td>01</td>
-                          <td>2023-01-10</td>
-                          <td>2023-01-1</td>
-                          <td>소형0 중형1 대형0</td>
-                          <td>80,000 원</td>
-                          <td>2023-01-06</td>
-                          <td>예약 완료<button type="button" hidden>결제하기</button></td>
-                        </tr>
-                        <tr class="rsv-list">
-                          <td>01</td>
-                          <td>2023-01-10</td>
-                          <td>2023-01-1</td>
-                          <td>소형0 중형1 대형0</td>
-                          <td>80,000 원</td>
-                          <td>2023-01-06</td>
-                          <td>예약 완료<button type="button" hidden>결제하기</button></td>
-                        </tr>
+<!--                        <tr class="rsv-list">-->
+<!--                          <td>01</td>-->
+<!--                          <td>2023-01-10</td>-->
+<!--                          <td>2023-01-1</td>-->
+<!--                          <td>소형0 중형1 대형0</td>-->
+<!--                          <td>80,000 원</td>-->
+<!--                          <td>2023-01-06</td>-->
+<!--                          <td>예약 완료<button type="button" hidden>결제하기</button></td>-->
+<!--                        </tr>-->
+<!--                        <tr class="rsv-list">-->
+<!--                          <td>01</td>-->
+<!--                          <td>2023-01-10</td>-->
+<!--                          <td>2023-01-1</td>-->
+<!--                          <td>소형0 중형1 대형0</td>-->
+<!--                          <td>80,000 원</td>-->
+<!--                          <td>2023-01-06</td>-->
+<!--                          <td>예약 완료<button type="button" hidden>결제하기</button></td>-->
+<!--                        </tr>-->
+<!--                        <tr class="rsv-list">-->
+<!--                          <td>01</td>-->
+<!--                          <td>2023-01-10</td>-->
+<!--                          <td>2023-01-1</td>-->
+<!--                          <td>소형0 중형1 대형0</td>-->
+<!--                          <td>80,000 원</td>-->
+<!--                          <td>2023-01-06</td>-->
+<!--                          <td>예약 완료<button type="button" hidden>결제하기</button></td>-->
+<!--                        </tr>-->
+<!--                        <tr class="rsv-list">-->
+<!--                          <td>01</td>-->
+<!--                          <td>2023-01-10</td>-->
+<!--                          <td>2023-01-1</td>-->
+<!--                          <td>소형0 중형1 대형0</td>-->
+<!--                          <td>80,000 원</td>-->
+<!--                          <td>2023-01-06</td>-->
+<!--                          <td>예약 완료<button type="button" hidden>결제하기</button></td>-->
+<!--                        </tr>-->
                       </tbody>
                     </table>
 
-                    <div class="megaseller_rank">
-                      <ul>
-                        <li><a>화살표</a></li>
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li>5</li>
-                        <li>화살표</li>
-                      </ul>
+                    <div class="paging" style="width: 100%; display: inline-flex; align-items: center; margin-top: 25px; justify-content: center">
+                      <div id="pages"></div>
                     </div>
+
+<!--                    <div id="paging" class="megaseller_rank">-->
+<!--                      <ul>-->
+<!--                        <li><a>화살표</a></li>-->
+<!--                        <li>1</li>-->
+<!--                        <li>2</li>-->
+<!--                        <li>3</li>-->
+<!--                        <li>4</li>-->
+<!--                        <li>5</li>-->
+<!--                        <li>화살표</li>-->
+<!--                      </ul>-->
+<!--                    </div>-->
 
                   </div>
 
@@ -264,30 +321,490 @@
       <div>
         <h4>결제 수단</h4>
         <div>
-          <input type="radio" name="pay" />카드 결제
-          <input type="radio" name="pay" />계좌이체
+          <input type="radio" name="pay" value="card"/>카드 결제
+          <input type="radio" name="pay" value="cash"/>계좌이체
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="modal-close">취소</button>
-        <button type="button" class="modal-pay">결제</button>
+        <button type="button" class="modal-pay" onclick="payment()">결제</button>
       </div>
     </div>
   </div>
 </div>
 
+<!-- 취소 모달 -->
+<div id="modal_cancel" class="modal-confirm-cancel modal-hidden">
+  <div class="bg"></div>
+  <div class="modal-body">
+    <div class="modal-title">
+      <h3>취소 하시겠습니까?</h3>
+    </div>
+    <div>
+      <div>
+        <div>
+          <p> 정말 취소 하시겠습니까?</p>
+          <p> 취소 시 약관에 따라 취소가 진행됩니다.</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="modal-close-pay">아니요</button>
+        <button type="button" class="modal-pay" onclick="payCancel()">네</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 리뷰 모달 -->
+<div id="modal_review" class="modal-confirm-review modal-hidden">
+  <div class="bg"></div>
+  <div class="modal-body-review">
+    <div class="modal-title">
+      <h3>리뷰 작성</h3>
+    </div>
+    <div style="height: 350px">
+      <div>
+        <div>
+          <h5>리뷰 내용</h5>
+          <textarea id="textarea" class="textArea" type="text" style="height: 200px"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="modal-close-review">취소</button>
+        <button type="button" class="modal-review" onclick="review()">등록</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/static/assets/js/toy-common.js"></script>
+<script src="/static/assets/js/toy-error.js"></script>
+<script src="/static/assets/js/toy-pagination.js"></script>
+
 <script>
+  let listPageParam = {page: 0, targetId: 'list'} //회원리스트 페이지 파라미터
+  let pageNum = 1;
+  let seqReservation = null;
+
+  $(() => {
+    getReservationList(pageNum)
+    setButtonEvent();
+  });
+
+  function getReservationList(pageNum) {
+    console.log(">>>>>>>>>>>>>>>>>>>getReservationList API CALL")
+
+    toy.apiCall({
+      type: 'GET',
+      url: 'http://localhost:8079/api/v1/petSit/getReservationList',
+      data: {
+        pageNum: pageNum,
+      },
+      success: (result) => {
+        console.log(">>>>>>>>>>>>>>>>>>>getReservationList API RETURN SUCCESS")
+        setList(result.data)
+      },
+      successError: (result) => {
+        if(result.subCode === 2004){ //엑세스 토큰 만료
+          toy.access({
+            success: (result) => {
+              console.log(">>>>>>>>>>>>>>>>>>>>>>성공 응답을 받았다면 다시 요청")
+              getReservationList()
+            },
+            successError: (result) => {
+              toyError.setAlert(result);
+            }
+          });
+        } else {
+          toyError.setAlert(result);
+        }
+      }
+    });
+  }
+
+  function setList(data) {
+    let today = getToday();
+
+    let status ="";
+    console.log(">>>>>>>>>>>reservation setList"+data.totalCount)
+    if(data.totalCount === 0) {
+      console.log("예약 내역이 없음")
+      let htmls = "";
+      htmls += `<div><p>아직 예약하신 내역이 없습니다!</p></div>`
+      $("#list").html(htmls);
+    }
+
+    const reservationList = data.reservationList;
+    const totalCount = data.totalCount;
+
+    let totalPage = Math.ceil(totalCount/5);
+
+    const pagination =new Pagination(data.page, listPageParam.targetId, 5, totalPage, data.startPage, data.endPage);
+
+    //페이징 객체 호출
+    const pageObj = pagination.paging();
+    listPageParam.next = pageObj.next;
+    listPageParam.prev = pageObj.prev;
+
+    //페이징 출력
+    $('#pages').html(pageObj.htmls);
+
+    let htmls = "";
+
+    $.each(reservationList, (idx, item) => {
+      let checkOut = item.check_out
+      let checkOutDate = checkOut.split(' ');
+      let diffDays = getDateDiff(checkOutDate[0], today);
+
+      if(item.reservation_status ==="R"){
+        status = "예약완료"
+        htmls +=
+                `<tr>
+                          <td>${idx+1}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td>${status}</td>
+                          <td><button type="button" class="modal-cancel" onclick="getValue(${item.reservation_seq})">예약취소</button></td>
+                        </tr>`
+      } else if(item.reservation_status ==="RR") {
+        status = "예약거절"
+        htmls +=
+                `<tr>
+                          <td>${idx+1}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td>${status}</td>
+                          <td>취소불가</td>
+                        </tr>`
+      } else if(item.reservation_status ==="RP") {
+        status = "결제완료"
+        htmls +=
+                `<tr>
+                          <td>${idx+1}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td>${status}</td>
+                          <td><button type="button" class="modal-cancel" onclick="getValue(${item.reservation_seq})">예약취소</button></td>
+                        </tr>`
+      } else if(item.reservation_status ==="RA") {
+        status = "예약수락"
+        htmls +=
+                `<tr>
+                          <td>${idx+1}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td><button type="button" class="modal-open" onclick="getValue(${item.reservation_seq})">결제하기</button></td>
+                          <td><button type="button" class="modal-cancel" onclick="getValue(${item.reservation_seq})">예약취소</button></td>
+                        </tr>`
+      } else if(item.reservation_status ==="RC" && diffDays < 7){ //이용일자+7일 까진 후기 작성가능 후기작성 버튼 노출
+        status = "이용완료"
+        htmls +=
+                `<tr>
+                          <td>${idx+1}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td><button type="button" class="modal-review" onclick="getValue(${item.reservation_seq})">후기쓰기</button></td>
+                          <td>취소불가</td>
+                        </tr>`
+      } else if(item.reservation_status ==="RCC" ){
+        status = "예약취소"
+        htmls +=
+                `<tr>
+                          <td>${idx+1}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td>${status}</td>
+                          <td>취소완료</td>
+                        </tr>`
+      } else if(item.reservation_status ==="PC" ){
+        status = "결제완료"
+        htmls +=
+                `<tr>
+                          <td>${idx+1}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td>${status}</td>
+                          <td><button type="button" class="modal-cancel" onclick="getValue(${item.reservation_seq})">예약취소</button></td>
+                        </tr>`
+      } else if(item.reservation_status ==="RRQ" ){
+        status = "환불요청"
+        htmls +=
+                `<tr>
+                          <td>${idx+1}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td>${status}</td>
+                          <td>취소완료</td>
+                        </tr>`
+      } else if(item.reservation_status ==="RCP" ){
+        status = "환불완료"
+        htmls +=
+                `<tr>
+                          <td>${idx+1}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td>${status}</td>
+                          <td>취소완료</td>
+                        </tr>`
+      } else if(item.reservation_status ==="RVC" ){
+        status = "후기완료"
+        htmls +=
+                `<tr>
+                          <td>${idx+1}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td>${status}</td>
+                          <td>취소불가</td>
+                        </tr>`
+      } else {
+        status = "이용완료"
+        htmls +=
+                `<tr>
+                          <td>${idx+1}</td>
+                          <td>${item.check_in}</td>
+                          <td>${item.check_out}</td>
+                          <td>소형${item.small_dog_cnt} 중형${item.medium_dog_cnt} 대형${item.large_dog_cnt}</td>
+                          <td>${item.price}원</td>
+                          <td>${item.reservation_date}</td>
+                          <td>${status}</td>
+                          <td>취소불가</td>
+                        </tr>`
+      }
+
+      $("#list").html(htmls);
+
+    });
+
+    //결제하기 버튼 이벤트 //동일 class가 여러개라서 querySelectorAll 사용
+    const modalBtn = document.querySelectorAll(".modal-open");
+    modalBtn.forEach((aItem) => {
+      aItem.addEventListener("click", open);
+    })
+
+    //취소하기 버튼 이벤트
+    const cancelBtn = document.querySelectorAll(".modal-cancel");
+    cancelBtn.forEach((aItem) => {
+      aItem.addEventListener("click", openCancel);
+    })
+
+    //리뷰쓰기 버튼 이벤트
+    const reviewBtn = document.querySelectorAll(".modal-review");
+    reviewBtn.forEach((aItem) => {
+      aItem.addEventListener("click", openReview);
+    })
+
+
+  }
+
+  //클릭한 버튼 reservation_seq 가져오기
+  function getValue(seq){
+    seqReservation = seq;
+  }
+
+  //결제
   const open = () => {
     document.querySelector(".modal-confirm").classList.remove("modal-hidden");
   }
-
   const close = () => {
     document.querySelector(".modal-confirm").classList.add("modal-hidden");
   }
-
-  document.querySelector(".modal-open").addEventListener("click", open);
   document.querySelector(".modal-close").addEventListener("click", close);
   document.querySelector(".bg").addEventListener("click", close);
+
+  //취소
+  const openCancel = () => {
+    document.querySelector(".modal-confirm-cancel").classList.remove("modal-hidden");
+  }
+  const closeCancel = () => {
+    document.querySelector(".modal-confirm-cancel").classList.add("modal-hidden");
+  }
+  document.querySelector(".modal-close-pay").addEventListener("click", closeCancel);
+  document.querySelector(".bg").addEventListener("click", closeCancel);
+
+  //리뷰
+  const openReview = () => {
+    document.querySelector(".modal-confirm-review").classList.remove("modal-hidden");
+  }
+  const closeReview = () => {
+    document.querySelector(".modal-confirm-review").classList.add("modal-hidden");
+  }
+  document.querySelector(".modal-close-review").addEventListener("click", closeReview);
+  document.querySelector(".bg").addEventListener("click", closeReview);
+
+
+  //오늘 날짜
+  function getToday(){
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = ("0" + (1 + date.getMonth())).slice(-2);
+    let day = ("0" + date.getDate()).slice(-2);
+
+    return year + "-" + month + "-" + day;
+  }
+
+  //두 날짜 사이 일수 차이
+  const getDateDiff = (d1, d2) => {
+    const date1 = new Date(d1);
+    const date2 = new Date(d2);
+
+    const diffDate = date1.getTime() - date2.getTime();
+
+    return Math.abs(diffDate / (1000 * 60 * 60 * 24)); // 밀리세컨 * 초 * 분 * 시 = 일
+  }
+
+  //버튼 이벤트 정의
+  function setButtonEvent() {
+
+    //페이지 이동
+    $(document).on('click', '.page-link', function() {
+      console.log(">>>>>>>>>>>>>클릭 시 페이지 이동 버튼 이번트 reservation")
+      let id = $(this).attr('id');
+      let page = $(this).text();
+
+      if(id === 'prev') page = listPageParam.prev;
+      if(id === 'next') page = listPageParam.next;
+
+      listPageParam.page = page;
+      getReservationList(page)
+
+    });
+
+  }
+
+  //결제
+  function payment() {
+    console.log(">>>>>>>>>>>>>>>>>>>payment API CALL")
+    console.log(">>>>>>>>>>>>>>>>>>>payment API CALL:"+$('input[name=pay]:checked').val())
+    if(!$('input[name=pay]').is(":checked")) {
+      alert('결제 수단을 선택해 주세요')
+    } else {
+      toy.apiCall({
+        type: 'POST',
+        url: 'http://localhost:8079/api/v1/petSit/payment',
+        data: {
+          reservationSeq: seqReservation,
+          paymentType: $('input[name=pay]:checked').val()
+        },
+        success: (result) => {
+          console.log(">>>>>>>>>>>>>>>>>>>getReservationList API RETURN SUCCESS")
+          document.querySelector(".modal-confirm").classList.add("modal-hidden");
+          alert('결제가 완료되었습니다')
+          window.location.href="/reservation";
+        },
+        successError: (result) => {
+          if(result.subCode === 2004){ //엑세스 토큰 만료
+            toy.access({
+              success: (result) => {
+                console.log(">>>>>>>>>>>>>>>>>>>>>>성공 응답을 받았다면 다시 요청")
+                document.querySelector(".modal-confirm").classList.add("modal-hidden");
+                payment()
+              },
+              successError: (result) => {
+                toyError.setAlert(result);
+              }
+            });
+          } else {
+            toyError.setAlert(result);
+          }
+        }
+      });
+    }
+  }
+
+  //취소
+  function payCancel() {
+    console.log(">>>>>>>>>>>>>>>>>>>payCancel API CALL")
+    toy.apiCall({
+      type: 'PUT',
+      url: 'http://localhost:8079/api/v1/petSit/cancelReservation',
+      data: {
+        reservationSeq: seqReservation
+      },
+      success: (result) => {
+        console.log(">>>>>>>>>>>>>>>>>>>payCancel API RETURN SUCCESS")
+        //reload
+        window.location.href="/reservation";
+      },
+      successError: (result) => {
+        if(result.subCode === 2004){ //엑세스 토큰 만료
+          toy.access({
+            success: (result) => {
+              console.log(">>>>>>>>>>>>>>>>>>>>>>성공 응답을 받았다면 다시 요청")
+              payCancel()
+            },
+            successError: (result) => {
+              toyError.setAlert(result);
+            }
+          });
+        } else {
+          toyError.setAlert(result);
+        }
+      }
+    });
+  }
+
+  //리뷰 작성 review
+  function review() {
+    console.log(">>>>>>>>>>>>>>>>>>>review API CALL")
+    toy.apiCall({
+      type: 'POST',
+      url: 'http://localhost:8079/api/v1/petSit/review',
+      data: {
+        reservationSeq: seqReservation,
+        reviewContent: $('#textarea').val()
+      },
+      success: (result) => {
+        console.log(">>>>>>>>>>>>>>>>>>>review API RETURN SUCCESS")
+        //reload
+        window.location.href="/reservation";
+      },
+      successError: (result) => {
+        if(result.subCode === 2004){ //엑세스 토큰 만료
+          toy.access({
+            success: (result) => {
+              console.log(">>>>>>>>>>>>>>>>>>>>>>성공 응답을 받았다면 다시 요청")
+              review()
+            },
+            successError: (result) => {
+              toyError.setAlert(result);
+            }
+          });
+        } else {
+          toyError.setAlert(result);
+        }
+      }
+    });
+  }
 
 </script>
 
